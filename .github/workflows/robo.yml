@@ -1,0 +1,58 @@
+# Roda o robô todo dia às 06:00 de Brasília (09:00 UTC), salva os dados no
+# repositório e publica o site no GitHub Pages. Também dá para rodar na mão:
+# aba Actions > "Robô diário" > Run workflow.
+name: Robô diário
+
+on:
+  schedule:
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: robo
+  cancel-in-progress: false
+
+jobs:
+  coletar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar dependências
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Rodar o robô
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          PORTAL_TRANSPARENCIA_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_KEY }}
+          URL_SITE: ${{ vars.URL_SITE }}
+        run: python -m robo
+
+      - name: Salvar novidades no repositório
+        run: |
+          git config user.name "robo-bambu-lascado"
+          git config user.email "robo@users.noreply.github.com"
+          git add dados site
+          git diff --cached --quiet || git commit -m "Robô: novidades de $(date -u +%F)"
+          git push
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - uses: actions/deploy-pages@v4

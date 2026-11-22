@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bambu Lascado</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="O dinheiro público de Canavieiras (BA) explicado em linguagem simples: Diário Oficial, TCM-BA e emendas federais, atualizado todo dia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: faixa de marca, números-resumo, feed de atos com filtros + coluna lateral (alertas, fontes); empilha no celular */
+:root{
+  --bg:#f3f6f2; --surface:#ffffff; --ink:#14251f; --muted:#5a6b64; --line:#d9e2dc;
+  --mangue:#0f4d3f; --mangue-2:#176b58; --bambu:#e2b63a; --bambu-ink:#3a2c00;
+  --ok:#1f7a4d; --warn:#a86a00; --bad:#b3261e; --info:#2a5d8f; --soft:#e8efe9;
+  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"Public Sans","Segoe UI",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1714; --surface:#15211d; --ink:#e4ece7; --muted:#9db0a8; --line:#2a3a34;
+  --mangue:#7fd1b5; --mangue-2:#5cbf9f; --bambu:#f0c955; --bambu-ink:#2b2100;
+  --ok:#5ccf93; --warn:#f0b64f; --bad:#ff8a80; --info:#8cbcec; --soft:#1c2b26; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1714; --surface:#15211d; --ink:#e4ece7; --muted:#9db0a8; --line:#2a3a34;
+  --mangue:#7fd1b5; --mangue-2:#5cbf9f; --bambu:#f0c955; --bambu-ink:#2b2100;
+  --ok:#5ccf93; --warn:#f0b64f; --bad:#ff8a80; --info:#8cbcec; --soft:#1c2b26; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+a{color:var(--mangue-2)}
+:focus-visible{outline:3px solid var(--bambu);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+header.top{background:#0f4d3f;color:#f3f6f2}
+header.top .wrap{padding-block:28px 32px;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between}
+.brand{display:flex;gap:14px;align-items:center}
+.logo{width:52px;height:52px;flex:none}
+.brand h1{font-family:var(--f-display);font-weight:800;font-size:clamp(28px,5vw,40px);line-height:1;margin:0;letter-spacing:-.02em}
+.brand p{margin:4px 0 0;font-size:15px;opacity:.85}
+.status{font-family:var(--f-mono);font-size:13px;display:flex;gap:8px;align-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:8px 12px;border-radius:8px}
+.dot{width:9px;height:9px;border-radius:50%;background:#7fe0b0;flex:none}
+
+.summary .wrap{padding-block:24px 8px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.stat .k{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.stat .v{font-family:var(--f-display);font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;margin-top:2px;line-height:1.2}
+.stat .s{font-size:13px;color:var(--muted)}
+.stat .v.bad{color:var(--bad)}
+
+main .wrap{padding-block:16px 48px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
+@media (max-width:860px){main .wrap{grid-template-columns:minmax(0,1fr)}}
+h2{font-family:var(--f-display);font-weight:700;font-size:22px;margin:0 0 4px;text-wrap:balance}
+.sub{color:var(--muted);margin:0 0 16px;font-size:15px}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;align-items:center}
+.chip{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:6px 12px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--mangue);border-color:var(--mangue);color:var(--bg)}
+.chip .n{font-family:var(--f-mono);font-size:12px;opacity:.75;margin-left:4px}
+.check{display:inline-flex;gap:6px;align-items:center;font-size:14px;color:var(--muted);cursor:pointer}
+.search{flex:1 1 220px;min-width:0;font:inherit;font-size:14px;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink)}
+
+.feed{display:flex;flex-direction:column;gap:14px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:grid;gap:10px;scroll-margin-top:16px}
+.item.alvo{outline:3px solid var(--bambu)}
+.meta{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:13px;color:var(--muted)}
+.src{font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:var(--soft);color:var(--mangue)}
+.pill{font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;border:1px solid currentColor}
+.pill.bad{color:var(--bad)} .pill.ok{color:var(--ok)} .pill.warn{color:var(--warn)} .pill.info{color:var(--info)}
+.item h3{margin:0;font-family:var(--f-display);font-size:19px;font-weight:700;line-height:1.3;text-wrap:balance;overflow-wrap:anywhere}
+.plain{margin:0;white-space:pre-line;overflow-wrap:anywhere}
+.ia-off{font-size:13px;color:var(--muted);font-style:italic;margin:0}
+.atencao{margin:0;font-size:15px;background:color-mix(in srgb,var(--warn) 12%,transparent);border-left:3px solid var(--warn);padding:8px 12px;border-radius:0 8px 8px 0}
+.valor{font-family:var(--f-display);font-size:26px;font-weight:700;font-variant-numeric:tabular-nums}
+ul.pontos{margin:0;padding-left:20px;display:grid;gap:4px}
+details{border-top:1px dashed var(--line);padding-top:8px}
+summary{cursor:pointer;font-size:14px;color:var(--muted);font-weight:600}
+.txt{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);white-space:pre-wrap;margin:8px 0 0;max-height:360px;overflow:auto;overflow-wrap:anywhere;background:var(--bg);padding:10px;border-radius:8px}
+ul.docs{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:6px;font-size:14px}
+ul.docs small{display:block;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.btn{font:inherit;font-size:14px;font-weight:600;padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+.btn.primary{background:var(--mangue);border-color:var(--mangue);color:var(--bg)}
+.btn:hover{border-color:var(--mangue-2)}
+.post{background:var(--soft);border-radius:10px;padding:14px 16px;font-size:15px;white-space:pre-line}
+.post .actions{margin-top:10px}
+.mais{align-self:center}
+.vazio{background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:18px 20px;color:var(--muted)}
+
+aside{display:flex;flex-direction:column;gap:20px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+.panel h2{font-size:18px}
+.panel ol{margin:8px 0 0;padding-left:20px;font-size:14px;display:grid;gap:6px}
+.sources{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:10px}
+.sources li{display:grid;grid-template-columns:12px 1fr;gap:10px;font-size:14px}
+.sources .st{width:10px;height:10px;border-radius:50%;margin-top:6px;background:var(--ok)}
+.sources small{display:block;color:var(--muted)}
+
+footer{font-size:13px;color:var(--muted)}
+footer .wrap{padding-block:20px 32px;border-top:1px solid var(--line)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:8px;font-size:14px;z-index:20}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <div class="brand">
+    <svg class="logo" viewBox="0 0 52 52" aria-hidden="true"><rect width="52" height="52" rx="12" fill="#e2b63a"/><g fill="#0f4d3f"><rect x="13" y="8" width="7" height="36" rx="3"/><rect x="23" y="8" width="7" height="22" rx="3"/><path d="M23 33l7-3v14h-7z"/><rect x="33" y="8" width="7" height="36" rx="3"/></g><g stroke="#e2b63a" stroke-width="2"><path d="M13 20h7M13 32h7M33 16h7M33 30h7M23 18h7"/></g></svg>
+    <div><h1>Bambu Lascado</h1><p>O dinheiro público de Canavieiras (BA), explicado em linguagem simples.</p></div>
+  </div>
+  <div class="status"><span class="dot"></span><span id="atualizado">Carregando dados…</span></div>
+</div></header>
+
+<section class="summary" aria-label="Resumo"><div class="wrap" id="stats"></div></section>
+
+<main><div class="wrap">
+  <section aria-labelledby="feed-h">
+    <h2 id="feed-h">O que saiu nas publicações</h2>
+    <p class="sub">Cada item tem o texto original, o documento para baixar e um post pronto para compartilhar.</p>
+    <div class="filters" role="group" aria-label="Filtrar">
+      <button class="chip" data-f="todos" aria-pressed="true">Tudo</button>
+      <button class="chip" data-f="diario" aria-pressed="false">Diário Oficial</button>
+      <button class="chip" data-f="tcm" aria-pressed="false">TCM-BA</button>
+      <button class="chip" data-f="emendas" aria-pressed="false">Emendas federais</button>
+      <label class="check"><input type="checkbox" id="so-destaque"> Só destaques</label>
+      <input class="search" id="busca" type="search" placeholder="Buscar: contrato, aditivo, empresa, decreto…" aria-label="Buscar">
+    </div>
+    <div class="feed" id="feed"></div>
+  </section>
+
+  <aside>
+    <div class="panel">
+      <h2>Alertas no celular</h2>
+      <p class="sub" style="margin:0">Entre no canal do Telegram e receba um aviso a cada novidade importante.</p>
+      <ol>
+        <li>Instale o Telegram no celular.</li>
+        <li>Entre no canal <b id="canal">do Bambu Lascado</b>.</li>
+        <li>Ative as notificações do canal.</li>
+      </ol>
+    </div>
+    <div class="panel">
+      <h2>Fontes acompanhadas</h2>
+      <ul class="sources">
+        <li><span class="st"></span><span><b>Diário Oficial de Canavieiras</b><small>Todas as edições, com transcrição do PDF</small></span></li>
+        <li><span class="st"></span><span><b>TCM-BA (e-TCM)</b><small>Prestações de contas da Prefeitura e da Câmara, com documentos</small></span></li>
+        <li><span class="st"></span><span><b>Emendas Pix (Transferegov)</b><small>Emendas de deputados e senadores para o município</small></span></li>
+      </ul>
+      <p class="sub" style="margin:12px 0 0;font-size:13px">O robô visita as fontes todo dia às 6h (horário de Brasília).</p>
+    </div>
+  </aside>
+</div></main>
+
+<footer><div class="wrap">Bambu Lascado é um projeto independente de fiscalização cidadã de Canavieiras (BA), código IBGE 2906303. Os resumos são feitos por inteligência artificial e podem conter erros: confira sempre o documento original antes de compartilhar.</div></footer>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const NOME = {diario:"Diário Oficial", tcm:"TCM-BA", emendas:"Emenda federal"};
+const POR_PAGINA = 20;
+let ITENS = [], filtro = "todos", limite = POR_PAGINA;
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const brl = v => (v||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL",maximumFractionDigits:0});
+const dataBR = iso => iso && iso.length >= 10 ? iso.slice(8,10)+"/"+iso.slice(5,7)+"/"+iso.slice(0,4) : "";
+const primeiraLinha = t => String(t||"").split("\n")[0].replace(/^[-–\s]+/,"");
+
+function titulo(it){
+  if (it.ia?.titulo) return it.ia.titulo;
+  if (it.fonte === "tcm") return `Prestação de contas ${it.tipo === "Governo" ? "anual" : "mensal"} ${it.competencia}: ${it.unidade.replace(" Municipal de CANAVIEIRAS","")}`;
+  if (it.fonte === "emendas") return it.parlamentar ? `Emenda de ${it.parlamentar} (${it.ano})` : primeiraLinha(it.titulo_original);
+  const t = primeiraLinha(it.titulo_original);
+  return t.length > 140 ? t.slice(0,137)+"…" : (t || `Edição ${it.edicao}`);
+}
+function statusTCM(s){
+  const t = (s||"").toLowerCase();
+  return t.includes("fora") || t.includes("não") ? "bad" : t.includes("no prazo") ? "ok" : "info";
+}
+function post(it){
+  if (it.ia?.post) return it.ia.post;
+  const onde = it.fonte === "diario" ? `Diário Oficial de Canavieiras, edição ${it.edicao} (${dataBR(it.data)})` : NOME[it.fonte];
+  let corpo = it.fonte === "emendas" ? `${titulo(it)}: ${brl(it.valor)} para Canavieiras. Situação: ${it.situacao}.`
+            : it.fonte === "tcm" ? `${titulo(it)}. Situação no TCM-BA: ${it.status} (enviada em ${it.data_envio}).`
+            : primeiraLinha(it.titulo_original);
+  return `📢 ${onde}\n\n${corpo}\n\n🔎 Veja o documento: ${location.origin}${location.pathname}#${it.id}\n#Canavieiras #Transparência #BambuLascado`;
+}
+
+function corpoItem(it){
+  const ia = it.ia;
+  let h = "";
+  if (it.fonte === "emendas") h += `<div class="valor">${brl(it.valor)}</div>`;
+  if (ia?.resumo) h += `<p class="plain">${esc(ia.resumo)}</p>`;
+  if (ia?.pontos?.length) h += `<ul class="pontos">${ia.pontos.map(p => `<li>${esc(p.descricao)}${p.valor_reais ? ` <b class="mono">${brl(p.valor_reais)}</b>` : ""}</li>`).join("")}</ul>`;
+  if (ia?.merece_atencao && ia.motivo_atencao) h += `<p class="atencao">⚠️ ${esc(ia.motivo_atencao)}</p>`;
+  if (!ia) {
+    if (it.fonte === "diario") h += `<p class="plain">${esc(it.titulo_original)}</p>`;
+    if (it.fonte === "emendas") h += `<p class="plain">Área: ${esc(it.areas || "não informada")}${it.motivo_impedimento ? `\nMotivo do impedimento: ${esc(it.motivo_impedimento)}` : ""}</p>`;
+    if (it.fonte === "tcm") h += `<p class="plain">Enviada ao Tribunal de Contas dos Municípios em ${esc(it.data_envio)}.${statusTCM(it.status)==="bad" ? " A Prefeitura ou Câmara deve mandar as contas de cada mês ao TCM dentro do prazo legal; esta foi registrada como atrasada." : ""}</p>`;
+    if (it.fonte !== "emendas") h += `<p class="ia-off">Resumo em linguagem simples: em breve.</p>`;
+  }
+  if (it.fonte === "tcm" && it.documentos?.length) {
+    const baixados = it.documentos.filter(d => d.arquivo_local);
+    h += `<details><summary>Documentos enviados ao TCM (${it.documentos.length})</summary><ul class="docs">${it.documentos.map(d =>
+      `<li>${d.arquivo_local ? `<a href="arquivos/${encodeURIComponent(d.arquivo_local)}" target="_blank" rel="noopener">${esc(d.nome)}</a>` : esc(d.nome)}<small>${esc(d.classificacao)}</small></li>`).join("")}</ul></details>`;
+  }
+  if (it.fonte === "diario" && it.tem_transcricao) h += `<details data-txt="${esc(it.id)}"><summary>Ler o texto completo da edição</summary><div class="txt">Carregando…</div></details>`;
+  let acoes = "";
+  if (it.url_pdf_origem) acoes += `<a class="btn" href="${esc(it.url_pdf_origem)}" target="_blank" rel="noopener">⬇ Baixar PDF original</a>`;
+  else if (it.url_pagina) acoes += `<a class="btn" href="${esc(it.url_pagina)}" target="_blank" rel="noopener">Ver na fonte oficial</a>`;
+  acoes += `<button class="btn primary" data-post="${esc(it.id)}">Gerar post</button>`;
+  return h + `<div class="actions">${acoes}</div><div class="post" data-postbox="${esc(it.id)}" hidden></div>`;
+}
+
+function meta(it){
+  let m = `<span class="src">${NOME[it.fonte]}</span>`;
+  if (it.fonte === "diario") m += `<span class="mono">${dataBR(it.data)}</span><span class="mono">Ed. ${esc(it.edicao)}</span>${it.paginas ? `<span>${it.paginas} pág.</span>` : ""}`;
+  if (it.fonte === "tcm") m += `<span class="pill ${statusTCM(it.status)}">${esc(it.status)}</span><span class="mono">Competência ${esc(it.competencia)}</span>`;
+  if (it.fonte === "emendas") m += `<span class="pill ${it.situacao === "IMPEDIDO" ? "bad" : "info"}">${esc(it.situacao)}</span><span class="mono">${esc(it.numero_emenda || "")}</span>`;
+  if (it.destaque) m += `<span class="pill warn">Destaque</span>`;
+  return m;
+}
+
+function filtrados(){
+  const q = $("busca").value.trim().toLowerCase();
+  const so = $("so-destaque").checked;
+  return ITENS.filter(it => (filtro === "todos" || it.fonte === filtro) && (!so || it.destaque) &&
+    (!q || JSON.stringify([it.titulo_original, it.ia, it.parlamentar, it.documentos]).toLowerCase().includes(q)));
+}
+function render(){
+  const lista = filtrados();
+  const h = lista.slice(0, limite).map(it => `<article class="item" id="${esc(it.id)}"><div class="meta">${meta(it)}</div><h3>${esc(titulo(it))}</h3>${corpoItem(it)}</article>`).join("");
+  $("feed").innerHTML = (h || `<div class="vazio">Nada encontrado. Tente outra palavra ou limpe os filtros.</div>`) +
+    (lista.length > limite ? `<button class="btn mais" id="mais">Mostrar mais (${lista.length - limite} restantes)</button>` : "");
+}
+function stats(){
+  const d = ITENS.filter(i => i.fonte === "diario"), t = ITENS.filter(i => i.fonte === "tcm"), e = ITENS.filter(i => i.fonte === "emendas");
+  const atrasadas = t.filter(i => statusTCM(i.status) === "bad").length;
+  const ult = d[0];
+  $("stats").innerHTML = `
+    <div class="stat"><div class="k">Edições do Diário</div><div class="v mono">${d.length}</div><div class="s">${d.filter(i=>i.destaque).length} com contratos, licitações ou aditivos</div></div>
+    <div class="stat"><div class="k">Última edição</div><div class="v mono">${ult ? ult.edicao : "—"}</div><div class="s">${ult ? dataBR(ult.data) : ""}</div></div>
+    <div class="stat"><div class="k">Contas entregues com atraso</div><div class="v mono bad">${atrasadas} de ${t.length}</div><div class="s">prestações de contas no TCM-BA</div></div>
+    <div class="stat"><div class="k">Emendas Pix</div><div class="v mono">${brl(e.reduce((s,i)=>s+(i.valor||0),0))}</div><div class="s">${e.length} emendas desde ${Math.min(...e.map(i=>+i.ano||9999))}</div></div>`;
+  document.querySelectorAll(".chip").forEach(b => {
+    const n = b.dataset.f === "todos" ? ITENS.length : ITENS.filter(i => i.fonte === b.dataset.f).length;
+    b.querySelector(".n")?.remove(); b.insertAdjacentHTML("beforeend", `<span class="n">${n}</span>`);
+  });
+}
+function toast(msg){const t=$("toast");t.textContent=msg;t.hidden=false;clearTimeout(t._h);t._h=setTimeout(()=>t.hidden=true,2200)}
+function irPara(id){
+  if (!id) return;
+  const idx = filtrados().findIndex(i => i.id === id);
+  if (idx < 0) { filtro = "todos"; $("busca").value = ""; $("so-destaque").checked = false; }
+  const i2 = filtrados().findIndex(i => i.id === id);
+  if (i2 >= limite) limite = i2 + 1;
+  render();
+  const el = document.getElementById(id);
+  if (el) { el.classList.add("alvo"); el.scrollIntoView({block:"start"}); }
+}
+
+document.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => {
+  filtro = b.dataset.f; limite = POR_PAGINA;
+  document.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x === b)); render();
+}));
+$("busca").addEventListener("input", () => { limite = POR_PAGINA; render(); });
+$("so-destaque").addEventListener("change", () => { limite = POR_PAGINA; render(); });
+$("feed").addEventListener("click", e => {
+  if (e.target.id === "mais") { limite += POR_PAGINA; render(); return; }
+  const b = e.target.closest("[data-post]");
+  if (b) {
+    const it = ITENS.find(i => i.id === b.dataset.post), box = document.querySelector(`[data-postbox="${CSS.escape(it.id)}"]`);
+    if (!box.hidden) { box.hidden = true; return; }
+    box.innerHTML = `${esc(post(it))}<div class="actions"><button class="btn" data-copy="${esc(it.id)}">Copiar texto</button></div>`;
+    box.hidden = false; return;
+  }
+  const c = e.target.closest("[data-copy]");
+  if (c) navigator.clipboard.writeText(post(ITENS.find(i => i.id === c.dataset.copy)))
+    .then(() => toast("Texto copiado"), () => toast("Selecione o texto e copie manualmente"));
+});
+$("feed").addEventListener("toggle", e => {
+  const d = e.target;
+  if (!d.open || !d.dataset.txt || d.dataset.ok) return;
+  fetch(`arquivos/${encodeURIComponent(d.dataset.txt)}.txt`).then(r => r.ok ? r.text() : Promise.reject())
+    .then(t => { d.querySelector(".txt").textContent = t; d.dataset.ok = 1; })
+    .catch(() => { d.querySelector(".txt").textContent = "Não consegui carregar a transcrição. Use o botão Baixar PDF original."; });
+}, true);
+window.addEventListener("hashchange", () => irPara(decodeURIComponent(location.hash.slice(1))));
+
+fetch("dados.json", {cache: "no-cache"}).then(r => r.json()).then(d => {
+  ITENS = d.itens || [];
+  const quando = new Date(d.atualizado_em);
+  $("atualizado").textContent = "Atualizado em " + quando.toLocaleString("pt-BR", {dateStyle:"short", timeStyle:"short"});
+  stats(); render();
+  irPara(decodeURIComponent(location.hash.slice(1)));
+}).catch(() => {
+  $("atualizado").textContent = "Sem dados ainda";
+  $("feed").innerHTML = `<div class="vazio">Os dados ainda não foram gerados. Rode o robô (python -m robo) para criar o arquivo dados.json.</div>`;
+});
+</script>
+</body>
+</html>
