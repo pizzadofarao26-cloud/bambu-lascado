@@ -1,7 +1,73 @@
 {
- "atualizado_em": "2026-11-22T14:54:23+00:00",
- "erros": [],
+ "atualizado_em": "2026-11-23T22:35:01+00:00",
+ "erros": [
+  "TCM-BA: Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://e.tcm.ba.gov.br/epp/ConsultaPublica/listView.seam\nCall log:\n  - navigating to \"https://e.tcm.ba.gov.br/epp/ConsultaPublica/listView.seam\", waiting until \"domcontentloaded\"\n"
+ ],
  "itens": [
+  {
+   "id": "diario-4592-2026_11_234592001491",
+   "fonte": "diario",
+   "data": "2026-11-23",
+   "edicao": "4592",
+   "titulo_original": "-EXTRATO DE NOTIFICAÇÃO ADMINISTRATIVA Nº 002/2026 - Execução de serviços de pavimentação em área rural no Distrito de Era Nova, Município de Canavieiras/BA.",
+   "url_pdf_origem": "https://diof.io.org.br/api/diario-oficial/download/2026_11_234592001491",
+   "url_pagina": "https://diario.canavieiras.ba.gov.br/edicoes-anteriores",
+   "arquivo_id": "2026_11_234592001491",
+   "destaque": false,
+   "coletado_em": "2026-11-23T22:34:40+00:00",
+   "paginas": 2,
+   "ia": {
+    "titulo": "Prefeitura notifica pela 2ª vez construtora de pavimentação em Era Nova",
+    "resumo": "A Prefeitura de Canavieiras enviou uma segunda notificação à empresa Status Construtora e Empreendimentos Ltda., contratada para pavimentar uma área rural no Distrito de Era Nova. Segundo o documento, a empresa não respondeu formalmente à primeira notificação. Agora ela tem 48 horas para explicar como está a obra, justificar possíveis atrasos e apresentar um plano para começar ou retomar os serviços. O valor do contrato não consta no documento.",
+    "pontos": [
+     {
+      "tipo": "contrato",
+      "descricao": "Notificação Administrativa nº 002/2026 (um aviso oficial cobrando a empresa) sobre a obra de pavimentação em área rural no Distrito de Era Nova. A contratação veio do Pregão Eletrônico nº 005/2025, um tipo de licitação feita pela internet. A obra usa recursos de um convênio federal registrado no Transferegov (nº 025170/2020). A empresa tem 48 horas para explicar a situação da obra, os atrasos e o cronograma. O valor do contrato não consta.",
+      "valor_reais": null,
+      "empresa_ou_pessoa": "Status Construtora e Empreendimentos Ltda. (CNPJ 54.443.313/0001-43)"
+     }
+    ],
+    "merece_atencao": true,
+    "motivo_atencao": "É a segunda notificação e, segundo a Prefeitura, a empresa não respondeu à primeira. Há dúvidas sobre o andamento e a execução real da obra. O convênio federal é de 2020 e a obra ainda não tem execução confirmada. O valor do contrato não foi informado.",
+    "post": "🚧 Obra parada em Era Nova?\n\nA Prefeitura de Canavieiras notificou pela 2ª vez a empresa Status Construtora e Empreendimentos Ltda., contratada para pavimentar uma área rural no Distrito de Era Nova. Segundo a Prefeitura, a empresa não respondeu ao primeiro aviso.\n\nAgora ela tem 48 horas para explicar como está a obra, justificar os atrasos e mostrar quando vai trabalhar. A obra usa dinheiro de um convênio federal de 2020. O valor do contrato não foi divulgado.\n\n#Canavieiras #EraNova #DinheiroPúblico"
+   },
+   "tem_transcricao": true
+  },
+  {
+   "id": "diario-4591-2026_11_234591001491",
+   "fonte": "diario",
+   "data": "2026-11-23",
+   "edicao": "4591",
+   "titulo_original": "-PORTARIA AAMA N° 005/26 DE 23 DE NOVEMBRO DE 2026.\n-PORTARIA Nº 204/2026 “TORNA SEM EFEITO PORTARIA N° 095/2025, E DÁ OUTRAS PROVIDÊNCIAS.”",
+   "url_pdf_origem": "https://diof.io.org.br/api/diario-oficial/download/2026_11_234591001491",
+   "url_pagina": "https://diario.canavieiras.ba.gov.br/edicoes-anteriores",
+   "arquivo_id": "2026_11_234591001491",
+   "destaque": false,
+   "coletado_em": "2026-11-23T22:34:52+00:00",
+   "paginas": 4,
+   "ia": {
+    "titulo": "Prefeitura anula portaria que designou vice-diretora do Colégio Municipal Paulo Freire",
+    "resumo": "O Diário Oficial de 23 de novembro de 2026 publicou a Portaria nº 204/2026. Ela torna sem efeito, ou seja, cancela, a Portaria nº 095/2025, que tinha designado a servidora efetiva Milena Santos Silva para a função de vice-diretora (20 horas) do Colégio Municipal Paulo Freire. O título do diário também cita uma Portaria AAMA nº 005/26, mas o texto dela não aparece no material disponível. O documento não informa o motivo do cancelamento nem quem assume a função.",
+    "pontos": [
+     {
+      "tipo": "pessoal",
+      "descricao": "Portaria nº 204/2026 cancela a Portaria nº 095/2025, que designava a servidora efetiva (matrícula 5300) como vice-diretora 20h do Colégio Municipal Paulo Freire. Motivo e substituto não constam.",
+      "valor_reais": null,
+      "empresa_ou_pessoa": "Milena Santos Silva"
+     },
+     {
+      "tipo": "outro",
+      "descricao": "Portaria AAMA nº 005/26, de 23 de novembro de 2026, citada no título da edição. O conteúdo não consta no texto disponível.",
+      "valor_reais": null,
+      "empresa_ou_pessoa": null
+     }
+    ],
+    "merece_atencao": false,
+    "motivo_atencao": null,
+    "post": "📢 Diário Oficial de Canavieiras, 23/11/2026\n\nA Prefeitura cancelou a portaria de 2025 que designava a servidora Milena Santos Silva como vice-diretora do Colégio Municipal Paulo Freire. O documento não diz o motivo nem quem fica no lugar.\n\nA edição também cita uma Portaria AAMA nº 005/26, mas o texto dela não foi publicado no material que tivemos acesso.\n\n#Canavieiras #BambuLascado #TransparênciaPública"
+   },
+   "tem_transcricao": true
+  },
   {
    "id": "diario-4590-2026_11_194590001491",
    "fonte": "diario",

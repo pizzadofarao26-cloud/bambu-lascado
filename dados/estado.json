@@ -98,6 +98,8 @@
   "diario-4588-2026_11_194588001491",
   "diario-4589-2026_11_194589001491",
   "diario-4590-2026_11_194590001491",
+  "diario-4591-2026_11_234591001491",
+  "diario-4592-2026_11_234592001491",
   "emenda-pix-13708",
   "emenda-pix-16154",
   "emenda-pix-76108",
@@ -146,6 +148,13 @@
   "tcm-prefeituramunicipaldecanavieiras-2025-transição-prefeituramunicipaldecanavieiras-27082025"
  ],
  "execucoes": [
+  {
+   "quando": "2026-11-23T22:35:01+00:00",
+   "novos": 2,
+   "erros": [
+    "TCM-BA: Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://e.tcm.ba.gov.br/epp/ConsultaPublica/listView.seam\nCall log:\n  - navigating to \"https://e.tcm.ba.gov.br/epp/ConsultaPublica/listView.seam\", waiting until \"domcontentloaded\"\n"
+   ]
+  },
   {
    "quando": "2026-11-22T00:05:03+00:00",
    "novos": 0,
