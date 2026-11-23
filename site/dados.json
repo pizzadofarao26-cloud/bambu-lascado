@@ -1,8 +1,6 @@
 {
- "atualizado_em": "2026-11-23T22:35:01+00:00",
- "erros": [
-  "TCM-BA: Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://e.tcm.ba.gov.br/epp/ConsultaPublica/listView.seam\nCall log:\n  - navigating to \"https://e.tcm.ba.gov.br/epp/ConsultaPublica/listView.seam\", waiting until \"domcontentloaded\"\n"
- ],
+ "atualizado_em": "2026-11-23T22:39:07+00:00",
+ "erros": [],
  "itens": [
   {
    "id": "diario-4592-2026_11_234592001491",
