@@ -60,8 +60,21 @@ def _esperar(page, ms=2500):
         pass
 
 
+def _abrir(page, tentativas: int = 3):
+    """O e-TCM às vezes demora a responder (principalmente fora do Brasil): tenta de novo."""
+    for n in range(1, tentativas + 1):
+        try:
+            page.goto(config.TCM_URL, wait_until="domcontentloaded", timeout=90000)
+            return
+        except PWTimeout:
+            if n == tentativas:
+                raise
+            print(f"  TCM-BA demorou a responder, tentando de novo ({n}/{tentativas})…")
+            page.wait_for_timeout(10000 * n)
+
+
 def _pesquisar(page, unidade: str, ano: int):
-    page.goto(config.TCM_URL, wait_until="networkidle")
+    _abrir(page)
     page.wait_for_function("() => window.PrimeFaces && Object.keys(PrimeFaces.widgets).length > 3")
     # A ordem importa: município recarrega a lista de unidades.
     if not page.evaluate(JS_SELECIONAR, ["municipio", config.TCM_MUNICIPIO]):
@@ -122,6 +135,7 @@ def coletar(ja_vistos: set[str], destino: Path) -> list[dict]:
         nav = pw.chromium.launch(headless=True)
         ctx = nav.new_context(accept_downloads=True, user_agent=config.USER_AGENT, locale="pt-BR")
         page = ctx.new_page()
+        page.set_default_timeout(60000)
         for unidade in config.TCM_UNIDADES:
             for ano in anos:
                 _pesquisar(page, unidade, ano)

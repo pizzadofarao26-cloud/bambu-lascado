@@ -187,7 +187,10 @@ def main():
     print(f"Pronto: {len(novos)} novo(s), {resumos} resumo(s), {len(erros)} erro(s).")
     for e in erros:
         print("  -", e)
-    return 1 if erros and not novos else 0
+    # Uma fonte fora do ar não pode impedir o site de ser atualizado com as outras.
+    # Só falha se TODAS as fontes falharem.
+    return 1 if len([e for e in erros if ":" in e and e.split(":")[0] in
+                     ("Diário Oficial", "Emendas federais", "TCM-BA")]) == len(coletores) else 0
 
 
 if __name__ == "__main__":
