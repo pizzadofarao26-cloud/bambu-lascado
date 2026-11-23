@@ -1,6 +1,10 @@
 # Roda o robô todo dia às 06:00 de Brasília (09:00 UTC), salva os dados no
 # repositório e publica o site no GitHub Pages. Também dá para rodar na mão:
 # aba Actions > "Robô diário" > Run workflow.
+#
+# O TCM-BA bloqueia acessos de fora do Brasil (os servidores do GitHub ficam
+# nos EUA), então aqui ele é pulado. O TCM é atualizado a partir de um
+# computador no Brasil com atualizar-tcm.ps1 (ou numa hospedagem brasileira).
 name: Robô diário
 
 on:
@@ -20,7 +24,7 @@ concurrency:
 jobs:
   coletar:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v5
 
@@ -30,9 +34,7 @@ jobs:
           cache: pip
 
       - name: Instalar dependências
-        run: |
-          pip install -r requirements.txt
-          python -m playwright install --with-deps chromium
+        run: pip install -r requirements.txt
 
       - name: Rodar o robô
         env:
@@ -41,7 +43,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           PORTAL_TRANSPARENCIA_KEY: ${{ secrets.PORTAL_TRANSPARENCIA_KEY }}
           URL_SITE: ${{ vars.URL_SITE }}
-        run: python -m robo
+        run: python -m robo --sem-tcm
 
       - name: Salvar novidades no repositório
         run: |
@@ -49,10 +51,20 @@ jobs:
           git config user.email "robo@users.noreply.github.com"
           git add dados site
           git diff --cached --quiet || git commit -m "Robô: novidades de $(date -u +%F)"
+          git pull --rebase
           git push
 
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: site
-      - uses: actions/deploy-pages@v4
+
+  publicar:
+    needs: coletar
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

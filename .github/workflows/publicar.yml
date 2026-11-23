@@ -1,0 +1,39 @@
+# Publica o site sempre que alguém envia mudanças para a pasta site/ —
+# por exemplo, depois de atualizar o TCM-BA pelo computador (atualizar-tcm.ps1).
+# (Os envios feitos pelo próprio robô diário não disparam este fluxo.)
+name: Publicar site
+
+on:
+  push:
+    branches: [main]
+    paths: ["site/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: robo
+  cancel-in-progress: false
+
+jobs:
+  empacotar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  publicar:
+    needs: empacotar
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

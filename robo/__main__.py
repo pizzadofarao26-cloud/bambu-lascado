@@ -92,6 +92,7 @@ def resumir_pendentes(n: int, fonte: str | None) -> int:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sem-tcm", action="store_true", help="pula o TCM-BA (precisa de navegador)")
+    ap.add_argument("--so-tcm", action="store_true", help="roda só o TCM-BA (para usar num computador no Brasil)")
     ap.add_argument("--sem-ia", action="store_true", help="não gera resumos")
     ap.add_argument("--sem-alerta", action="store_true", help="não manda Telegram")
     ap.add_argument("--resumir-pendentes", type=int, metavar="N", default=0,
@@ -110,8 +111,8 @@ def main():
     erros, novos = [], []
 
     # 1. Coleta -----------------------------------------------------------
-    coletores = [("Diário Oficial", lambda: diario.listar_edicoes()),
-                 ("Emendas federais", emendas.coletar)]
+    coletores = [] if args.so_tcm else [("Diário Oficial", lambda: diario.listar_edicoes()),
+                                        ("Emendas federais", emendas.coletar)]
     if not args.sem_tcm:
         def coletar_tcm():
             from .fontes import tcm  # importa aqui: se o navegador falhar, as outras fontes seguem
