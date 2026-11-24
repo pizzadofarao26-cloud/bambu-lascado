@@ -1,4 +1,4 @@
-# Bambu Lascado
+# Olho de Caranguejo
 
 Site de fiscalização cidadã de Canavieiras (BA). Um robô visita as fontes oficiais
 todo dia às 6h, baixa os documentos, transcreve, resume em linguagem simples,
@@ -34,17 +34,17 @@ dados/           memória do robô (o que já viu)
    - `ANTHROPIC_API_KEY`: chave da API do Claude (console.anthropic.com), para os resumos. Sem ela o site funciona, só que sem resumos.
    - `TELEGRAM_BOT_TOKEN` e `TELEGRAM_CHAT_ID`: para os alertas (veja abaixo).
    - `PORTAL_TRANSPARENCIA_KEY` (opcional): portaldatransparencia.gov.br/api-de-dados/cadastrar-email
-   - Em **Variables**, `URL_SITE` com o endereço do site (ex.: `https://bambulascado.com`).
+   - Em **Variables**, `URL_SITE` com o endereço do site (ex.: `https://olhodecaranguejo.com.br`).
 5. Na aba **Actions**, abra "Robô diário" e clique **Run workflow** para a primeira execução.
 
 O site fica em `https://SEU-USUARIO.github.io/NOME-DO-REPO/`. Quando comprar o domínio,
-em **Settings > Pages > Custom domain** coloque `bambulascado.com` e crie no registro do
+em **Settings > Pages > Custom domain** coloque `olhodecaranguejo.com.br` e crie no registro do
 domínio os apontamentos DNS que o GitHub mostrar. Não precisa de hospedagem paga.
 
 ## Alertas no Telegram
 
 1. No Telegram, fale com **@BotFather**, envie `/newbot` e copie o token.
-2. Crie um canal (ex.: "Bambu Lascado"), adicione o bot como administrador.
+2. Crie um canal (ex.: "Olho de Caranguejo"), adicione o bot como administrador.
 3. `TELEGRAM_CHAT_ID` = `@nome_do_canal`. Quem entrar no canal recebe os avisos no celular.
 
 A primeira execução não manda alertas (para não disparar dezenas de mensagens antigas).

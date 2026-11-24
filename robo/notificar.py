@@ -25,7 +25,7 @@ def _texto(item: dict) -> str:
               f"<b>{html.escape(titulo)}</b>", "", html.escape(resumo)]
     if ia.get("motivo_atencao"):
         linhas += ["", "⚠️ " + html.escape(ia["motivo_atencao"])]
-    linhas += ["", f'<a href="{config.URL_SITE}/#{item["id"]}">Ler no Bambu Lascado</a>']
+    linhas += ["", f'<a href="{config.URL_SITE}/#{item["id"]}">Ler no Olho de Caranguejo</a>']
     return "\n".join(linhas)
 
 

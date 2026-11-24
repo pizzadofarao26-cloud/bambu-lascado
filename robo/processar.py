@@ -7,7 +7,7 @@ from pypdf import PdfReader
 
 from . import config
 
-SISTEMA = """Você escreve para o site Bambu Lascado, que explica para moradores de \
+SISTEMA = """Você escreve para o site Olho de Caranguejo, que explica para moradores de \
 Canavieiras (Bahia) o que a Prefeitura, a Câmara e o governo federal fazem com o \
 dinheiro público. Escreva em português do Brasil, frases curtas, sem juridiquês. \
 Quem lê não conhece termos como "termo aditivo" ou "homologação": explique numa \

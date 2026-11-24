@@ -47,7 +47,7 @@ jobs:
 
       - name: Salvar novidades no repositório
         run: |
-          git config user.name "robo-bambu-lascado"
+          git config user.name "robo-olho-de-caranguejo"
           git config user.email "robo@users.noreply.github.com"
           git add dados site
           git diff --cached --quiet || git commit -m "Robô: novidades de $(date -u +%F)"

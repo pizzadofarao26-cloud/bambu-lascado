@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Bambu Lascado</title>
+<title>Olho de Caranguejo</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="O dinheiro público de Canavieiras (BA) explicado em linguagem simples: Diário Oficial, TCM-BA e emendas federais, atualizado todo dia.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -107,8 +107,8 @@ footer .wrap{padding-block:20px 32px;border-top:1px solid var(--line)}
 
 <header class="top"><div class="wrap">
   <div class="brand">
-    <svg class="logo" viewBox="0 0 52 52" aria-hidden="true"><rect width="52" height="52" rx="12" fill="#e2b63a"/><g fill="#0f4d3f"><rect x="13" y="8" width="7" height="36" rx="3"/><rect x="23" y="8" width="7" height="22" rx="3"/><path d="M23 33l7-3v14h-7z"/><rect x="33" y="8" width="7" height="36" rx="3"/></g><g stroke="#e2b63a" stroke-width="2"><path d="M13 20h7M13 32h7M33 16h7M33 30h7M23 18h7"/></g></svg>
-    <div><h1>Bambu Lascado</h1><p>O dinheiro público de Canavieiras (BA), explicado em linguagem simples.</p></div>
+    <svg class="logo" viewBox="0 0 52 52" aria-hidden="true"><rect width="52" height="52" rx="12" fill="#e2b63a"/><g stroke="#0f4d3f" stroke-linecap="round" fill="none"><path d="M20.5 22v-8M31.5 22v-8" stroke-width="3"/><path d="M15 28l-5-5M37 28l5-5" stroke-width="3"/><path d="M15 33l-7 2M16 36l-5 5M37 33l7 2M36 36l5 5" stroke-width="2.5"/></g><g fill="#0f4d3f"><ellipse cx="26" cy="31" rx="12.5" ry="8.5"/><circle cx="20.5" cy="12" r="4.2"/><circle cx="31.5" cy="12" r="4.2"/><circle cx="9" cy="21" r="4.6"/><circle cx="43" cy="21" r="4.6"/></g><g fill="#e2b63a"><circle cx="21.4" cy="11.2" r="1.7"/><circle cx="32.4" cy="11.2" r="1.7"/><path d="M5 17l5 4-5 1.5zM47 17l-5 4 5 1.5z"/></g></svg>
+    <div><h1>Olho de Caranguejo</h1><p>O dinheiro público de Canavieiras (BA) às claras, em linguagem simples.</p></div>
   </div>
   <div class="status"><span class="dot"></span><span id="atualizado">Carregando dados…</span></div>
 </div></header>
@@ -136,7 +136,7 @@ footer .wrap{padding-block:20px 32px;border-top:1px solid var(--line)}
       <p class="sub" style="margin:0">Entre no canal do Telegram e receba um aviso a cada novidade importante.</p>
       <ol>
         <li>Instale o Telegram no celular.</li>
-        <li>Entre no canal <b id="canal">do Bambu Lascado</b>.</li>
+        <li>Entre no canal <b id="canal">do Olho de Caranguejo</b>.</li>
         <li>Ative as notificações do canal.</li>
       </ol>
     </div>
@@ -152,7 +152,7 @@ footer .wrap{padding-block:20px 32px;border-top:1px solid var(--line)}
   </aside>
 </div></main>
 
-<footer><div class="wrap">Bambu Lascado é um projeto independente de fiscalização cidadã de Canavieiras (BA), código IBGE 2906303. Os resumos são feitos por inteligência artificial e podem conter erros: confira sempre o documento original antes de compartilhar.</div></footer>
+<footer><div class="wrap">Olho de Caranguejo é um projeto independente de fiscalização cidadã de Canavieiras (BA), código IBGE 2906303. Os resumos são feitos por inteligência artificial e podem conter erros: confira sempre o documento original antes de compartilhar.</div></footer>
 <div class="toast" id="toast" hidden></div>
 
 <script>
@@ -182,7 +182,7 @@ function post(it){
   let corpo = it.fonte === "emendas" ? `${titulo(it)}: ${brl(it.valor)} para Canavieiras. Situação: ${it.situacao}.`
             : it.fonte === "tcm" ? `${titulo(it)}. Situação no TCM-BA: ${it.status} (enviada em ${it.data_envio}).`
             : primeiraLinha(it.titulo_original);
-  return `📢 ${onde}\n\n${corpo}\n\n🔎 Veja o documento: ${location.origin}${location.pathname}#${it.id}\n#Canavieiras #Transparência #BambuLascado`;
+  return `📢 ${onde}\n\n${corpo}\n\n🔎 Veja o documento: ${location.origin}${location.pathname}#${it.id}\n#Canavieiras #Transparência #OlhoDeCaranguejo`;
 }
 
 function corpoItem(it){
