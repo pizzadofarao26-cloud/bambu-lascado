@@ -62,6 +62,6 @@ TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
 
 # Endereço público do site (para links nos alertas)
-URL_SITE = os.getenv("URL_SITE", "https://olhodecaranguejo.com.br")
+URL_SITE = os.getenv("URL_SITE") or "https://olhodecaranguejo.com.br"
 
 USER_AGENT = "OlhoDeCaranguejo/1.0 (fiscalizacao cidada de Canavieiras-BA)"

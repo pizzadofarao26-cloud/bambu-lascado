@@ -34,7 +34,7 @@ dados/           memória do robô (o que já viu)
    - `ANTHROPIC_API_KEY`: chave da API do Claude (console.anthropic.com), para os resumos. Sem ela o site funciona, só que sem resumos.
    - `TELEGRAM_BOT_TOKEN` e `TELEGRAM_CHAT_ID`: para os alertas (veja abaixo).
    - `PORTAL_TRANSPARENCIA_KEY` (opcional): portaldatransparencia.gov.br/api-de-dados/cadastrar-email
-   - Em **Variables**, `URL_SITE` com o endereço do site (ex.: `https://olhodecaranguejo.com.br`).
+   - (Opcional) Em **Variables**, `URL_SITE` só se o endereço do site mudar; o padrão é `https://olhodecaranguejo.com.br`.
 5. Na aba **Actions**, abra "Robô diário" e clique **Run workflow** para a primeira execução.
 
 O site fica em `https://SEU-USUARIO.github.io/NOME-DO-REPO/`. Quando comprar o domínio,
