@@ -59,7 +59,7 @@ ESFORCO_IA = os.getenv("ESFORCO_IA", "low")
 
 # Alertas no Telegram
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
-TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID") or "@olhodecaranguejo"   # canal público
 
 # Endereço público do site (para links nos alertas)
 URL_SITE = os.getenv("URL_SITE") or "https://olhodecaranguejo.com.br"
