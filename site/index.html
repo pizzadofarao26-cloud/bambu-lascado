@@ -6,7 +6,12 @@
 <title>Olho de Caranguejo</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="O dinheiro público de Canavieiras (BA) explicado em linguagem simples: Diário Oficial, TCM-BA e emendas federais, atualizado todo dia.">
-<meta name="theme-color" content="#4f171c">
+<meta name="theme-color" content="#540612">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta property="og:image" content="https://olhodecaranguejo.com.br/img/compartilhar.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:title" content="Olho de Caranguejo">
 <meta property="og:description" content="De olho no dinheiro público de Canavieiras (BA).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +20,7 @@
 /* Layout: capa vinho com caranguejo que segue o cursor + busca; abas fixas; quatro vistas (publicações, contratos, contas, emendas) */
 :root{
   --bg:#f5ecd7; --surface:#fffaf0; --ink:#34110f; --muted:#79574e; --line:#e2d0b4; --soft:#eddfc4;
-  --vinho:#4f171c; --casco:#c4492d; --casco-txt:#a53a20; --creme:#f8efdc; --sobre-casco:#fff8ec;
+  --vinho:#540612; --casco:#d23c18; --casco-txt:#a8300f; --creme:#f8efdc; --sobre-casco:#fff8ec;
   --ok:#376a3a; --warn:#805300; --bad:#a3231f; --info:#375c78;
   --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
   --f-body:"Public Sans","Segoe UI",system-ui,sans-serif;
@@ -41,7 +46,7 @@ h1,h2,h3{font-family:var(--f-display);text-wrap:balance}
 .capa .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:end;padding-top:36px}
 .capa .texto{padding-bottom:44px;min-width:0}
 .marca{font-family:var(--f-display);font-weight:700;font-size:18px;display:flex;align-items:center;gap:10px;margin:0 0 28px}
-.marca svg{width:34px;height:34px;flex:none}
+.marca img{width:40px;height:40px;flex:none}
 .capa h1{font-weight:800;font-size:clamp(38px,5.8vw,68px);line-height:.98;letter-spacing:-.035em;margin:0 0 18px}
 .capa h1 em{font-style:normal;color:#f08b6c}
 .capa .lead{font-size:18px;max-width:46ch;margin:0 0 24px;color:#ecd6c6}
@@ -49,9 +54,13 @@ h1,h2,h3{font-family:var(--f-display);text-wrap:balance}
 .busca-capa input{flex:1;min-width:0;border:0;background:transparent;font:inherit;color:#34110f;padding:10px 12px;border-radius:10px;color-scheme:light}
 .busca-capa input::placeholder{color:#79574e;opacity:1}
 .busca-capa button{border:0;background:var(--casco);color:var(--sobre-casco);font:inherit;font-weight:700;padding:10px 20px;border-radius:10px;cursor:pointer}
-.busca-capa button:hover{background:#ad3c22}
+.busca-capa button:hover{background:#b33212}
 .status{font-size:14px;margin:14px 0 0;color:#d9b9a9}
-.bicho{display:block;width:100%;max-width:500px;justify-self:end;align-self:end;margin-bottom:-8px}
+/* no fundo vinho, como na logo horizontal: contorno mais escuro e sobrancelhas vermelhas */
+.capa .bicho [stroke="#540606"]{stroke:#1e0103}
+.capa .bicho [fill="#540606"]{fill:#1e0103}
+.capa .bicho .sobrancelhas{stroke:#d23c18}
+.bicho{display:block;width:100%;max-width:470px;justify-self:end;align-self:end;margin-bottom:-14px}
 
 .numeros{background:var(--casco);color:var(--sobre-casco)}
 .numeros .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));min-height:104px}
@@ -105,7 +114,7 @@ ul.docs small{display:block;color:var(--muted)}
 .btn{font:inherit;font-size:15px;font-weight:600;padding:9px 16px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;text-decoration:none}
 .btn:hover{border-color:var(--casco)}
 .btn.primary{background:var(--casco);border-color:var(--casco);color:var(--sobre-casco)}
-.btn.primary:hover{background:#ad3c22}
+.btn.primary:hover{background:#b33212}
 .post{background:var(--soft);border-radius:12px;padding:14px 16px;white-space:pre-line;overflow-wrap:anywhere}
 .post .actions{margin-top:10px}
 .mais{justify-self:start}
@@ -148,7 +157,7 @@ footer .wrap{padding-bottom:36px}
   .orgao{grid-template-columns:minmax(0,1fr);gap:4px;margin-bottom:16px}
   .meses{grid-template-columns:repeat(6,minmax(0,1fr))}
 }
-.andarilho{position:fixed;left:0;bottom:env(safe-area-inset-bottom,0px);width:96px;z-index:15;pointer-events:none}
+.andarilho{position:fixed;left:0;bottom:env(safe-area-inset-bottom,0px);width:92px;z-index:15;pointer-events:none}
 .andarilho svg{display:block;width:100%;overflow:visible;animation:ginga .28s ease-in-out infinite alternate}
 .andarilho .pata{transform-box:fill-box;transform-origin:center top;animation:pata .16s linear infinite alternate}
 .andarilho .pata:nth-child(even){animation-delay:-.16s}
@@ -160,25 +169,27 @@ footer .wrap{padding-bottom:36px}
 <body>
 <header class="capa"><div class="wrap">
   <div class="texto">
-    <p class="marca"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M11 20V11M23 20v-9" stroke="#c4492d" stroke-width="3"/><ellipse cx="17" cy="23" rx="13" ry="8.5" fill="#c4492d"/><circle cx="11" cy="9" r="6" fill="#f8efdc"/><circle cx="23" cy="9" r="6" fill="#f8efdc"/><circle cx="12" cy="9" r="2.8" fill="#34110f"/><circle cx="24" cy="9" r="2.8" fill="#34110f"/></svg>Olho de Caranguejo</p>
+    <p class="marca"><img src="img/simbolo.png" alt="" width="40" height="40">Olho de Caranguejo</p>
     <h1>De <em>olho</em> no dinheiro de Canavieiras</h1>
     <p class="lead">Diário Oficial, contratos, contas da Prefeitura e da Câmara e emendas federais. Tudo em linguagem simples, com o documento oficial para conferir.</p>
     <form class="busca-capa" id="form-busca" role="search"><input id="busca-capa" type="search" placeholder="Empresa, obra, decreto…" aria-label="Buscar em tudo"><button>Buscar</button></form>
     <p class="status" id="atualizado">Carregando dados…</p>
   </div>
-  <svg class="bicho" viewBox="0 0 520 330" role="img" aria-label="Caranguejo de olhos levantados">
-    <g fill="none" stroke="#a53a20" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"><path d="M150 232 84 224 44 272"/><path d="M154 258 100 264 72 318"/><path d="M172 280 130 298 118 340"/><path d="M370 232l66-8 40 48"/><path d="M366 258l54 6 28 54"/><path d="M348 280l42 18 12 42"/></g>
-    <g fill="none" stroke="#c4492d" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"><path d="M160 200 98 182 78 130"/><path d="M360 200l62-18 20-52"/></g>
-    <path fill="#c4492d" d="M82 152C32 140 12 92 34 44c10 24 22 34 40 40-4-26 4-46 24-62 30 34 38 106-16 130Z"/>
-    <path fill="#c4492d" d="M438 152c50-12 70-60 48-108-10 24-22 34-40 40 4-26-4-46-24-62-30 34-38 106 16 130Z"/>
-    <g stroke="#c4492d" stroke-width="18" stroke-linecap="round"><path d="M220 190 206 104"/><path d="M300 190l14-86"/></g>
-    <path fill="#c4492d" d="M260 160c86 0 132 38 132 78 0 46-58 82-132 82s-132-36-132-82c0-40 46-78 132-78Z"/>
-    <path fill="none" stroke="#8d2f1a" stroke-width="7" stroke-linecap="round" d="M196 206c22-14 40-18 64-18s42 4 64 18M222 276c24 14 52 14 76 0"/>
-    <g fill="#8d2f1a"><circle cx="186" cy="240" r="6"/><circle cx="206" cy="254" r="4"/><circle cx="334" cy="240" r="6"/><circle cx="314" cy="254" r="4"/></g>
-    <g fill="#f8efdc"><circle cx="204" cy="84" r="38"/><circle cx="316" cy="84" r="38"/></g>
-    <g class="pupila" data-cx="204" data-cy="84"><circle cx="204" cy="84" r="18" fill="#34110f"/><circle cx="211" cy="77" r="5" fill="#f8efdc"/></g>
-    <g class="pupila" data-cx="316" data-cy="84"><circle cx="316" cy="84" r="18" fill="#34110f"/><circle cx="323" cy="77" r="5" fill="#f8efdc"/></g>
-  </svg>
+  <svg class="bicho" viewBox="60 70 1134 920" role="img" aria-label="Caranguejo de olhos levantados, vigiando">
+<g stroke="#540606" stroke-width="16" stroke-linejoin="round" stroke-linecap="round">
+<g fill="#d23c18" class="patas"><path d="M324 620Q153 656 120 850Q184 692 376 680Z"/><path d="M 930 620 Q 1101 656 1134 850 Q 1070 692 878 680 Z"/><path d="M338 688Q206 741 215 905Q242 769 398 736Z"/><path d="M 916 688 Q 1048 741 1039 905 Q 1012 769 856 736 Z"/><path d="M377 745Q292 819 335 945Q332 835 443 771Z"/><path d="M 877 745 Q 962 819 919 945 Q 922 835 811 771 Z"/><path d="M436 787Q397 864 455 950Q438 868 504 793Z"/><path d="M 818 787 Q 857 864 799 950 Q 816 868 750 793 Z"/></g>
+<path d="M375 590C330 575 300 540 290 490" fill="none" stroke="#540606" stroke-width="64"/><path d="M 879 590 C 924 575 954 540 964 490" fill="none" stroke="#540606" stroke-width="64"/>
+<path d="M375 590C330 575 300 540 290 490" fill="none" stroke="#d23c18" stroke-width="34"/><path d="M 879 590 C 924 575 954 540 964 490" fill="none" stroke="#d23c18" stroke-width="34"/>
+<path d="M330 505C215 500 120 440 112 350C104 270 165 225 250 222L190 350L300 300C345 360 360 440 330 505Z" fill="#d23c18"/><path d="M 924 505 C 1039 500 1134 440 1142 350 C 1150 270 1089 225 1004 222 L 1064 350 L 954 300 C 909 360 894 440 924 505 Z" fill="#d23c18"/>
+<path d="M478 405 522 405 552 548 506 548Z M776 405 732 405 702 548 748 548Z" fill="#d23c18"/>
+<ellipse cx="627" cy="650" rx="292" ry="158" fill="#d23c18"/>
+<path d="M505 585Q627 700 750 585Q627 650 505 585Z" fill="#540606" stroke-width="10"/>
+<path d="M488 575 512 592M766 575 742 592" fill="none" stroke-width="12"/>
+</g>
+<g stroke="#540606" stroke-width="16"><circle cx="490" cy="300" r="122" fill="#fffaf0"/><path d="M368 300A122 122 0 0 1 612 300Q530 222 378 268Z" fill="#d23c18"/><path d="M378 268Q530 222 608 280" fill="none" stroke="#540606" stroke-width="12.0" stroke-linecap="round"/><circle cx="764" cy="300" r="122" fill="#fffaf0"/><path d="M642 300A122 122 0 0 1 886 300Q804 222 652 268Z" fill="#d23c18"/><path d="M652 268Q804 222 882 280" fill="none" stroke="#540606" stroke-width="12.0" stroke-linecap="round"/><circle cx="490" cy="300" r="122" fill="none"/><circle cx="764" cy="300" r="122" fill="none"/></g>
+<g class="pupila" data-cx="545" data-cy="292"><circle cx="545" cy="292" r="48" fill="#540606"/><circle cx="562" cy="276" r="13" fill="#fffaf0"/></g><g class="pupila" data-cx="819" data-cy="292"><circle cx="819" cy="292" r="48" fill="#540606"/><circle cx="836" cy="276" r="13" fill="#fffaf0"/></g>
+<g class="sobrancelhas" fill="none" stroke="#540606" stroke-width="30" stroke-linecap="round"><path d="M405 140Q482 92 572 132"/><path d="M682 132Q772 92 849 140"/></g>
+</svg>
 </div></header>
 <section class="numeros" aria-label="Resumo"><div class="wrap" id="stats"></div></section>
 <nav class="abas" aria-label="Seções"><div class="wrap">
@@ -421,9 +432,9 @@ function passear(){
   const d = document.createElement("div"), s = bicho.cloneNode(true);
   d.className = "andarilho"; d.setAttribute("aria-hidden", "true");
   s.removeAttribute("class"); s.removeAttribute("role"); s.removeAttribute("aria-label");
-  s.querySelector("g").querySelectorAll("path").forEach(p => p.classList.add("pata"));
-  const olhar = ladoDir ? -13 : 13;
-  s.querySelectorAll(".pupila").forEach(p => p.style.transform = `translate(${olhar}px,2px)`);
+  s.querySelectorAll(".patas path").forEach(p => p.classList.add("pata"));
+  const olhar = ladoDir ? -30 : 30;
+  s.querySelectorAll(".pupila").forEach(p => p.style.transform = `translate(${olhar}px,6px)`);
   d.append(s); document.body.append(d);
   const fora = "-110px", fim = innerWidth + 14 + "px", meio = (innerWidth - 96) / 2 + "px", [a, z] = ladoDir ? [fim, fora] : [fora, fim];
   const passo = x => ({transform: `translateX(${x})`});
@@ -433,9 +444,9 @@ function passear(){
 }
 addEventListener("pointermove", e => {
   if (matchMedia("(prefers-reduced-motion:reduce)").matches) return;
-  const r = bicho.getBoundingClientRect(), k = 520 / r.width;
+  const r = bicho.getBoundingClientRect(), k = 1134 / r.width;
   bicho.querySelectorAll(".pupila").forEach(p => {
-    const dx = (e.clientX - r.left) * k - p.dataset.cx, dy = (e.clientY - r.top) * k - p.dataset.cy, n = Math.hypot(dx, dy) || 1, m = Math.min(16, n / 12);
+    const dx = (e.clientX - r.left) * k + 60 - p.dataset.cx, dy = (e.clientY - r.top) * k + 70 - p.dataset.cy, n = Math.hypot(dx, dy) || 1, m = Math.min(34, n / 8);
     p.style.transform = `translate(${dx/n*m}px,${dy/n*m}px)`;
   });
 });
