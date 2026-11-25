@@ -101,6 +101,7 @@
   "diario-4591-2026_11_234591001491",
   "diario-4592-2026_11_234592001491",
   "diario-4593-2026_11_244593001491",
+  "diario-4594-2026_11_254594001491",
   "emenda-pix-13708",
   "emenda-pix-16154",
   "emenda-pix-76108",
@@ -149,6 +150,13 @@
   "tcm-prefeituramunicipaldecanavieiras-2025-transição-prefeituramunicipaldecanavieiras-27082025"
  ],
  "execucoes": [
+  {
+   "quando": "2026-11-25T23:55:05+00:00",
+   "novos": 1,
+   "erros": [
+    "Emendas federais: 503 Server Error: Service Unavailable for url: https://api.transferegov.gestao.gov.br/transferenciasespeciais/plano_acao_especial?cnpj_beneficiario_plano_acao=eq.13817804000120&order=ano_emenda_parlamentar_plano_acao.desc"
+   ]
+  },
   {
    "quando": "2026-11-25T09:57:54+00:00",
    "novos": 1,

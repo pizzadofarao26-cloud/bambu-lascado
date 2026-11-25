@@ -1,7 +1,56 @@
 {
- "atualizado_em": "2026-11-25T09:57:54+00:00",
- "erros": [],
+ "atualizado_em": "2026-11-25T23:55:05+00:00",
+ "erros": [
+  "Emendas federais: 503 Server Error: Service Unavailable for url: https://api.transferegov.gestao.gov.br/transferenciasespeciais/plano_acao_especial?cnpj_beneficiario_plano_acao=eq.13817804000120&order=ano_emenda_parlamentar_plano_acao.desc"
+ ],
  "itens": [
+  {
+   "id": "diario-4594-2026_11_254594001491",
+   "fonte": "diario",
+   "data": "2026-11-25",
+   "edicao": "4594",
+   "titulo_original": "-PORTARIA Nº 205/2026 “CONCEDE FÉRIAS AOS FUNCIONÁRIOS.”\n-PORTARIA Nº 206/2026 “CONCEDE FÉRIAS AOS FUNCIONÁRIOS.”\n-PORTARIA Nº 207/2026 “CONCEDE FÉRIAS AOS FUNCIONÁRIOS.”\n-PORTARIA Nº 208/2026 “CONCEDE FÉRIAS AOS FUNCIONÁRIOS.”",
+   "url_pdf_origem": "https://diof.io.org.br/api/diario-oficial/download/2026_11_254594001491",
+   "url_pagina": "https://diario.canavieiras.ba.gov.br/edicoes-anteriores",
+   "arquivo_id": "2026_11_254594001491",
+   "destaque": false,
+   "coletado_em": "2026-11-25T23:54:52+00:00",
+   "paginas": 5,
+   "ia": {
+    "titulo": "Prefeitura concede férias a 16 servidores a partir de 1º de dezembro",
+    "resumo": "O Diário Oficial de 25 de novembro de 2026 traz quatro portarias que dão 30 dias de férias a 16 servidores municipais, a partir de 1º de dezembro de 2026. Portaria é um ato administrativo assinado por uma autoridade para decidir algo, como férias. São 9 servidores da Saúde, 1 da Administração, 1 de Turismo e Esportes e 5 da Educação. Todas foram assinadas pelo secretário de Administração, José Carlos Costa Guimarães, e não envolvem gastos extras informados.",
+    "pontos": [
+     {
+      "tipo": "pessoal",
+      "descricao": "Portaria 205/2026: férias de 30 dias para 9 servidores da Secretaria de Saúde (agentes comunitários de saúde, agentes de combate às endemias, técnica e auxiliar de enfermagem e farmacêutica). Valor não consta.",
+      "valor_reais": null,
+      "empresa_ou_pessoa": "Deizi Nonato da Silva, Derivaldo Ribeiro Loureiro, Marly Pinto Lisboa, Neide Moura de Oliveira, Darlen de Souza Nascimento, Graci Luane Silva Menezes, Dione Araujo Santos, Ivanete Pereira dos Santos, Thayane Souza Nunes"
+     },
+     {
+      "tipo": "pessoal",
+      "descricao": "Portaria 206/2026: férias de 30 dias para 1 servidora de serviço de apoio da Secretaria de Administração. Valor não consta.",
+      "valor_reais": null,
+      "empresa_ou_pessoa": "Maria Oliveira Nascimento"
+     },
+     {
+      "tipo": "pessoal",
+      "descricao": "Portaria 207/2026: férias de 30 dias para 1 servidora de serviço de apoio da Secretaria de Turismo e Esportes. Valor não consta.",
+      "valor_reais": null,
+      "empresa_ou_pessoa": "Janilucia Maciel Lisboa"
+     },
+     {
+      "tipo": "pessoal",
+      "descricao": "Portaria 208/2026: férias de 30 dias para 5 servidores de apoio e técnico administrativo da Secretaria de Educação. Valor não consta.",
+      "valor_reais": null,
+      "empresa_ou_pessoa": "Alcimar Mendes Barbosa, Elton Ccarlos Santos Andrade, Gilvan Barreto dos Santos, Jaquison Santos Marques, Neda Guimaraes de Jesus"
+     }
+    ],
+    "merece_atencao": false,
+    "motivo_atencao": null,
+    "post": "📋 Diário Oficial de Canavieiras (25/11/2026): a Prefeitura publicou 4 portarias dando 30 dias de férias a 16 servidores, a partir de 1º de dezembro. São 9 da Saúde (incluindo agentes comunitários de saúde e de combate às endemias), 5 da Educação, 1 da Administração e 1 de Turismo e Esportes. É um ato de rotina, sem contratos ou gastos extras informados. Fique de olho: alguns atendimentos na saúde podem ter ajustes em dezembro. #Canavieiras #OlhoDeCaranguejo #TransparênciaPública"
+   },
+   "tem_transcricao": true
+  },
   {
    "id": "diario-4593-2026_11_244593001491",
    "fonte": "diario",
