@@ -1,6 +1,7 @@
 """Transcrição de PDFs e resumo em linguagem simples (Claude)."""
 import base64
 import json
+import re
 from pathlib import Path
 
 from pypdf import PdfReader
@@ -46,11 +47,47 @@ ESQUEMA = {
 }
 
 
+TRACO = r"[-‐-―−]"
+CPF_FORMATADO = re.compile(rf"(?<![\d./])\d{{3}}\s?[.,]\s?\d{{3}}\s?[.,]\s?\d{{3}}\s*(?:{TRACO}|[./])\s*\d{{2}}(?![\d/])")
+CPF_ROTULO = re.compile(rf"(CPF(?:/MF)?[^\d\n]{{0,25}}\n?\s*)(?:\d(?:[\s.,/]|{TRACO})*){{10}}\d(?!\d)", re.I)
+CPF_SOLTO = re.compile(r"(?<![\d./-])\d{11}(?![\d/])")
+OCULTO = "[CPF oculto]"
+
+
+def _cpf_valido(n: str) -> bool:
+    if len(set(n)) == 1:
+        return False
+    for k in (9, 10):
+        if sum(int(n[i]) * (k + 1 - i) for i in range(k)) * 10 % 11 % 10 != int(n[k]):
+            return False
+    return True
+
+
+def ocultar_cpf(texto: str) -> str:
+    """Esconde CPFs (o Diário publica, mas o site não precisa expor ninguém). CNPJ fica."""
+    texto = CPF_FORMATADO.sub(OCULTO, texto or "")
+    texto = CPF_ROTULO.sub(lambda m: m[1] + OCULTO, texto)
+    return CPF_SOLTO.sub(lambda m: OCULTO if _cpf_valido(m[0]) else m[0], texto)
+
+
+def ocultar_em(obj):
+    """Aplica ocultar_cpf em todos os textos, menos endereços e identificadores."""
+    if isinstance(obj, str):
+        return ocultar_cpf(obj)
+    if isinstance(obj, list):
+        return [ocultar_em(x) for x in obj]
+    if isinstance(obj, dict):
+        fixos = ("url", "arquivo", "id", "pdf", "numero", "cnpj", "vistos")
+        return {k: v if k.startswith(fixos) else ocultar_em(v) for k, v in obj.items()}
+    return obj
+
+
 def extrair_texto(pdf: Path) -> tuple[str, int]:
     """Retorna (texto, nº de páginas). Texto vazio = PDF escaneado (imagem)."""
     leitor = PdfReader(str(pdf))
     paginas = [(p.extract_text() or "").strip() for p in leitor.pages]
-    return "\n\n".join(f"[Página {i+1}]\n{t}" for i, t in enumerate(paginas) if t), len(paginas)
+    texto = "\n\n".join(f"[Página {i+1}]\n{t}" for i, t in enumerate(paginas) if t)
+    return ocultar_cpf(texto), len(paginas)
 
 
 def _parece_escaneado(texto: str, n_paginas: int) -> bool:

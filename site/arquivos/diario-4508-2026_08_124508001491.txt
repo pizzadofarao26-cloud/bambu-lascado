@@ -29,7 +29,7 @@ O MUNICÍPIO DE CANAVIEIRAS/BA por intermédio da Prefeitura Municipal, com sede
 Praça da Bandeira, 01, Centro, Canavieiras, estado da Bahia, inscrita no CNPJ de n° 
 13.817.804/0001-20, neste ato representada pelo(a) Excelentíssimo Sr. Paulo Cesar 
 Ramos Carvalho - Prefeito do Município de Canavieiras/BA, portador da RG sob o nº 
-01107713-01 e no CPF sob o nº 139.968.195-87, residente e domiciliado na Travessa 
+01107713-01 e no CPF sob o nº [CPF oculto], residente e domiciliado na Travessa 
 Getúlio Vargas, nº141, Centro, Canavieiras/BA.; doravante denominado CONTRATANTE; 
 e do outro lado a empresa a seguir descrita e qualificada, nos termos da Lei Federal nº 
 14.133, de 1º de abril de 2021 e demais legislações aplicáveis, bem como as exigências do 
@@ -53,7 +53,7 @@ independentemente de transcrição.
 A empresa ARQTEC ARQUIVOS DIGITAIS LIMITADA, CNPJ N°: 52.702.827/0001-40, 
 Endereço: Rua Barão de Cotegipe, N 596, CEP. 45.860.000 Canavieiras – BA. Neste ato 
 representada pelo SR. GABRIEL ROCHA SILVA SANTOS, Sócio Administrador, portador do 
-CPF : 068.773.935-70 e RG: SSP – BA – 15.429.686-40, doravante denominada 
+CPF : [CPF oculto] e RG: SSP – BA – 15.429.686-40, doravante denominada 
 DETENTORA, obriga-se a prestar os serviços à Prefeitura Municipal de Canaveiras (BA), de 
 acordo com as solicitações feitas pela CONTRATANTE, os itens a seguir: 
  
@@ -641,7 +641,7 @@ O MUNICÍPIO DE CANAVIEIRAS/BA por intermédio da Prefeitura Municipal, com sede
 Praça da Bandeira, 01, Centro, Canavieiras, estado da Bahia, inscrita no CNPJ de n° 
 13.817.804/0001-20, neste ato representada pelo(a) Excelentíssimo Sr. Paulo Cesar 
 Ramos Carvalho - Prefeito do Município de Canavieiras/BA, portador da RG sob o nº 
-01107713-01 e no CPF sob o nº 139.968.195-87, residente e domiciliado na Travessa 
+01107713-01 e no CPF sob o nº [CPF oculto], residente e domiciliado na Travessa 
 Getúlio Vargas, nº141, Centro, Canavieiras/BA.; doravante denominado CONTRATANTE; 
 e do outro lado a empresa a seguir descrita e qualificada, nos termos da Lei Federal nº 
 14.133, de 1º de abril de 2021 e demais legislações aplicáveis, bem como as exigências do 
@@ -665,7 +665,7 @@ independentemente de transcrição.
 A empresa TORRE FORTE DISTRIBUIDORA LTDA, CNPJ N°: 06.979.118/0001-90, 
 Endereço: Rua Adolpho Xavier Gomes, nº 493B, bairro Ivan Moura, Eunápolis – Bahia. Neste 
 ato representada pelo SR. LAIO SILVEIRA COSWOSK MALVA, Sócio Administrador, 
-portador do CPF 025.425.855-71, doravante denominada DETENTORA, obriga-se a prestar 
+portador do CPF [CPF oculto], doravante denominada DETENTORA, obriga-se a prestar 
 os serviços à Prefeitura Municipal de Canaveiras (BA), de acordo com as solicitações feitas 
 pela CONTRATANTE, os itens a seguir: 
  
@@ -1625,7 +1625,7 @@ INFORMÁTICA E IMPRESSÃO GRÁFICA, CNPJ: 22.788.315/0001-88,
 ESTABELECIDA À RUA ALMIRANTE BARROSO,162 – TÉRREO, CENTRO, 
 ITABUNA/BAHIA - CEP: 45.600-478, REPRESENTADA NESTE ATO POR CLEUDE 
 GONÇALVES SOUZA REBOUÇAS, PORTADOR DE CÉDULA DE IDENTIDADE Nº 
-02.311.821-04 SSP/BA E CPF Nº 350.861.305-49. O VALOR: R$ 888.796,00 
+02.311.821-04 SSP/BA E CPF Nº [CPF oculto]. O VALOR: R$ 888.796,00 
 (OITOCENTOS E OITENTA E OITO MIL SETECENTOS E NOVENTA E SEIS 
 REAIS). VIGÊNCIA: 06/03/2026 ATÉ  31/12/2026 LICITAÇÃO: PREGÃO 
 ELETRÔNICO Nº 017/2025. FUNDAMENTAÇÃO: 71 DA LEI FEDERAL Nº 
@@ -1788,7 +1788,7 @@ DE ADMINISTRAÇÃO.
 CONTRATADA: INSTITUTO MUNICIPAL DE ADMINISTRAÇÃO PÚBLICA, CNPJ: 
 05.277.208/0001-76, situada à Avenida da França, 393, sala Pelourinho Hub, 
 Salvador, Bahia. CEP: 40.010-000, representada por GABRIEL LUZ ABOBOREIRA 
-CPF Nº 010.152.162-69. 
+CPF Nº [CPF oculto]. 
  
 VALOR: O VALOR GLOBAL DO ADITIVO SERÁ DE R$ 28.246,36 (VINTE E OITO 
 MIL DUZENTOS E QUARENTA E SEIS REAIS E TRINTA E SEIS CENTAVOS). 
@@ -1911,7 +1911,7 @@ ADMINISTRAÇÃO, ATRAVÉS DA EMPRESA LOMANTO QUEIROZ SOCIEDADE
 INDIVIDUAL DE ADVOCACIA, INSCRITA NO CNPJ/MF SOB O Nº 
 48.848.585/0001-20 SITUADA Á PRAÇA DA VITÓRIA, VALILÂNDIA, VALENTE, 
 BAHIA. CEP: 48.890-000, REPRESENTADA POR LOMANTO QUEIROZ DA 
-CUNHA, OAB/BA 62.808, CPF 889.090.775-49. O VALOR GLOBAL DO 
+CUNHA, OAB/BA 62.808, CPF [CPF oculto]. O VALOR GLOBAL DO 
 PRESENTE CONTRATO É DE 120.000,00 (CENTO E VINTE MIL REAIS), 
 VIGÊNCIA: 15/07/2026 ATÉ  15/07/2027. LICITAÇÃO: INEXIGIBILIDADE Nº 
 015/2026. FUNDAMENTAÇÃO: 71 DA LEI FEDERAL Nº 14.133/21. CANAVIEIRAS, 

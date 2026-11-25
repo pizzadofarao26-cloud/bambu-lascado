@@ -43,7 +43,8 @@ def emendas_pix() -> list[dict]:
                 f"Emenda Pix {e.get('numero_emenda_parlamentar_plano_acao')} de "
                 f"{e.get('nome_parlamentar_emenda_plano_acao')}: R$ {valor:,.2f} "
                 f"({e.get('situacao_plano_acao')})"),
-            "url_pagina": "https://www.gov.br/transferegov/pt-br/transferencias-especiais",
+            "url_pagina": "https://especiais.transferegov.sistema.gov.br/transferencia-especial/plano-acao/detalhe/"
+                          f"{e['id_plano_acao']}/dados-basicos",
         })
     return itens
 

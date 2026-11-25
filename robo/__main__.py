@@ -26,7 +26,7 @@ def _ler(arq, padrao):
 
 def _gravar(arq, dados):
     arq.parent.mkdir(parents=True, exist_ok=True)
-    arq.write_text(json.dumps(dados, ensure_ascii=False, indent=1), encoding="utf-8")
+    arq.write_text(json.dumps(processar.ocultar_em(dados), ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 def _sem_acento(t: str) -> str:

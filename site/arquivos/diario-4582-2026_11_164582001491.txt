@@ -264,7 +264,7 @@ DECRETO FINANCEIRO  Nº 0000012/2026
 Data 01/06/2026 
 PAULO CEZAR RAMOS CARVALHO
 PREFEITO
-CPF: 139.968.195-87
+CPF: [CPF oculto]
  
  Page 4 of 4
 
@@ -428,7 +428,7 @@ Decreto Financeiro  Nº 0000013/2026
 JUNHO / 2026 
 PAULO CEZAR RAMOS CARVALHO
 PREFEITO
-CPF: 139.968.195-87
+CPF: [CPF oculto]
  
  Page 3 of 3
 
@@ -695,7 +695,7 @@ DECRETO FINANCEIRO  Nº 0000014/2026
 Data 01/07/2026 
 PAULO CEZAR RAMOS CARVALHO
 PREFEITO
-CPF: 139.968.195-87
+CPF: [CPF oculto]
  
  Page 4 of 4
 
@@ -861,7 +861,7 @@ Decreto Financeiro  Nº 0000015/2026
 JULHO / 2026 
 PAULO CEZAR RAMOS CARVALHO
 PREFEITO
-CPF: 139.968.195-87
+CPF: [CPF oculto]
  
  Page 3 of 3
 
@@ -911,7 +911,7 @@ Total da Unidade 412.320,00
 Art. 3º - Revogada as disposições em contrário , o presente decreto entra em vigor na data se sua assinatura.
 PAULO CEZAR RAMOS CARVALHO
 PREFEITO
-CPF: 139.968.195-87
+CPF: [CPF oculto]
  
  Page 1 of 1
 
@@ -967,7 +967,7 @@ Artigo 3º - Revogada as disposições em contrário, o presente Decreto entra e
 GABINETE DO PREFEITO MUNICIPAL DE  CANAVIEIRAS ,  03 agosto de 2026
 PAULO CEZAR RAMOS CARVALHO
 PREFEITO
-CPF: 139.968.195-87
+CPF: [CPF oculto]
  
  Page 1 of 1
 
@@ -1273,7 +1273,7 @@ Total da Unidade 215.920,00
 Art. 3º - Revogada as disposições em contrário , o presente decreto entra em vigor na data se sua assinatura.
 PAULO CEZAR RAMOS CARVALHO
 PREFEITO
-CPF: 139.968.195-87
+CPF: [CPF oculto]
  
  Page 4 of 4
 
@@ -1693,6 +1693,6 @@ DECRETO FINANCEIRO  Nº 0000019/2026
 Data 03/08/2026 
 PAULO CEZAR RAMOS CARVALHO
 PREFEITO
-CPF: 139.968.195-87
+CPF: [CPF oculto]
  
  Page 6 of 6

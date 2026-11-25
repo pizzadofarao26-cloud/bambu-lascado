@@ -148,6 +148,12 @@ footer .wrap{padding-bottom:36px}
   .orgao{grid-template-columns:minmax(0,1fr);gap:4px;margin-bottom:16px}
   .meses{grid-template-columns:repeat(6,minmax(0,1fr))}
 }
+.andarilho{position:fixed;left:0;bottom:env(safe-area-inset-bottom,0px);width:96px;z-index:15;pointer-events:none}
+.andarilho svg{display:block;width:100%;overflow:visible;animation:ginga .28s ease-in-out infinite alternate}
+.andarilho .pata{transform-box:fill-box;transform-origin:center top;animation:pata .16s linear infinite alternate}
+.andarilho .pata:nth-child(even){animation-delay:-.16s}
+@keyframes ginga{from{transform:rotate(-3deg)}to{transform:translateY(-5px) rotate(3deg)}}
+@keyframes pata{from{transform:rotate(-9deg)}to{transform:rotate(9deg)}}
 @media (prefers-reduced-motion:no-preference){.pupila{transition:transform .12s ease-out}}
 </style>
 </head>
@@ -407,6 +413,24 @@ $("form-busca").addEventListener("submit", e => {
   toast(`${nC} ${nC === 1 ? "contrato" : "contratos"} e ${nP} ${nP === 1 ? "publicação" : "publicações"}. Veja nas abas.`);
 });
 const bicho = document.querySelector(".bicho");
+// caranguejinho que atravessa a tela quando alguém abre um post ou documento
+let andando = false, ladoDir = false, ultimoPasseio = 0;
+function passear(){
+  if (andando || Date.now() - ultimoPasseio < 4000 || matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  andando = true;
+  const d = document.createElement("div"), s = bicho.cloneNode(true);
+  d.className = "andarilho"; d.setAttribute("aria-hidden", "true");
+  s.removeAttribute("class"); s.removeAttribute("role"); s.removeAttribute("aria-label");
+  s.querySelector("g").querySelectorAll("path").forEach(p => p.classList.add("pata"));
+  const olhar = ladoDir ? -13 : 13;
+  s.querySelectorAll(".pupila").forEach(p => p.style.transform = `translate(${olhar}px,2px)`);
+  d.append(s); document.body.append(d);
+  const fora = "-110px", fim = innerWidth + 14 + "px", meio = (innerWidth - 96) / 2 + "px", [a, z] = ladoDir ? [fim, fora] : [fora, fim];
+  const passo = x => ({transform: `translateX(${x})`});
+  d.animate([passo(a), {...passo(meio), offset: .45}, {...passo(meio), offset: .55}, passo(z)], {duration: Math.min(8500, 4200 + innerWidth * 2.6), easing: "linear"})
+    .finished.catch(() => {}).then(() => { d.remove(); andando = false; ultimoPasseio = Date.now(); });
+  ladoDir = !ladoDir;
+}
 addEventListener("pointermove", e => {
   if (matchMedia("(prefers-reduced-motion:reduce)").matches) return;
   const r = bicho.getBoundingClientRect(), k = 520 / r.width;
@@ -425,7 +449,7 @@ document.querySelector("main").addEventListener("click", e => {
     const id = b.dataset.post, box = b.closest(".item").querySelector("[data-postbox]");
     if (!box.hidden) { box.hidden = true; return; }
     box.innerHTML = `${esc(textoPost(id))}<div class="actions"><button class="btn" data-copy="${esc(id)}">Copiar texto</button></div>`;
-    box.hidden = false; return;
+    box.hidden = false; passear(); return;
   }
   const c = e.target.closest("[data-copy]");
   if (c) navigator.clipboard.writeText(textoPost(c.dataset.copy))
@@ -433,6 +457,7 @@ document.querySelector("main").addEventListener("click", e => {
 });
 document.querySelector("main").addEventListener("toggle", e => {
   const d = e.target;
+  if (d.open) passear();
   if (!d.open || !d.dataset.txt || d.dataset.ok) return;
   fetch(`arquivos/${encodeURIComponent(d.dataset.txt)}.txt`).then(r => r.ok ? r.text() : Promise.reject())
     .then(t => { d.querySelector(".txt").textContent = t; d.dataset.ok = 1; })
