@@ -46,3 +46,24 @@ def enviar(itens: list[dict]) -> int:
                                  "text": f"…e mais {len(itens) - 15} novidades no site: {config.URL_SITE}"},
                       timeout=30)
     return enviados
+
+
+def teste() -> int:
+    """python -m robo.notificar  ->  manda uma mensagem de teste para o canal."""
+    if not (config.TELEGRAM_BOT_TOKEN and config.TELEGRAM_CHAT_ID):
+        print("Faltam TELEGRAM_BOT_TOKEN e/ou TELEGRAM_CHAT_ID.")
+        return 1
+    base = f"https://api.telegram.org/bot{config.TELEGRAM_BOT_TOKEN}/"
+    eu = requests.get(base + "getMe", timeout=30).json()
+    print("Bot:", "@" + eu.get("result", {}).get("username", "?") if eu.get("ok") else eu.get("description"))
+    r = requests.post(base + "sendMessage", json={
+        "chat_id": config.TELEGRAM_CHAT_ID, "parse_mode": "HTML", "disable_web_page_preview": False,
+        "text": "🦀 <b>Olho de Caranguejo</b> está de olho!\n\nA partir de agora, este canal avisa quando sair "
+                "contrato, aditivo, licitação ou outra novidade importante no dinheiro público de Canavieiras.\n\n"
+                f'<a href="{config.URL_SITE}">{config.URL_SITE.removeprefix("https://")}</a>'}, timeout=30)
+    print("Mensagem:", "enviada" if r.ok else f"falhou ({r.status_code}): {r.json().get('description')}")
+    return 0 if r.ok else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(teste())
