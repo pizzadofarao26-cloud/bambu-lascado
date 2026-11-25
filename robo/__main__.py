@@ -13,7 +13,7 @@ import traceback
 import unicodedata
 from datetime import datetime, timezone
 
-from . import config, notificar, processar
+from . import config, contratos, notificar, processar
 from .fontes import diario, emendas
 
 
@@ -178,6 +178,15 @@ def main():
     for i in novos:
         if i.get("transcricao"):
             (config.PASTA_ARQUIVOS / f"{i['id']}.txt").write_text(i["transcricao"], encoding="utf-8")
+
+    # contratos: lê os extratos das edições novas do Diário
+    try:
+        textos = {i["id"]: i["transcricao"] for i in novos if i["fonte"] == "diario" and i.get("transcricao")}
+        if textos:
+            print(f"Contratos no site: {contratos.atualizar(novos, textos)}")
+    except Exception as e:
+        traceback.print_exc()
+        erros.append(f"Contratos: {e}")
 
     # 5. Alertas ----------------------------------------------------------
     primeira_vez = len(estado["execucoes"]) == 1
