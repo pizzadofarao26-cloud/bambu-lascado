@@ -1,9 +1,157 @@
 {
- "atualizado_em": "2026-11-25T23:55:05+00:00",
+ "atualizado_em": "2026-11-26T18:00:04+00:00",
  "erros": [
   "Emendas federais: 503 Server Error: Service Unavailable for url: https://api.transferegov.gestao.gov.br/transferenciasespeciais/plano_acao_especial?cnpj_beneficiario_plano_acao=eq.13817804000120&order=ano_emenda_parlamentar_plano_acao.desc"
  ],
  "itens": [
+  {
+   "id": "diario-4596-2026_11_264596001491",
+   "fonte": "diario",
+   "data": "2026-11-26",
+   "edicao": "4596",
+   "titulo_original": "-PORTARIA Nº 209/2026 “TORNA SEM EFEITO PARCIALMENTE PORTARIA N° 230/2025.”\n-PORTARIA Nº 210/2026 “TORNA SEM EFEITO PARCIALMENTE PORTARIA N° 230/2025.”\n-PORTARIA Nº 211/2026 “TORNA SEM EFEITO PARCIALMENTE PORTARIA N° 230/2025.”\n-PORTARIA Nº 212/2026 “TORNA SEM EFEITO PARCIALMENTE PORTARIA N° 230/2025.”\n-PORTARIA Nº 213/2026 “TORNA SEM EFEITO PARCIALMENTE PORTARIA N° 230/2025.”\n-PORTARIA Nº 214/2026 “DESIGNA DIRETOR ESCOLAR 40H. E DA OUTRAS PROVIDENCIAS”.\n-PORTARIA Nº 215/2026 “DESIGNA DIRETOR ESCOLAR 40H. E DA OUTRAS PROVIDENCIAS”.\n-PORTARIA Nº 216/2026 “DESIGNA DIRETOR ESCOLAR 40H. E DA OUTRAS PROVIDENCIAS”.",
+   "url_pdf_origem": "https://diof.io.org.br/api/diario-oficial/download/2026_11_264596001491",
+   "url_pagina": "https://diario.canavieiras.ba.gov.br/edicoes-anteriores",
+   "arquivo_id": "2026_11_264596001491",
+   "destaque": false,
+   "coletado_em": "2026-11-26T17:59:31+00:00",
+   "paginas": 9,
+   "ia": {
+    "titulo": "Prefeitura troca direção de três escolas municipais a partir de 1º de dezembro",
+    "resumo": "O prefeito Paulo Cezar Ramos Carvalho publicou 8 portarias mudando diretores e vice-diretores de três escolas: Escola Comunitária São Boaventura, Escola Municipal Rotary Club e Colégio Municipal Osmário Batista. Cinco portarias desfazem em parte uma nomeação feita em 2025 (Portaria 230/2025), tirando essas pessoas das funções. Outras três designam novos nomes, todos servidores efetivos (concursados). As mudanças valem a partir de 1º de dezembro de 2026. Nenhum valor de salário ou gratificação consta no documento.",
+    "pontos": [
+     {
+      "tipo": "pessoal",
+      "descricao": "Portaria 209/2026: Sirley Marinho de Carvalho (matrícula 182) deixa a função de Diretora Escolar 40h da Escola Comunitária São Boaventura. O documento não informa quem assume no lugar.",
+      "valor_reais": null,
+      "empresa_ou_pessoa": "Sirley Marinho de Carvalho"
+     },
+     {
+      "tipo": "pessoal",
+      "descricao": "Portaria 210/2026: Liana Carvalho de Aquino (matrícula 3898) deixa a função de Diretora Escolar 40h da Escola Municipal Rotary Club.",
+      "valor_reais": null,
+      "empresa_ou_pessoa": "Liana Carvalho de Aquino"
+     },
+     {
+      "tipo": "pessoal",
+      "descricao": "Portaria 211/2026: Margeson Muniz da Silva (matrícula 5307) deixa a função de Diretor Escolar 40h do Colégio Municipal Osmário Batista.",
+      "valor_reais": null,
+      "empresa_ou_pessoa": "Margeson Muniz da Silva"
+     },
+     {
+      "tipo": "pessoal",
+      "descricao": "Portaria 212/2026: Elzenir Sena dos Santos (matrícula 5263) deixa a função de Vice-Diretora Escolar 20h do Colégio Municipal Osmário Batista.",
+      "valor_reais": null,
+      "empresa_ou_pessoa": "Elzenir Sena dos Santos"
+     },
+     {
+      "tipo": "pessoal",
+      "descricao": "Portaria 213/2026: Jussara Maria Barbosa (matrícula 53) deixa a função de Vice-Diretora Escolar 20h da Escola Municipal Rotary Club.",
+      "valor_reais": null,
+      "empresa_ou_pessoa": "Jussara Maria Barbosa"
+     },
+     {
+      "tipo": "pessoal",
+      "descricao": "Portaria 214/2026: Renvil Fernandes Costa Neto (matrícula 3903, efetivo) é designado Diretor Escolar 40h do Colégio Municipal Osmário Batista.",
+      "valor_reais": null,
+      "empresa_ou_pessoa": "Renvil Fernandes Costa Neto"
+     },
+     {
+      "tipo": "pessoal",
+      "descricao": "Portaria 215/2026: Jussara Maria Barbosa (matrícula 53, efetiva), que era vice, passa a Diretora Escolar 40h da Escola Municipal Rotary Club.",
+      "valor_reais": null,
+      "empresa_ou_pessoa": "Jussara Maria Barbosa"
+     },
+     {
+      "tipo": "pessoal",
+      "descricao": "Portaria 216/2026: Denise Lage Baraúna (matrícula 150, efetiva) é designada Vice-Diretora Escolar 20h do Colégio Municipal Osmário Batista.",
+      "valor_reais": null,
+      "empresa_ou_pessoa": "Denise Lage Baraúna"
+     }
+    ],
+    "merece_atencao": false,
+    "motivo_atencao": null,
+    "post": "📚 Mudança na direção de escolas de Canavieiras!\n\nA partir de 1º/12, a Prefeitura troca diretores e vices em 3 escolas:\n\n🏫 Colégio Osmário Batista: Renvil Fernandes Costa Neto vira diretor e Denise Lage Baraúna, vice.\n🏫 Escola Rotary Club: Jussara Maria Barbosa sai de vice e vira diretora.\n🏫 Escola São Boaventura: a diretora Sirley Marinho de Carvalho sai. O diário não diz quem assume.\n\nTodos os novos nomes são servidores concursados. Não constam valores de gratificação.\n\n#Canavieiras #EducaçãoPública #OlhoDeCaranguejo"
+   },
+   "tem_transcricao": true
+  },
+  {
+   "id": "diario-4595-2026_11_264595001491",
+   "fonte": "diario",
+   "data": "2026-11-26",
+   "edicao": "4595",
+   "titulo_original": "-LEI N° 1.380/2026 “DISPÕE SOBRE A ABERTURA DE CRÉDITO ADICIONAL SUPLEMENTAR NO ORÇAMENTO DO EXERCÍCIO DE 2026 E DÁ OUTRAS PROVIDÊNCIAS.”",
+   "url_pdf_origem": "https://diof.io.org.br/api/diario-oficial/download/2026_11_264595001491",
+   "url_pagina": "https://diario.canavieiras.ba.gov.br/edicoes-anteriores",
+   "arquivo_id": "2026_11_264595001491",
+   "destaque": false,
+   "coletado_em": "2026-11-26T17:59:47+00:00",
+   "paginas": 8,
+   "ia": {
+    "titulo": "Lei 1.380/2026 remaneja R$ 17,1 milhões no orçamento de Canavieiras",
+    "resumo": "A Prefeitura publicou a Lei nº 1.380/2026, aprovada pela Câmara, que autoriza o prefeito a mudar o destino de R$ 17.137.027,42 no orçamento de 2026. É um 'crédito suplementar': reforça algumas áreas tirando dinheiro de outras, sem dinheiro novo. Educação perde cerca de R$ 11,6 milhões e Saúde perde R$ 3,55 milhões, enquanto Saúde (outras ações), Administração, Limpeza Pública, Finanças e a Câmara recebem reforço. A lei também libera mais 2,29% do orçamento para remanejamentos sem detalhamento até o fim do ano.",
+    "pontos": [
+     {
+      "tipo": "lei_decreto",
+      "descricao": "Lei 1.380/2026 autoriza remanejar mais 10,71% do orçamento aprovado na Lei 1.356/2026, conforme tabela do Anexo I, e mais até 2,29% sem detalhamento, para 'necessidades supervenientes' até o fim do ano.",
+      "valor_reais": 17137027.42,
+      "empresa_ou_pessoa": "Paulo Cezar Ramos Carvalho (Prefeito)"
+     },
+     {
+      "tipo": "outro",
+      "descricao": "Secretaria de Educação perde R$ 11.618.062,25, incluindo R$ 3,6 milhões de ensino infantil, R$ 2,76 milhões do ensino fundamental, R$ 1,12 milhão da educação de jovens e adultos e R$ 964 mil de construção e manutenção de escolas.",
+      "valor_reais": 11618062.25,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "outro",
+      "descricao": "Secretaria de Saúde e Saneamento recebe R$ 6.540.000,00 (sendo R$ 2,3 milhões para média e alta complexidade), mas tem R$ 3.551.465,17 retirados de outras ações, como o Programa Saúde da Família (R$ 1,15 milhão).",
+      "valor_reais": 6540000,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "outro",
+      "descricao": "Secretaria de Administração recebe reforço de R$ 3.000.000,00 (metade para pessoal, metade para custeio).",
+      "valor_reais": 3000000,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "outro",
+      "descricao": "Secretaria de Limpeza Pública recebe R$ 2.330.000,00.",
+      "valor_reais": 2330000,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "outro",
+      "descricao": "Secretaria de Finanças recebe R$ 1.550.000,00, incluindo R$ 600 mil em encargos gerais do município.",
+      "valor_reais": 1550000,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "outro",
+      "descricao": "Assistência Social recebe R$ 1.381.600,00, incluindo Conselho Tutelar e benefícios eventuais.",
+      "valor_reais": 1381600,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "outro",
+      "descricao": "Câmara Municipal recebe R$ 495.000,00 e Gabinete do Prefeito recebe R$ 340.427,42.",
+      "valor_reais": 835427.42,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "outro",
+      "descricao": "Secretaria de Obras e Transportes perde R$ 1.898.000,00, incluindo R$ 700 mil de melhorias em obras e R$ 80 mil de iluminação pública.",
+      "valor_reais": 1898000,
+      "empresa_ou_pessoa": null
+     }
+    ],
+    "merece_atencao": true,
+    "motivo_atencao": "Valor alto (R$ 17,1 milhões) no fim do ano, com corte de R$ 11,6 milhões na Educação e reforço para administração, gabinete e Câmara. Há inconsistências na tabela: a alimentação escolar aparece com total de R$ 200 mil mas detalhe de R$ 320 mil; a Educação soma R$ 769 mil no título, diferente da soma dos itens; o Brasil Carinhoso aparece somando e anulando R$ 49 mil ao mesmo tempo; e a Saúde Bucal aparece duas vezes nos cortes. A lei ainda libera 2,29% extras sem dizer para onde vai.",
+    "post": "📢 Canavieiras: a Lei 1.380/2026 mudou o destino de R$ 17,1 milhões do orçamento deste ano. Não é dinheiro novo: tira de umas áreas e põe em outras. A Educação perde R$ 11,6 milhões. Ganham reforço Saúde (R$ 6,5 mi), Administração (R$ 3 mi), Limpeza (R$ 2,3 mi), Finanças (R$ 1,5 mi), Câmara (R$ 495 mil) e Gabinete do Prefeito (R$ 340 mil). Obras perde R$ 1,9 mi. A tabela tem números que não batem. Fique de olho! #Canavieiras #OlhoDeCaranguejo #DinheiroPublico"
+   },
+   "tem_transcricao": true
+  },
   {
    "id": "diario-4594-2026_11_254594001491",
    "fonte": "diario",
