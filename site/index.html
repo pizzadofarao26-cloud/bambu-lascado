@@ -100,6 +100,20 @@ input.campo{flex:1 1 220px}
 .pill{font-size:13px;font-weight:700;padding:2px 10px;border-radius:999px;border:1px solid currentColor}
 .pill.bad{color:var(--bad)}.pill.ok{color:var(--ok)}.pill.warn{color:var(--warn)}.pill.info{color:var(--info)}.pill.neutro{color:var(--muted)}
 .item h3{margin:0;font-size:21px;font-weight:700;line-height:1.25;letter-spacing:-.01em;overflow-wrap:anywhere}
+.item h3 a{color:inherit;text-decoration:none}
+.item h3 a:hover{text-decoration:underline;text-decoration-color:var(--casco)}
+.chamada{margin:0;font-size:17px;max-width:62ch;color:var(--ink)}
+.sinais{display:flex;flex-wrap:wrap;gap:8px;font-size:14px;color:var(--muted)}
+.ler{justify-self:start;display:inline-flex;align-items:center;gap:8px}
+.ler::after{content:"→";transition:transform .15s}
+.ler:hover::after{transform:translateX(3px)}
+.materia{display:grid;gap:18px;padding-block:8px 24px}
+.voltar{justify-self:start;font-weight:600;text-decoration:none}
+.materia .item{padding:24px clamp(18px,4vw,34px)}
+.materia .item h3{font-size:clamp(26px,4.4vw,36px);line-height:1.12;letter-spacing:-.02em}
+.materia .item .plain{font-size:17px}
+.leia-tambem{display:grid;gap:12px}
+.leia-tambem h2{font-size:20px;margin:8px 0 0}
 .plain{margin:0;white-space:pre-line;overflow-wrap:anywhere;max-width:68ch}
 .atencao{margin:0;background:color-mix(in srgb,var(--warn) 14%,transparent);padding:10px 14px;border-radius:10px}
 .valor{font-family:var(--f-display);font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1.1;font-variant-numeric:tabular-nums}
@@ -211,6 +225,7 @@ footer .wrap{padding-bottom:36px}
   <a href="#publicacoes">Publicações</a><a href="#contratos">Contratos</a><a href="#contas">Contas no TCM</a><a href="#emendas">Emendas</a>
 </div></nav>
 <main><div class="wrap">
+  <section data-vista="materia" hidden><div class="materia" id="materia"></div></section>
   <section data-vista="publicacoes">
     <h2>O que saiu nas publicações</h2>
     <p class="sub">Cada publicação traz a explicação ou o texto original, o documento para baixar e um post para compartilhar.</p>
@@ -351,9 +366,43 @@ function filtrados(){
     (!q || semAcento(JSON.stringify([it.titulo_original, it.ia, it.parlamentar, it.documentos])).includes(q)));
 }
 const artigo = it => `<article class="item" id="${esc(it.id)}"><div class="meta">${meta(it)}</div><h3>${esc(titulo(it))}</h3>${corpoItem(it)}</article>`;
+const linkItem = it => "#" + encodeURIComponent(it.id);
+function primeiraFrase(t, max = 130){
+  t = String(t || "").trim(); if (!t) return "";
+  const f = t.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÂÊÔÃÕÇ0-9“"])/)[0];
+  return f.length > max ? f.slice(0, max).replace(/\s+\S*$/, "") + "…" : f;
+}
+function chamada(it){
+  if (it.ia?.chamada) return it.ia.chamada;
+  if (it.ia?.resumo) return primeiraFrase(it.ia.resumo);
+  if (it.fonte === "emendas") return `${brl(it.valor)} para Canavieiras. Situação no governo federal: ${it.situacao || "não informada"}.`;
+  if (it.fonte === "tcm") return `Enviada ao Tribunal de Contas dos Municípios em ${it.data_envio}.${statusTCM(it.status) === "bad" ? " Registrada como fora do prazo." : ""}`;
+  return primeiraFrase(primeiraLinha(it.titulo_original), 160);
+}
+function cartaoCurto(it){
+  const n = it.ia?.pontos?.length || 0, docs = it.documentos?.length || 0;
+  const sinais = [n > 1 ? `${n} atos explicados` : "", docs ? `${docs} documento${docs > 1 ? "s" : ""}` : "",
+    it.ia?.merece_atencao ? `<span class="pill bad">Merece atenção</span>` : ""].filter(Boolean);
+  const rotulo = it.ia ? "Ler matéria completa" : "Ver detalhes";
+  return `<article class="item" id="${esc(it.id)}"><div class="meta">${meta(it)}</div>
+    <h3><a href="${linkItem(it)}">${esc(titulo(it))}</a></h3>
+    <p class="chamada">${esc(chamada(it))}</p>
+    ${sinais.length ? `<div class="sinais">${sinais.join("<span aria-hidden=\"true\">·</span>")}</div>` : ""}
+    <a class="btn primary ler" href="${linkItem(it)}">${rotulo}</a></article>`;
+}
+let voltarY = 0;
+function abrirMateria(it){
+  const L = ITENS.filter(x => x.fonte === it.fonte), j = L.indexOf(it);
+  const outros = [...L.slice(j + 1), ...L.slice(0, j).reverse()].slice(0, 3);
+  $("materia").innerHTML = `<a class="voltar" href="#publicacoes">← Todas as publicações</a>${artigo(it)}
+    <div class="actions"><button class="btn" data-link="${esc(it.id)}">Copiar link desta matéria</button></div>
+    ${outros.length ? `<div class="leia-tambem"><h2>Leia também</h2>${outros.map(cartaoCurto).join("")}</div>` : ""}`;
+  document.title = titulo(it) + " · Olho de Caranguejo";
+  mostrar("materia"); topoAbas(); passear();
+}
 function render(){
   const lista = filtrados();
-  const h = lista.slice(0, limite).map(artigo).join("");
+  const h = lista.slice(0, limite).map(cartaoCurto).join("");
   $("feed").innerHTML = (h || `<div class="vazio">Nada encontrado. Tente outra palavra ou limpe os filtros.</div>`) +
     (lista.length > limite ? `<button class="btn mais" id="mais">Mostrar mais (${lista.length - limite} restantes)</button>` : "");
 }
@@ -424,6 +473,7 @@ function stats(){
   });
 }
 function mostrar(v){
+  if (v !== "materia") document.title = "Olho de Caranguejo";
   vista = v;
   document.querySelectorAll("[data-vista]").forEach(s => s.hidden = s.dataset.vista !== v);
   document.querySelectorAll(".abas a").forEach(a => a.hash === "#" + v ? a.setAttribute("aria-current","page") : a.removeAttribute("aria-current"));
@@ -432,7 +482,13 @@ const topoAbas = () => scrollTo(0, document.querySelector(".numeros").getBoundin
 const textoPost = id => { const c = CONTRATOS.find(c => c.id === id); return c ? postContrato(c) : post(ITENS.find(i => i.id === id)); };
 function toast(msg){const t=$("toast");t.textContent=msg;t.hidden=false;clearTimeout(t._h);t._h=setTimeout(()=>t.hidden=true,3600)}
 function irPara(id, inicio){
-  if (["publicacoes","contratos","contas","emendas"].includes(id)) { mostrar(id); if (inicio || scrollY > 300) topoAbas(); return; }
+  if (["publicacoes","contratos","contas","emendas"].includes(id)) {
+    const deMateria = vista === "materia"; mostrar(id);
+    if (deMateria && id === "publicacoes" && voltarY) { scrollTo(0, voltarY); voltarY = 0; } else if (inicio || scrollY > 300) topoAbas();
+    return;
+  }
+  const item = ITENS.find(i => i.id === id);
+  if (item) { if (vista === "publicacoes") voltarY = scrollY; abrirMateria(item); return; }
   const c = CONTRATOS.find(c => c.id === id), i = ITENS.findIndex(i => i.id === id);
   if (c) { mostrar("contratos"); filtroC = "todos"; $("busca-c").value = ""; $("ordem-c").value = "recente"; limiteC = Math.max(24, CONTRATOS.indexOf(c) + 1); renderC(); }
   else {
@@ -503,6 +559,9 @@ document.querySelector("main").addEventListener("click", e => {
     box.innerHTML = `${esc(textoPost(id))}<div class="actions"><button class="btn" data-copy="${esc(id)}">Copiar texto</button></div>`;
     box.hidden = false; passear(); return;
   }
+  const l = e.target.closest("[data-link]");
+  if (l) { const url = location.origin + location.pathname + "#" + encodeURIComponent(l.dataset.link);
+    navigator.clipboard.writeText(url).then(() => toast("Link copiado"), () => toast(url)); return; }
   const c = e.target.closest("[data-copy]");
   if (c) navigator.clipboard.writeText(textoPost(c.dataset.copy))
     .then(() => toast("Texto copiado"), () => toast("Selecione o texto e copie manualmente"));

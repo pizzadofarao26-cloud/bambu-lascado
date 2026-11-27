@@ -21,6 +21,7 @@ ESQUEMA = {
     "type": "object",
     "properties": {
         "titulo": {"type": "string", "description": "Título simples, até 90 caracteres"},
+        "chamada": {"type": "string", "description": "Chamada para a lista do site: 1 ou 2 frases, até 160 caracteres, que despertem curiosidade para abrir a matéria sem entregar todos os detalhes. Fiel ao documento: sem exagero, sem sensacionalismo, sem acusação"},
         "resumo": {"type": "string", "description": "2 a 4 frases explicando o que aconteceu"},
         "pontos": {
             "type": "array",
@@ -42,7 +43,7 @@ ESQUEMA = {
         "motivo_atencao": {"type": ["string", "null"]},
         "post": {"type": "string", "description": "Texto pronto para Instagram/WhatsApp, até 600 caracteres, com 2-3 hashtags"},
     },
-    "required": ["titulo", "resumo", "pontos", "merece_atencao", "motivo_atencao", "post"],
+    "required": ["titulo", "chamada", "resumo", "pontos", "merece_atencao", "motivo_atencao", "post"],
     "additionalProperties": False,
 }
 
