@@ -120,6 +120,7 @@ input.campo{flex:1 1 220px}
 .rede.wa{background:#1f8a4c}.rede.fb{background:#1a5fd0}.rede.ig{background:linear-gradient(45deg,#e0751f,#c9264f 50%,#7a2bb8)}
 .rede.tg{background:#1f7fb8}.rede.x{background:#111}.rede.link{background:var(--soft);color:var(--ink)}
 .compartilhar small{color:var(--muted);font-size:13px}
+.fonte-materia{margin:0;font-size:14px;color:var(--muted);background:var(--soft);border-radius:12px;padding:12px 14px;max-width:none}
 .leia-tambem{display:grid;gap:12px}
 .leia-tambem h2{font-size:20px;margin:8px 0 0}
 .plain{margin:0;white-space:pre-line;overflow-wrap:anywhere;max-width:68ch}
@@ -503,11 +504,21 @@ async function compartilharInsta(it){
   document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
   toast("Imagem salva e legenda copiada. Abra o Instagram e poste a imagem.");
 }
+function fonteMateria(it){
+  const doc = it.fonte === "diario" ? `Diário Oficial do Município de Canavieiras (BA), edição nº ${esc(it.edicao)}, de ${dataBR(it.data)}`
+    : it.fonte === "tcm" ? `consulta pública do Tribunal de Contas dos Municípios da Bahia (e-TCM), ${esc(it.unidade || "")}, competência ${esc(it.competencia || "")}`
+    : it.fonte === "emendas" ? "Transferegov, sistema oficial do governo federal" : "documento oficial";
+  const link = it.url_pdf_origem || it.url_pagina;
+  return `<p class="fonte-materia"><b>Fonte:</b> ${doc}.${link ? ` <a href="${esc(link)}" target="_blank" rel="noopener">Ver o documento original</a>.` : ""}
+    Este texto explica, em linguagem simples, o que está publicado nesse documento oficial e só nele; as contas indicadas como tais foram feitas com os números publicados.
+    Os resumos são feitos com ajuda de inteligência artificial e podem conter erros: em caso de dúvida, vale o documento original.
+    Achou algum erro? <a href="denunciar/">Avise a equipe</a>.</p>`;
+}
 let voltarY = 0;
 function abrirMateria(it){
   const L = ITENS.filter(x => x.fonte === it.fonte), j = L.indexOf(it);
   const outros = [...L.slice(j + 1), ...L.slice(0, j).reverse()].slice(0, 3);
-  $("materia").innerHTML = `<a class="voltar" href="#publicacoes">← Todas as publicações</a>${artigo(it)}
+  $("materia").innerHTML = `<a class="voltar" href="#publicacoes">← Todas as publicações</a>${artigo(it)}${fonteMateria(it)}
     ${barraCompartilhar(it)}
     ${outros.length ? `<div class="leia-tambem"><h2>Leia também</h2>${outros.map(cartaoCurto).join("")}</div>` : ""}`;
   document.title = titulo(it) + " · Olho de Caranguejo";

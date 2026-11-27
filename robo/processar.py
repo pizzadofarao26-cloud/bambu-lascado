@@ -24,10 +24,21 @@ tem que fazer sentido sozinha.
 mostre o saldo quando houver entradas e saídas, diga quanto é por mês quando ajudar a \
 entender. Arredonde no texto (R$ 1,9 milhão) e deixe o valor exato nos pontos.
 - Diga ao leitor por que aquilo importa no dia a dia dele: escola, posto, rua, salário.
-- Dê contexto de quem conhece o assunto: se é comum (ex.: remanejar verba no fim do ano), \
-diga; se foge do padrão (valor alto, prazo curto, mesma empresa de sempre, aditivo que \
-dobra o valor, dispensa de licitação, números que não fecham), aponte com calma.
+- Aponte com calma o que o próprio documento mostra de incomum: valor alto, prazo curto, \
+aditivo grande, dispensa de licitação, números que não fecham.
 - Termine dizendo o que vale acompanhar dali em diante, quando houver.
+
+FONTE ÚNICA (REGRA MAIS IMPORTANTE, PARA NÃO GERAR PROCESSO)
+- Use SOMENTE o que está no documento oficial enviado (Diário Oficial de Canavieiras ou \
+consulta pública oficial) e nos dados do item. Nada de conhecimento geral, leis, \
+jurisprudência, notícias, comparações com outras cidades, médias nacionais nem \
+explicações de "como costuma ser".
+- A única exceção é explicar em poucas palavras o significado de um termo técnico que \
+aparece no documento.
+- Contas feitas com números do documento (somas, saldos, porcentagens) são permitidas, \
+mas diga que são contas: "pela soma da tabela da própria lei", "pelas contas do Olho de \
+Caranguejo com os números publicados".
+- Toda afirmação precisa poder ser conferida no documento. Na dúvida, deixe de fora.
 
 O QUE NUNCA FAZER
 - Não invente nomes, valores, datas nem fatos. Se algo não consta no documento, diga \
@@ -45,7 +56,7 @@ ESQUEMA = {
     "properties": {
         "titulo": {"type": "string", "description": "Título de jornal, até 80 caracteres: o fato principal com o número mais importante, verbo no presente, sem ponto final"},
         "chamada": {"type": "string", "description": "Chamada para a lista do site: 1 ou 2 frases, até 160 caracteres, que despertem curiosidade para abrir a matéria sem entregar todos os detalhes. Fiel ao documento: sem exagero, sem sensacionalismo, sem acusação"},
-        "resumo": {"type": "string", "description": "A matéria completa, em 3 a 5 parágrafos curtos separados por uma linha em branco: 1) o fato principal (quem, o quê, quanto, quando); 2) os detalhes e números que importam, com saldos; 3) contexto de quem conhece a vida pública (é rotina ou foge do padrão?); 4) por que importa para o morador e o que vale acompanhar. Até 2.200 caracteres"},
+        "resumo": {"type": "string", "description": "A matéria completa, em 3 a 5 parágrafos curtos separados por uma linha em branco: 1) o fato principal (quem, o quê, quanto, quando); 2) os detalhes e números que importam, com saldos; 3) o que o próprio documento mostra de incomum, se houver; 4) por que importa para o morador e o que vale acompanhar. Somente fatos do documento. Até 2.200 caracteres"},
         "pontos": {
             "type": "array",
             "description": "Cada ato relevante: empresa/pessoa, valor e objeto, quando constarem",
