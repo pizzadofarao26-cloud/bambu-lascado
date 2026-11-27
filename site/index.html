@@ -309,21 +309,7 @@ footer .wrap{padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
   <section data-vista="emendas" hidden>
     <h2>Emendas Pix para Canavieiras</h2>
     <p class="sub">Dinheiro que deputados e senadores indicaram direto para o caixa do município.</p>
-    <details class="caminho" open>
-      <summary>Como o dinheiro de uma Emenda Pix chega a Canavieiras</summary>
-      <ol>
-        <li><b>Indicação</b><span>Um deputado ou senador reserva, no Orçamento da União, um valor para o município. É a parte “Pix”: o dinheiro não precisa de convênio com um ministério.</span></li>
-        <li><b>Ciência</b><span>A Prefeitura entra no Transferegov, confirma que sabe do recurso, escolhe o banco e declara que não vai usar o dinheiro para pagar salário de servidor nem dívida. A partir daí a emenda aparece como <em>Ciente</em>.</span></li>
-        <li><b>Plano de trabalho</b><span>A Prefeitura informa em que vai gastar e quais metas quer atingir. Desde a decisão do STF de 2024, o ministério da área precisa analisar esse plano dentro de um prazo.</span></li>
-        <li><b>Pagamento</b><span>O governo federal deposita o valor numa conta aberta só para essa emenda, na Caixa ou no Banco do Brasil. É proibido passar o dinheiro para outra conta qualquer.</span></li>
-        <li><b>Gasto e prestação de contas</b><span>A Prefeitura licita, contrata e paga. Depois, registra no Transferegov um relatório de gestão contando o que foi feito, que pode ser fiscalizado pela CGU, pelo TCU e pelos tribunais de contas.</span></li>
-      </ol>
-      <dl class="situacoes">
-        <div><dt><span class="pill info">CIENTE</span></dt><dd>A Prefeitura aceitou a emenda (passo 2). <b>Não quer dizer que o dinheiro já caiu nem que foi gasto.</b> Emendas antigas continuam “Ciente” mesmo depois de pagas. Para saber o que foi feito, é preciso olhar o plano de trabalho e o relatório de gestão.</dd></div>
-        <div><dt><span class="pill bad">IMPEDIDO</span></dt><dd>A emenda está travada e não pode ser paga enquanto o problema não for resolvido. O motivo aparece em cada emenda. Quando ele é “falta de análise conclusiva no prazo”, quem não terminou a análise foi o ministério, não a Prefeitura. Mesmo assim, a cidade fica sem o dinheiro até alguém destravar.</dd></div>
-      </dl>
-      <p class="fonte-exp">Fonte: manuais e portarias do Transferegov (Ministério da Gestão). As situações são as que o próprio sistema do governo mostra.</p>
-    </details>
+    <p class="aviso">Fonte: Transferegov, sistema oficial do governo federal, consulta pelo CNPJ da Prefeitura de Canavieiras. Mostramos aqui só o que o sistema informa; para detalhes, use o botão de cada emenda.</p>
     <div class="feed" id="feed-em"></div>
   </section>
 </div></main>
@@ -374,11 +360,10 @@ function post(it){
 }
 
 function explicaSituacao(it){
-  const s = (it.situacao || "").toUpperCase(), m = (it.motivo_impedimento || "").toLowerCase();
-  if (s === "CIENTE") return "<b>O que é “Ciente”:</b> a Prefeitura confirmou no sistema federal que recebe esta emenda e que não vai usá-la em salário nem dívida. Isso não mostra se o dinheiro já foi pago ou gasto; confira no documento oficial.";
-  if (s === "IMPEDIDO") return "<b>O que é “Impedido”:</b> esta emenda está travada e não pode ser paga enquanto o problema não for resolvido." +
-    (m.includes("análise conclusiva") ? " Aqui o motivo é que o ministério não terminou de analisar o plano de trabalho no prazo. O atraso foi do governo federal, mas a cidade fica sem o dinheiro até que alguém destrave." : "");
-  return `<b>Situação:</b> ${esc(it.situacao || "não informada")}. Veja o que significa no quadro “Como o dinheiro de uma Emenda Pix chega a Canavieiras”, no topo desta aba.`;
+  const s = (it.situacao || "").toUpperCase();
+  if (s === "CIENTE") return "<b>Situação “Ciente”:</b> a Prefeitura registrou no Transferegov que tomou ciência desta emenda. Essa situação, sozinha, não informa se o valor já foi pago ou gasto.";
+  if (s === "IMPEDIDO") return "<b>Situação “Impedido”:</b> o Transferegov registra um impedimento nesta emenda; o motivo informado pelo sistema aparece acima.";
+  return `<b>Situação no Transferegov:</b> ${esc(it.situacao || "não informada")}.`;
 }
 function corpoItem(it){
   const ia = it.ia;
