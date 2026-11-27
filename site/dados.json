@@ -88,69 +88,77 @@
    "coletado_em": "2026-11-26T17:59:47+00:00",
    "paginas": 8,
    "ia": {
-    "titulo": "Lei 1.380/2026 remaneja R$ 17,1 milhões no orçamento de Canavieiras",
-    "resumo": "A Prefeitura publicou a Lei nº 1.380/2026, aprovada pela Câmara, que autoriza o prefeito a mudar o destino de R$ 17.137.027,42 no orçamento de 2026. É um 'crédito suplementar': reforça algumas áreas tirando dinheiro de outras, sem dinheiro novo. Educação perde cerca de R$ 11,6 milhões e Saúde perde R$ 3,55 milhões, enquanto Saúde (outras ações), Administração, Limpeza Pública, Finanças e a Câmara recebem reforço. A lei também libera mais 2,29% do orçamento para remanejamentos sem detalhamento até o fim do ano.",
+    "titulo": "Lei remaneja R$ 17,1 milhões e tira R$ 10,8 milhões da Educação",
+    "chamada": "A um mês do fim do ano, o orçamento de Canavieiras mudou de lugar. Veja quem ganhou, quem perdeu e o que vale acompanhar.",
+    "resumo": "A Câmara de Vereadores aprovou e o prefeito Paulo Cezar Ramos Carvalho sancionou, em 26 de novembro, a Lei nº 1.380/2026. Ela muda o destino de R$ 17.137.027,42 do orçamento municipal deste ano. Não entra dinheiro novo no caixa: o valor sai de algumas áreas e vai para outras. Na linguagem técnica, é um “crédito suplementar”.\n\nA maior perda é da Educação. A secretaria teve R$ 11,62 milhões retirados, dos quais R$ 5,18 milhões da educação infantil (creches e pré-escola), R$ 2,76 milhões do ensino fundamental, R$ 1,12 milhão da educação de jovens e adultos, R$ 964 mil de construção e manutenção de escolas e R$ 942 mil da educação especial. Recebeu de volta R$ 769 mil, para o salário-educação, a merenda e o programa Brasil Carinhoso. No saldo, a Educação fica com R$ 10,85 milhões a menos. A Saúde perdeu R$ 3,55 milhões em algumas ações, como o Saúde da Família, mas ganhou R$ 6,54 milhões em outras: termina o ano com cerca de R$ 3 milhões a mais. A Secretaria de Obras perdeu R$ 1,9 milhão.\n\nDo outro lado, os maiores reforços foram para a Administração (R$ 3 milhões, metade para salários), a Limpeza Pública (R$ 2,33 milhões), as Finanças (R$ 1,55 milhão), a Assistência Social (R$ 1,38 milhão), a Câmara (R$ 495 mil) e o Gabinete do Prefeito (R$ 340 mil). Grande parte do remanejamento mexe com folha de pagamento: cerca de R$ 7,7 milhões vão reforçar salários e encargos. Já os investimentos, que pagam obras e equipamentos, perderam pelo menos R$ 2,4 milhões e não recebem nada de volta.\n\nRemanejar verba no fim do ano é comum e permitido por lei. Muitas vezes, o dinheiro retirado é o que não seria gasto até dezembro. Mesmo assim, o tamanho chama atenção: os 10,71% autorizados equivalem a um orçamento anual de cerca de R$ 160 milhões. E a lei ainda deixa o prefeito mudar mais 2,29%, perto de R$ 3,7 milhões, sem dizer para onde vai.\n\nVale acompanhar dois pontos. Primeiro, a Constituição obriga o município a aplicar pelo menos 25% dos impostos em educação. O corte não prova que essa regra foi descumprida, mas é ela que o Tribunal de Contas vai conferir. Segundo, a tabela da lei tem números que não fecham: a merenda aparece com R$ 200 mil no total e R$ 320 mil no detalhe, e o Brasil Carinhoso ganha R$ 49 mil numa página e perde os mesmos R$ 49 mil em outra, o que anula o efeito.",
     "pontos": [
      {
       "tipo": "lei_decreto",
-      "descricao": "Lei 1.380/2026 autoriza remanejar mais 10,71% do orçamento aprovado na Lei 1.356/2026, conforme tabela do Anexo I, e mais até 2,29% sem detalhamento, para 'necessidades supervenientes' até o fim do ano.",
+      "descricao": "Lei nº 1.380/2026, sancionada em 26/11, remaneja 10,71% do orçamento de 2026 (Anexo I) e autoriza mais 2,29% sem detalhar o destino até o fim do ano.",
       "valor_reais": 17137027.42,
-      "empresa_ou_pessoa": "Paulo Cezar Ramos Carvalho (Prefeito)"
+      "empresa_ou_pessoa": "Paulo Cezar Ramos Carvalho (prefeito)"
      },
      {
       "tipo": "outro",
-      "descricao": "Secretaria de Educação perde R$ 11.618.062,25, incluindo R$ 3,6 milhões de ensino infantil, R$ 2,76 milhões do ensino fundamental, R$ 1,12 milhão da educação de jovens e adultos e R$ 964 mil de construção e manutenção de escolas.",
-      "valor_reais": 11618062.25,
+      "descricao": "Educação: perde R$ 11.618.062,25 e recebe R$ 769.000,00. Saldo: R$ 10,85 milhões a menos. Os maiores cortes são na educação infantil (R$ 5,18 mi), no ensino fundamental (R$ 2,76 mi) e na EJA (R$ 1,12 mi).",
+      "valor_reais": -10849062.25,
       "empresa_ou_pessoa": null
      },
      {
       "tipo": "outro",
-      "descricao": "Secretaria de Saúde e Saneamento recebe R$ 6.540.000,00 (sendo R$ 2,3 milhões para média e alta complexidade), mas tem R$ 3.551.465,17 retirados de outras ações, como o Programa Saúde da Família (R$ 1,15 milhão).",
-      "valor_reais": 6540000,
+      "descricao": "Saúde e Saneamento: recebe R$ 6.540.000,00 (R$ 2,3 mi para média e alta complexidade) e perde R$ 3.551.465,17 (como R$ 1,15 mi do Saúde da Família). Saldo: cerca de R$ 3 milhões a mais.",
+      "valor_reais": 2988534.83,
       "empresa_ou_pessoa": null
      },
      {
       "tipo": "outro",
-      "descricao": "Secretaria de Administração recebe reforço de R$ 3.000.000,00 (metade para pessoal, metade para custeio).",
+      "descricao": "Obras e Transportes: perde R$ 1.898.000,00, como R$ 700 mil de melhorias em obras e R$ 80 mil de iluminação pública.",
+      "valor_reais": -1898000,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "outro",
+      "descricao": "Administração: recebe R$ 3.000.000,00, sendo R$ 1,5 milhão para pessoal e R$ 1,5 milhão para custeio.",
       "valor_reais": 3000000,
       "empresa_ou_pessoa": null
      },
      {
       "tipo": "outro",
-      "descricao": "Secretaria de Limpeza Pública recebe R$ 2.330.000,00.",
+      "descricao": "Limpeza Pública: recebe R$ 2.330.000,00.",
       "valor_reais": 2330000,
       "empresa_ou_pessoa": null
      },
      {
       "tipo": "outro",
-      "descricao": "Secretaria de Finanças recebe R$ 1.550.000,00, incluindo R$ 600 mil em encargos gerais do município.",
+      "descricao": "Finanças: recebe R$ 1.550.000,00, incluindo R$ 600 mil em encargos gerais do município.",
       "valor_reais": 1550000,
       "empresa_ou_pessoa": null
      },
      {
       "tipo": "outro",
-      "descricao": "Assistência Social recebe R$ 1.381.600,00, incluindo Conselho Tutelar e benefícios eventuais.",
+      "descricao": "Assistência Social: recebe R$ 1.381.600,00, incluindo Conselho Tutelar e benefícios eventuais.",
       "valor_reais": 1381600,
       "empresa_ou_pessoa": null
      },
      {
       "tipo": "outro",
-      "descricao": "Câmara Municipal recebe R$ 495.000,00 e Gabinete do Prefeito recebe R$ 340.427,42.",
+      "descricao": "Câmara Municipal: recebe R$ 495.000,00 (R$ 195 mil para pessoal). Gabinete do Prefeito: recebe R$ 340.427,42 (R$ 240 mil para pessoal).",
       "valor_reais": 835427.42,
       "empresa_ou_pessoa": null
      },
      {
       "tipo": "outro",
-      "descricao": "Secretaria de Obras e Transportes perde R$ 1.898.000,00, incluindo R$ 700 mil de melhorias em obras e R$ 80 mil de iluminação pública.",
-      "valor_reais": 1898000,
+      "descricao": "Também recebem: Interior (R$ 390 mil), Agricultura (R$ 200 mil), Cultura (R$ 90 mil, mas perde R$ 69,5 mil) e Pesca (R$ 51 mil).",
+      "valor_reais": null,
       "empresa_ou_pessoa": null
      }
     ],
     "merece_atencao": true,
-    "motivo_atencao": "Valor alto (R$ 17,1 milhões) no fim do ano, com corte de R$ 11,6 milhões na Educação e reforço para administração, gabinete e Câmara. Há inconsistências na tabela: a alimentação escolar aparece com total de R$ 200 mil mas detalhe de R$ 320 mil; a Educação soma R$ 769 mil no título, diferente da soma dos itens; o Brasil Carinhoso aparece somando e anulando R$ 49 mil ao mesmo tempo; e a Saúde Bucal aparece duas vezes nos cortes. A lei ainda libera 2,29% extras sem dizer para onde vai.",
-    "post": "📢 Canavieiras: a Lei 1.380/2026 mudou o destino de R$ 17,1 milhões do orçamento deste ano. Não é dinheiro novo: tira de umas áreas e põe em outras. A Educação perde R$ 11,6 milhões. Ganham reforço Saúde (R$ 6,5 mi), Administração (R$ 3 mi), Limpeza (R$ 2,3 mi), Finanças (R$ 1,5 mi), Câmara (R$ 495 mil) e Gabinete do Prefeito (R$ 340 mil). Obras perde R$ 1,9 mi. A tabela tem números que não batem. Fique de olho! #Canavieiras #OlhoDeCaranguejo #DinheiroPublico"
+    "motivo_atencao": "Corte líquido de R$ 10,85 milhões na Educação a um mês do fim do ano, enquanto cerca de R$ 7,7 milhões vão para salários em outros órgãos. A lei ainda libera R$ 3,7 milhões (2,29%) sem destino definido, e a tabela tem valores que não fecham (merenda e Brasil Carinhoso).",
+    "post": "📢 Canavieiras: a Lei 1.380/2026 mudou o destino de R$ 17,1 milhões do orçamento deste ano. Não é dinheiro novo: sai de umas áreas e vai para outras.\n\n📉 Educação: R$ 10,85 milhões a menos no saldo, com cortes em creche, ensino fundamental e EJA.\n📈 Ganham: Saúde (+R$ 3 mi no saldo), Administração (R$ 3 mi), Limpeza (R$ 2,3 mi), Finanças (R$ 1,5 mi), Câmara (R$ 495 mil) e Gabinete (R$ 340 mil).\n\nA lei ainda libera mais R$ 3,7 milhões sem dizer para onde. Fique de olho!\n#Canavieiras #OlhoDeCaranguejo #DinheiroPúblico"
    },
-   "tem_transcricao": true
+   "tem_transcricao": true,
+   "ia_revisada": "manual-2026-11-27"
   },
   {
    "id": "diario-4594-2026_11_254594001491",

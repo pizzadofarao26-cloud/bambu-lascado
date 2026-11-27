@@ -55,7 +55,7 @@ GUARDAR_PDF_DIARIO = os.getenv("GUARDAR_PDF_DIARIO", "0") == "1"
 # IA (resumos em linguagem simples). Sem chave, o robô funciona sem resumos.
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 MODELO_IA = os.getenv("MODELO_IA", "claude-opus-5-5")
-ESFORCO_IA = os.getenv("ESFORCO_IA", "low")
+ESFORCO_IA = os.getenv("ESFORCO_IA", "medium")   # medium: confere somas e escreve com mais cuidado
 
 # Alertas no Telegram
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")

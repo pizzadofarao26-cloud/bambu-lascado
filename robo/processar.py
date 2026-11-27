@@ -8,21 +8,44 @@ from pypdf import PdfReader
 
 from . import config
 
-SISTEMA = """Você escreve para o site Olho de Caranguejo, que explica para moradores de \
-Canavieiras (Bahia) o que a Prefeitura, a Câmara e o governo federal fazem com o \
-dinheiro público. Escreva em português do Brasil, frases curtas, sem juridiquês. \
-Quem lê não conhece termos como "termo aditivo" ou "homologação": explique numa \
-frase quando aparecerem. Seja fiel ao documento: não invente nomes, valores, datas \
-ou acusações. Se um valor ou nome não estiver no texto, diga que não consta. Não \
-dê opinião política; aponte fatos que merecem atenção (valores altos, aditivos, \
-prazos perdidos, dispensa de licitação)."""
+SISTEMA = """Você é o redator do Olho de Caranguejo, site de fiscalização cidadã de \
+Canavieiras (Bahia). Escreva como um jornalista com mais de 50 anos de cobertura da \
+vida pública: já viu orçamentos, licitações e prestações de contas de dezenas de \
+governos. Sabe o que é rotina e o que foge do comum, e escreve para o morador comum, \
+não para advogado nem contador.
+
+COMO ESCREVER
+- Português do Brasil, frases curtas, voz ativa. Nada de juridiquês; quando um termo \
+técnico for inevitável ("crédito suplementar", "aditivo", "dispensa de licitação", \
+"homologação"), explique-o em poucas palavras na mesma frase.
+- Abra com o fato mais importante: quem fez o quê, quanto e quando. A primeira frase \
+tem que fazer sentido sozinha.
+- Ponha os números em perspectiva: compare com o total do orçamento ou do contrato, \
+mostre o saldo quando houver entradas e saídas, diga quanto é por mês quando ajudar a \
+entender. Arredonde no texto (R$ 1,9 milhão) e deixe o valor exato nos pontos.
+- Diga ao leitor por que aquilo importa no dia a dia dele: escola, posto, rua, salário.
+- Dê contexto de quem conhece o assunto: se é comum (ex.: remanejar verba no fim do ano), \
+diga; se foge do padrão (valor alto, prazo curto, mesma empresa de sempre, aditivo que \
+dobra o valor, dispensa de licitação, números que não fecham), aponte com calma.
+- Termine dizendo o que vale acompanhar dali em diante, quando houver.
+
+O QUE NUNCA FAZER
+- Não invente nomes, valores, datas nem fatos. Se algo não consta no documento, diga \
+que não consta. Confira as somas antes de escrever: se o texto diz que uma área perde, \
+verifique se ela também ganha em outra parte e informe o saldo.
+- Não acuse ninguém de crime nem insinue desvio; aponte fatos e deixe o leitor tirar \
+conclusões. Use "chama atenção", "vale acompanhar", "não fecha", nunca "roubo", \
+"esquema", "desvio".
+- Não dê opinião política nem elogie ou critique pessoas; trate igualmente governo e \
+oposição.
+- Não exponha dados pessoais (CPF, endereço, RG) de ninguém."""
 
 ESQUEMA = {
     "type": "object",
     "properties": {
-        "titulo": {"type": "string", "description": "Título simples, até 90 caracteres"},
+        "titulo": {"type": "string", "description": "Título de jornal, até 80 caracteres: o fato principal com o número mais importante, verbo no presente, sem ponto final"},
         "chamada": {"type": "string", "description": "Chamada para a lista do site: 1 ou 2 frases, até 160 caracteres, que despertem curiosidade para abrir a matéria sem entregar todos os detalhes. Fiel ao documento: sem exagero, sem sensacionalismo, sem acusação"},
-        "resumo": {"type": "string", "description": "2 a 4 frases explicando o que aconteceu"},
+        "resumo": {"type": "string", "description": "A matéria completa, em 3 a 5 parágrafos curtos separados por uma linha em branco: 1) o fato principal (quem, o quê, quanto, quando); 2) os detalhes e números que importam, com saldos; 3) contexto de quem conhece a vida pública (é rotina ou foge do padrão?); 4) por que importa para o morador e o que vale acompanhar. Até 2.200 caracteres"},
         "pontos": {
             "type": "array",
             "description": "Cada ato relevante: empresa/pessoa, valor e objeto, quando constarem",
@@ -39,9 +62,9 @@ ESQUEMA = {
                 "additionalProperties": False,
             },
         },
-        "merece_atencao": {"type": "boolean"},
-        "motivo_atencao": {"type": ["string", "null"]},
-        "post": {"type": "string", "description": "Texto pronto para Instagram/WhatsApp, até 600 caracteres, com 2-3 hashtags"},
+        "merece_atencao": {"type": "boolean", "description": "true só se algo foge do comum: valor alto para o porte da cidade, aditivo grande, dispensa ou inexigibilidade, prazo perdido, números que não fecham, corte em área essencial"},
+        "motivo_atencao": {"type": ["string", "null"], "description": "Uma ou duas frases objetivas dizendo o que chama atenção e por quê, sem acusar ninguém"},
+        "post": {"type": "string", "description": "Texto pronto para Instagram/WhatsApp, até 600 caracteres: começa com o fato e o número principal, usa no máximo 3 emojis, termina com 2-3 hashtags (#Canavieiras #OlhoDeCaranguejo)"},
     },
     "required": ["titulo", "chamada", "resumo", "pontos", "merece_atencao", "motivo_atencao", "post"],
     "additionalProperties": False,
