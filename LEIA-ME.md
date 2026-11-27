@@ -1,7 +1,7 @@
 # Olho de Caranguejo
 
 Site de fiscalização cidadã de Canavieiras (BA). Um robô visita as fontes oficiais
-todo dia às 14h10 e 20h10, baixa os documentos, transcreve, resume em linguagem simples,
+todo dia às 14h10, 16h10, 18h10 e 20h10, baixa os documentos, transcreve, resume em linguagem simples,
 atualiza o site e manda alerta no Telegram.
 
 ## O que o robô acompanha
