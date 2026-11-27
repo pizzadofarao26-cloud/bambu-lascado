@@ -126,6 +126,18 @@ ul.docs small{display:block;color:var(--muted)}
 .lista .obj{margin:0;color:var(--muted);font-size:15px;overflow-wrap:anywhere}
 .lista .mais,.lista .vazio{grid-column:1/-1}
 .prazo{font-weight:600;margin:0;font-size:15px}
+.caminho{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin:0 0 24px;max-width:860px}
+.caminho summary{font-family:var(--f-display);font-weight:700;font-size:19px;cursor:pointer}
+.caminho ol{list-style:none;counter-reset:passo;margin:16px 0 0;padding:0;display:grid;gap:12px}
+.caminho li{counter-increment:passo;display:grid;grid-template-columns:34px minmax(0,1fr);column-gap:12px;align-items:start}
+.caminho li::before{content:counter(passo);grid-row:span 2;width:34px;height:34px;border-radius:50%;background:var(--casco);color:var(--sobre-casco);font-weight:800;display:flex;align-items:center;justify-content:center;font-family:var(--f-display)}
+.caminho li span{color:var(--muted);font-size:15px;max-width:68ch}
+.situacoes{margin:18px 0 0;display:grid;gap:12px;border-top:1px solid var(--line);padding-top:16px}
+.situacoes div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;align-items:start}
+.situacoes dt{margin:0}.situacoes dd{margin:0;font-size:15px;max-width:68ch}
+@media (max-width:560px){.situacoes div{grid-template-columns:minmax(0,1fr);gap:4px}}
+.fonte-exp{margin:14px 0 0;font-size:13px;color:var(--muted)}
+.situacao-exp{margin:8px 0 0;font-size:15px;background:var(--soft);border-radius:10px;padding:10px 12px;max-width:68ch}
 .aviso{background:var(--soft);border-radius:12px;padding:14px 18px;font-size:15px;max-width:820px;margin:0 0 22px}
 
 .ano{margin:0 0 34px}
@@ -232,6 +244,21 @@ footer .wrap{padding-bottom:36px}
   <section data-vista="emendas" hidden>
     <h2>Emendas Pix para Canavieiras</h2>
     <p class="sub">Dinheiro que deputados e senadores indicaram direto para o caixa do município.</p>
+    <details class="caminho" open>
+      <summary>Como o dinheiro de uma Emenda Pix chega a Canavieiras</summary>
+      <ol>
+        <li><b>Indicação</b><span>Um deputado ou senador reserva, no Orçamento da União, um valor para o município. É a parte “Pix”: o dinheiro não precisa de convênio com um ministério.</span></li>
+        <li><b>Ciência</b><span>A Prefeitura entra no Transferegov, confirma que sabe do recurso, escolhe o banco e declara que não vai usar o dinheiro para pagar salário de servidor nem dívida. A partir daí a emenda aparece como <em>Ciente</em>.</span></li>
+        <li><b>Plano de trabalho</b><span>A Prefeitura informa em que vai gastar e quais metas quer atingir. Desde a decisão do STF de 2024, o ministério da área precisa analisar esse plano dentro de um prazo.</span></li>
+        <li><b>Pagamento</b><span>O governo federal deposita o valor numa conta aberta só para essa emenda, na Caixa ou no Banco do Brasil. É proibido passar o dinheiro para outra conta qualquer.</span></li>
+        <li><b>Gasto e prestação de contas</b><span>A Prefeitura licita, contrata e paga. Depois, registra no Transferegov um relatório de gestão contando o que foi feito, que pode ser fiscalizado pela CGU, pelo TCU e pelos tribunais de contas.</span></li>
+      </ol>
+      <dl class="situacoes">
+        <div><dt><span class="pill info">CIENTE</span></dt><dd>A Prefeitura aceitou a emenda (passo 2). <b>Não quer dizer que o dinheiro já caiu nem que foi gasto.</b> Emendas antigas continuam “Ciente” mesmo depois de pagas. Para saber o que foi feito, é preciso olhar o plano de trabalho e o relatório de gestão.</dd></div>
+        <div><dt><span class="pill bad">IMPEDIDO</span></dt><dd>A emenda está travada e não pode ser paga enquanto o problema não for resolvido. O motivo aparece em cada emenda. Quando ele é “falta de análise conclusiva no prazo”, quem não terminou a análise foi o ministério, não a Prefeitura. Mesmo assim, a cidade fica sem o dinheiro até alguém destravar.</dd></div>
+      </dl>
+      <p class="fonte-exp">Fonte: manuais e portarias do Transferegov (Ministério da Gestão). As situações são as que o próprio sistema do governo mostra.</p>
+    </details>
     <div class="feed" id="feed-em"></div>
   </section>
 </div></main>
@@ -273,6 +300,13 @@ function post(it){
   return `📢 ${onde}\n\n${corpo}\n\n🔎 Veja o documento: ${location.origin}${location.pathname}#${it.id}\n#Canavieiras #Transparência #OlhoDeCaranguejo`;
 }
 
+function explicaSituacao(it){
+  const s = (it.situacao || "").toUpperCase(), m = (it.motivo_impedimento || "").toLowerCase();
+  if (s === "CIENTE") return "<b>O que é “Ciente”:</b> a Prefeitura confirmou no sistema federal que recebe esta emenda e que não vai usá-la em salário nem dívida. Isso não mostra se o dinheiro já foi pago ou gasto; confira no documento oficial.";
+  if (s === "IMPEDIDO") return "<b>O que é “Impedido”:</b> esta emenda está travada e não pode ser paga enquanto o problema não for resolvido." +
+    (m.includes("análise conclusiva") ? " Aqui o motivo é que o ministério não terminou de analisar o plano de trabalho no prazo. O atraso foi do governo federal, mas a cidade fica sem o dinheiro até que alguém destrave." : "");
+  return `<b>Situação:</b> ${esc(it.situacao || "não informada")}. Veja o que significa no quadro “Como o dinheiro de uma Emenda Pix chega a Canavieiras”, no topo desta aba.`;
+}
 function corpoItem(it){
   const ia = it.ia;
   let h = "";
@@ -283,6 +317,9 @@ function corpoItem(it){
   if (!ia) {
     if (it.fonte === "diario") h += `<p class="plain">${esc(it.titulo_original)}</p>`;
     if (it.fonte === "emendas") h += `<p class="plain">Área: ${esc(it.areas || "não informada")}${it.motivo_impedimento ? `\nMotivo do impedimento: ${esc(it.motivo_impedimento)}` : ""}</p>`;
+  }
+  if (it.fonte === "emendas") h += `<p class="situacao-exp">${explicaSituacao(it)}</p>`;
+  if (!ia) {
     if (it.fonte === "tcm") h += `<p class="plain">Enviada ao Tribunal de Contas dos Municípios em ${esc(it.data_envio)}.${statusTCM(it.status)==="bad" ? " A Prefeitura ou Câmara deve mandar as contas de cada mês ao TCM dentro do prazo legal; esta foi registrada como atrasada." : ""}</p>`;
   }
   if (it.fonte === "tcm" && it.documentos?.length) {
@@ -293,7 +330,7 @@ function corpoItem(it){
   if (it.fonte === "diario" && it.tem_transcricao) h += `<details data-txt="${esc(it.id)}"><summary>Ler o texto completo da edição</summary><div class="txt">Carregando…</div></details>`;
   let acoes = "";
   if (it.url_pdf_origem) acoes += `<a class="btn" href="${esc(it.url_pdf_origem)}" target="_blank" rel="noopener">Baixar PDF original</a>`;
-  else if (it.url_pagina) acoes += `<a class="btn" href="${esc(it.url_pagina)}" target="_blank" rel="noopener">Ver na fonte oficial</a>`;
+  else if (it.url_pagina) acoes += `<a class="btn" href="${esc(it.url_pagina)}" target="_blank" rel="noopener">${it.fonte === "emendas" ? "Ver no Transferegov (site do governo)" : "Ver na fonte oficial"}</a>`;
   acoes += `<button class="btn primary" data-post="${esc(it.id)}">Gerar post</button>`;
   return h + `<div class="actions">${acoes}</div><div class="post" data-postbox="${esc(it.id)}" hidden></div>`;
 }
