@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-11-27T00:00:12+00:00",
+ "atualizado_em": "2026-11-27T17:59:48+00:00",
  "erros": [
   "Emendas federais: 503 Server Error: Service Unavailable for url: https://api.transferegov.gestao.gov.br/transferenciasespeciais/plano_acao_especial?cnpj_beneficiario_plano_acao=eq.13817804000120&order=ano_emenda_parlamentar_plano_acao.desc"
  ],
