@@ -346,7 +346,7 @@ function cartao(c){
     ${c.valor ? `<div><div class="valor">${brl2(c.valor)}</div>${c.valor_de === "aditivo" ? `<small>valor publicado no termo aditivo</small>` : ""}</div>` : `<small>Valor não identificado no extrato</small>`}
     <p class="obj">${esc(frase(c.objeto))}</p><p class="prazo">${prazo(c)}</p>
     <div class="meta">${c.modalidade ? `<span>${esc(c.modalidade)}</span>` : ""}${nAd ? `<span>${nAd} ${nAd > 1 ? "aditivos lidos" : "aditivo lido"}</span>` : ""}${c.cnpj ? `<span>CNPJ ${esc(c.cnpj)}</span>` : ""}</div>
-    <details><summary>Publicações e documentos (${c.atos.length})</summary><ul class="docs">${c.atos.map(a => `<li><a href="${esc(a.pdf)}" target="_blank" rel="noopener">${a.tipo === "aditivo" ? `${a.ordem ? a.ordem + "º t" : "T"}ermo aditivo` : "Contrato"}, Diário nº ${esc(a.edicao)}</a><small>Publicado em ${dataBR(a.publicado)}${a.fim ? `, prazo até ${dataBR(a.fim)}` : ""}${a.valor ? `, ${brl2(a.valor)}` : ""}</small></li>`).join("")}</ul></details>
+    <details><summary>Publicações e documentos (${c.atos.length})</summary><ul class="docs">${c.atos.map(a => `<li><a href="${esc(a.pdf)}${a.pagina ? "#page=" + a.pagina : ""}" target="_blank" rel="noopener">${a.tipo === "aditivo" ? `${a.ordem ? a.ordem + "º t" : "T"}ermo aditivo` : "Contrato"}, Diário nº ${esc(a.edicao)}${a.pagina ? `, página ${a.pagina}` : ""}</a><small>Publicado em ${dataBR(a.publicado)}${a.fim ? `, prazo até ${dataBR(a.fim)}` : ""}${a.valor ? `, ${brl2(a.valor)}` : ""}</small></li>`).join("")}</ul></details>
     <div class="actions"><button class="btn" data-post="${esc(c.id)}">Gerar post</button></div><div class="post" data-postbox="${esc(c.id)}" hidden></div></article>`;
 }
 function filtradosC(){

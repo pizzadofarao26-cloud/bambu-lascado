@@ -44,16 +44,28 @@ def _datas(texto):
 
 
 def _sem_cpf(t):
+    t = t.replace("[CPF oculto]", "")
     t = re.sub(r"\d{3}\.\d{3}\.\d{3}\s*[-‐–]\s*\d{2}", "", t)
     t = re.sub(r"(?<!\d)\d{11}(?!\d)", "", t)          # MEI costuma ter o CPF no nome
-    return re.sub(r"\s+", " ", t).strip(" .,;:-–")
+    return re.sub(r"\s+", " ", t).strip(" .,;:-–[(")
 
 
 def _limpar_paginas(t):
-    """Tira cabeçalhos repetidos de página, que cortam os extratos no meio."""
-    t = re.sub(r"\[Página \d+\]\n.*?Esta edição encontra-se no site oficial deste ente\.", " ", t, flags=re.S)
-    t = re.sub(r"Pra?ç[a.]* da Bandeira.{0,90}?\d{4}-\d{4}", " ", t, flags=re.S)
-    return t
+    """Tira cabeçalhos repetidos de página, que cortam os extratos no meio.
+    Devolve o texto limpo e onde começa cada página nele: [(posição, nº da página)]."""
+    partes = re.split(r"\[Página (\d+)\]\n", t)
+    limpo, inicios = partes[0], [(0, 1)]
+    for n, pag in zip(partes[1::2], partes[2::2]):
+        pag = re.sub(r"^.*?Esta edição encontra-se no site oficial deste ente\.", " ", pag, count=1, flags=re.S)
+        pag = re.sub(r"Pra?ç[a.]* da Bandeira.{0,90}?\d{4}-\d{4}", " ", pag, flags=re.S)
+        limpo += " "
+        inicios.append((len(limpo), int(n)))
+        limpo += pag
+    return limpo, inicios
+
+
+def _pagina(inicios, pos):
+    return next(n for p, n in reversed(inicios) if p <= pos)
 
 
 def _valor(t):
@@ -89,12 +101,12 @@ def _empresa(plano):
 
 
 def ler_extratos(texto: str, item: dict) -> list[dict]:
-    t = _limpar_paginas(texto)
+    t, paginas = _limpar_paginas(texto)
     ini = [m.start() for m in INICIO.finditer(t)]
     atos = []
     for n, a in enumerate(ini):
         bloco = t[a:min(a + 3500, ini[n + 1] if n + 1 < len(ini) else len(t))]
-        bloco = re.split(r"TERMO DE (?:HOMOLOGA|RATIFICA|AUTORIZA)|AVISO DE|PUBLICAÇÃO DO EXTRATO", bloco)[0]
+        bloco = re.split(r"TERMO DE (?:HOMOLOGA|RATIFICA|AUTORIZA)|HOMOLOGO E RATIFICO|AVISO DE|PUBLICAÇÃO DO EXTRATO", bloco)[0]
         # extratos sem data no final terminam no nome do prefeito
         pref = re.search(r"PAULO\s+C[EÉ][ZS]AR\s+RAMOS\s+CARVALHO\s*[–-]\s*PREFEITO", bloco)
         if pref:
@@ -106,9 +118,12 @@ def ler_extratos(texto: str, item: dict) -> list[dict]:
         plano = re.sub(r"\s+", " ", bloco)
         if re.search(r"ONDE SE LÊ|retifica[çr]", plano, re.I):
             continue                                        # errata: exige leitura humana
-        num = re.search(r"(?:CONTRATO|CONTRATO ADMINISTRATIVO)\s*(?:N[º°.ºo]*\s*)?:?\s*(\d{1,4})\s*/?\s*(20\d{2})\b", plano, re.I)
+        num = re.search(r"(?:CONTRATO|CONTRATO ADMINISTRATIVO)\s*(?:N[º°.ºoe]*\s*)?:?\s*(\d{1,4})\s*(/?)\s*(20\d{2})\b", plano, re.I)
         if not num:
             continue
+        numero = num[1]
+        if not num[2] and len(numero) == 4 and numero.endswith("1"):
+            numero = numero[:-1]                            # a barra virou "1" na leitura do escaneado
         aditivo = re.search(r"(\d+)\s*[º°oª]?\s*(?:TERMO\s+)?(?:DE\s+)?(?:TERMO\s+)?ADITIVO", plano[:260], re.I)
         eh_aditivo = bool(aditivo) or "ADITIVO" in plano[:260].upper()
         fim_campo = r"CONTRATAD[AO]\s*:|CONTRATANTE\s*:|VALOR|VIG[ÊE]NCIA|PRAZO|AMPARO|FUNDAMENTO|DOTAÇÃO|PROCESSO\s+ADM|$"
@@ -131,7 +146,7 @@ def ler_extratos(texto: str, item: dict) -> list[dict]:
         if fim_vig and fim_vig < (data_ass or "2000"):
             fim_vig = None
         atos.append({
-            "numero": f"{int(num[1]):03d}/{num[2]}",
+            "numero": f"{int(numero):03d}/{num[3]}",
             "tipo": "aditivo" if eh_aditivo else "contrato",
             "ordem": int(aditivo[1]) if aditivo else None,
             "objeto": _sem_cpf(objeto)[:500] if objeto else None,
@@ -143,7 +158,7 @@ def ler_extratos(texto: str, item: dict) -> list[dict]:
                 (r"CREDENCIAMENTO|CHAMADA P", "Credenciamento"), (r"TOMADA DE PRE", "Tomada de preços"),
                 (r"ADES[ÃA]O", "Adesão a ata")) if re.search(pad, plano, re.I)), None),
             "publicado": item["data"], "edicao": item["edicao"],
-            "pdf": item["url_pdf_origem"], "item": item["id"],
+            "pdf": item["url_pdf_origem"], "pagina": _pagina(paginas, a), "item": item["id"],
         })
     return atos
 
@@ -188,7 +203,7 @@ def agrupar(atos: list[dict]) -> list[dict]:
             "valor_de": "contrato" if (orig or {}).get("valor") else ("aditivo" if ult("valor") else None),
             "fim": lista[-1]["fim"] if lista[-1]["tipo"] == "aditivo" else ult("fim"), "assinatura": (orig or {}).get("assinatura"),
             "ultimo_ato": max(a["publicado"] for a in lista),
-            "atos": [{k: a[k] for k in ("tipo", "ordem", "valor", "fim", "assinatura", "publicado", "edicao", "pdf", "item")}
+            "atos": [{k: a[k] for k in ("tipo", "ordem", "valor", "fim", "assinatura", "publicado", "edicao", "pdf", "pagina", "item")}
                      for a in lista],
         })
     out.sort(key=lambda c: (c["ultimo_ato"], c["numero"]), reverse=True)
