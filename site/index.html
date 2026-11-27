@@ -112,6 +112,14 @@ input.campo{flex:1 1 220px}
 .materia .item{padding:24px clamp(18px,4vw,34px)}
 .materia .item h3{font-size:clamp(26px,4.4vw,36px);line-height:1.12;letter-spacing:-.02em}
 .materia .item .plain{font-size:17px}
+.compartilhar{display:grid;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.compartilhar h2{margin:0;font-size:18px}
+.redes{display:flex;flex-wrap:wrap;gap:8px}
+.rede{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:15px;font-weight:700;padding:10px 14px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;color:#fff;line-height:1}
+.rede svg{width:18px;height:18px;flex:none;fill:currentColor}
+.rede.wa{background:#1f8a4c}.rede.fb{background:#1a5fd0}.rede.ig{background:linear-gradient(45deg,#e0751f,#c9264f 50%,#7a2bb8)}
+.rede.tg{background:#1f7fb8}.rede.x{background:#111}.rede.link{background:var(--soft);color:var(--ink)}
+.compartilhar small{color:var(--muted);font-size:13px}
 .leia-tambem{display:grid;gap:12px}
 .leia-tambem h2{font-size:20px;margin:8px 0 0}
 .plain{margin:0;white-space:pre-line;overflow-wrap:anywhere;max-width:68ch}
@@ -390,12 +398,68 @@ function cartaoCurto(it){
     ${sinais.length ? `<div class="sinais">${sinais.join("<span aria-hidden=\"true\">·</span>")}</div>` : ""}
     <a class="btn primary ler" href="${linkItem(it)}">${rotulo}</a></article>`;
 }
+const ICONE = {wa:"M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z",fb:"M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.5 1.6-1.5h1.7V4.4a22 22 0 0 0-2.5-.1c-2.5 0-4.2 1.5-4.2 4.3v2.3H7.4V14h2.7v8z",ig:"M12 7.3A4.7 4.7 0 1 0 16.7 12 4.7 4.7 0 0 0 12 7.3zm0 7.8a3.1 3.1 0 1 1 3.1-3.1 3.1 3.1 0 0 1-3.1 3.1zm6-8a1.1 1.1 0 1 1-1.1-1.1A1.1 1.1 0 0 1 18 7.1zM21.9 8.2a5.4 5.4 0 0 0-1.5-3.9 5.4 5.4 0 0 0-3.9-1.5c-1.5-.1-6-.1-7.5 0a5.4 5.4 0 0 0-3.9 1.5A5.4 5.4 0 0 0 3.6 8.2c-.1 1.5-.1 6 0 7.5a5.4 5.4 0 0 0 1.5 3.9 5.4 5.4 0 0 0 3.9 1.5c1.5.1 6 .1 7.5 0a5.4 5.4 0 0 0 3.9-1.5 5.4 5.4 0 0 0 1.5-3.9c.1-1.5.1-6 0-7.5zM19.6 17.4a3.1 3.1 0 0 1-1.7 1.7c-1.2.5-4 .4-5.9.4s-4.7.1-5.9-.4a3.1 3.1 0 0 1-1.7-1.7c-.5-1.2-.4-4-.4-5.4s-.1-4.2.4-5.4a3.1 3.1 0 0 1 1.7-1.7c1.2-.5 4-.4 5.9-.4s4.7-.1 5.9.4a3.1 3.1 0 0 1 1.7 1.7c.5 1.2.4 4 .4 5.4s.1 4.2-.4 5.4z",tg:"M21.4 4.2 18.3 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1a1.2 1.2 0 0 1-.9.5l.3-4.7 8.6-7.8c.4-.3-.1-.5-.6-.2L6.6 13 2 11.6c-1-.3-1-1 .2-1.5l18-6.9c.8-.3 1.6.2 1.2 1z",x:"M17.8 3h3.1l-6.8 7.7 8 10.3h-6.3l-4.9-6.4L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z",link:"M10.6 13.4a1 1 0 0 1 0-1.4l3.5-3.5a1 1 0 1 1 1.4 1.4L12 13.4a1 1 0 0 1-1.4 0zm-1.8 5.3a4 4 0 0 1-2.8-6.8l2.1-2.1a1 1 0 1 1 1.4 1.4l-2.1 2.1a2 2 0 0 0 2.8 2.8l2.1-2.1a1 1 0 0 1 1.4 1.4l-2.1 2.1a4 4 0 0 1-2.8 1.2zm6.4-6a1 1 0 0 1-.7-1.7l2.1-2.1a2 2 0 0 0-2.8-2.8l-2.1 2.1a1 1 0 1 1-1.4-1.4l2.1-2.1a4 4 0 0 1 5.6 5.6l-2.1 2.1a1 1 0 0 1-.7.3z"};
+const svg = k => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICONE[k]}"/></svg>`;
+// link sem # para Facebook e WhatsApp montarem a prévia; o site converte ?m= em #
+const linkPublico = it => `https://olhodecaranguejo.com.br/?m=${encodeURIComponent(it.id)}`;
+function barraCompartilhar(it){
+  const u = encodeURIComponent(linkPublico(it)), t = encodeURIComponent(`${titulo(it)}\n\n${chamada(it)}\n\nLeia no Olho de Caranguejo: ${linkPublico(it)}`);
+  const tt = encodeURIComponent(titulo(it)), id = esc(it.id);
+  return `<section class="compartilhar" aria-label="Compartilhar esta matéria"><h2>Compartilhe com quem precisa saber</h2><div class="redes">
+    <a class="rede wa" href="https://wa.me/?text=${t}" target="_blank" rel="noopener">${svg("wa")}WhatsApp</a>
+    <a class="rede fb" href="https://www.facebook.com/sharer/sharer.php?u=${u}" target="_blank" rel="noopener">${svg("fb")}Facebook</a>
+    <button class="rede ig" type="button" data-insta="${id}">${svg("ig")}Instagram</button>
+    <a class="rede tg" href="https://t.me/share/url?url=${u}&text=${tt}" target="_blank" rel="noopener">${svg("tg")}Telegram</a>
+    <a class="rede x" href="https://twitter.com/intent/tweet?url=${u}&text=${tt}" target="_blank" rel="noopener">${svg("x")}X</a>
+    <button class="rede link" type="button" data-link="${id}">${svg("link")}Copiar link</button>
+  </div><small>Instagram: o site monta uma imagem com o caranguejo e o título, pronta para o feed ou os stories, e copia a legenda.</small></section>`;
+}
+// imagem 1080x1350 (retrato do Instagram) desenhada na hora
+const simboloImg = new Image(); simboloImg.src = "img/simbolo.png";
+function quebrar(ctx, texto, larg){
+  const linhas = []; let l = "";
+  for (const p of String(texto).split(/\s+/)) { const t = l ? l + " " + p : p; if (ctx.measureText(t).width > larg && l) { linhas.push(l); l = p; } else l = t; }
+  if (l) linhas.push(l); return linhas;
+}
+async function imagemInsta(it){
+  await Promise.all([document.fonts.load('800 80px "Bricolage Grotesque"'), document.fonts.load('500 40px "Public Sans"'),
+    simboloImg.decode().catch(() => {})]);
+  const W = 1080, H = 1350, c = document.createElement("canvas"); c.width = W; c.height = H;
+  const x = c.getContext("2d"), M = 84;
+  x.fillStyle = "#540612"; x.fillRect(0, 0, W, H);
+  x.fillStyle = "#d23c18"; x.fillRect(0, H - 150, W, 150);
+  if (simboloImg.naturalWidth) x.drawImage(simboloImg, W - M - 230, 70, 230, 230);
+  x.fillStyle = "#f8efdc"; x.font = '700 38px "Bricolage Grotesque", sans-serif'; x.textBaseline = "top";
+  x.fillText("Olho de Caranguejo", M, 96);
+  x.fillStyle = "#f08b6c"; x.font = '600 32px "Public Sans", sans-serif';
+  x.fillText(`${NOME[it.fonte] || ""}${it.data && it.fonte === "diario" ? " · " + dataBR(it.data) : ""}`.toUpperCase(), M, 150);
+  let tam = 84, linhas;
+  do { x.font = `800 ${tam}px "Bricolage Grotesque", sans-serif`; linhas = quebrar(x, titulo(it), W - 2 * M); tam -= 4; } while (linhas.length * tam * 1.1 > 560 && tam > 48);
+  let y = 340; x.fillStyle = "#fff8ec";
+  for (const l of linhas) { x.fillText(l, M, y); y += (tam + 4) * 1.08; }
+  x.font = '500 40px "Public Sans", sans-serif'; x.fillStyle = "#ecd6c6"; y += 30;
+  for (const l of quebrar(x, chamada(it), W - 2 * M).slice(0, 5)) { if (y > H - 260) break; x.fillText(l, M, y); y += 54; }
+  x.fillStyle = "#fff8ec"; x.font = '700 40px "Public Sans", sans-serif'; x.fillText("Leia completo: olhodecaranguejo.com.br", M, H - 98);
+  return new Promise(r => c.toBlob(r, "image/png"));
+}
+async function compartilharInsta(it){
+  toast("Montando a imagem…");
+  const blob = await imagemInsta(it), legenda = `${post(it)}\n\nMatéria completa: link na bio ou olhodecaranguejo.com.br`;
+  const arq = new File([blob], `olho-de-caranguejo-${it.id.slice(0, 30)}.png`, {type: "image/png"});
+  try { await navigator.clipboard.writeText(legenda); } catch {}
+  if (navigator.canShare?.({files: [arq]})) {
+    try { await navigator.share({files: [arq], text: legenda}); return; } catch (e) { if (e.name === "AbortError") return; }
+  }
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = arq.name;
+  document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  toast("Imagem salva e legenda copiada. Abra o Instagram e poste a imagem.");
+}
 let voltarY = 0;
 function abrirMateria(it){
   const L = ITENS.filter(x => x.fonte === it.fonte), j = L.indexOf(it);
   const outros = [...L.slice(j + 1), ...L.slice(0, j).reverse()].slice(0, 3);
   $("materia").innerHTML = `<a class="voltar" href="#publicacoes">← Todas as publicações</a>${artigo(it)}
-    <div class="actions"><button class="btn" data-link="${esc(it.id)}">Copiar link desta matéria</button></div>
+    ${barraCompartilhar(it)}
     ${outros.length ? `<div class="leia-tambem"><h2>Leia também</h2>${outros.map(cartaoCurto).join("")}</div>` : ""}`;
   document.title = titulo(it) + " · Olho de Caranguejo";
   mostrar("materia"); topoAbas(); passear();
@@ -559,8 +623,10 @@ document.querySelector("main").addEventListener("click", e => {
     box.innerHTML = `${esc(textoPost(id))}<div class="actions"><button class="btn" data-copy="${esc(id)}">Copiar texto</button></div>`;
     box.hidden = false; passear(); return;
   }
+  const ig = e.target.closest("[data-insta]");
+  if (ig) { compartilharInsta(ITENS.find(i => i.id === ig.dataset.insta)).catch(() => toast("Não consegui montar a imagem")); return; }
   const l = e.target.closest("[data-link]");
-  if (l) { const url = location.origin + location.pathname + "#" + encodeURIComponent(l.dataset.link);
+  if (l) { const url = linkPublico({id: l.dataset.link});
     navigator.clipboard.writeText(url).then(() => toast("Link copiado"), () => toast(url)); return; }
   const c = e.target.closest("[data-copy]");
   if (c) navigator.clipboard.writeText(textoPost(c.dataset.copy))
@@ -583,7 +649,9 @@ Promise.all([pega("dados.json"), pega("contratos.json").catch(() => null)]).then
   $("atualizado").textContent = "Atualizado em " + new Date(d.atualizado_em).toLocaleString("pt-BR", {dateStyle:"short", timeStyle:"short", timeZone:"America/Bahia"});
   $("aviso-contratos").textContent = c ? `Lista montada automaticamente com extratos publicados no Diário Oficial desde ${dataBR(c.desde)}. Pode faltar contrato, aditivo ou rescisão que não saiu como extrato ou que o leitor não conseguiu abrir. Confira no documento antes de compartilhar.` : "A lista de contratos não carregou. Recarregue a página.";
   stats(); render(); renderC(); renderContas();
-  if (location.hash) irPara(decodeURIComponent(location.hash.slice(1)), true);
+  const m = new URLSearchParams(location.search).get("m");
+  if (m) { history.replaceState(null, "", location.pathname + "#" + encodeURIComponent(m)); irPara(m, true); }
+  else if (location.hash) irPara(decodeURIComponent(location.hash.slice(1)), true);
 }).catch(() => {
   $("atualizado").textContent = "Os dados não carregaram";
   $("feed").innerHTML = `<div class="vazio">Não foi possível carregar os dados. Recarregue a página em alguns minutos.</div>`;
