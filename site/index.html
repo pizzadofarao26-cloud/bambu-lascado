@@ -511,6 +511,7 @@ function abrirMateria(it){
     ${barraCompartilhar(it)}
     ${outros.length ? `<div class="leia-tambem"><h2>Leia também</h2>${outros.map(cartaoCurto).join("")}</div>` : ""}`;
   document.title = titulo(it) + " · Olho de Caranguejo";
+  balao.hidden = true;
   mostrar("materia"); topoAbas(); passear();
 }
 function render(){
@@ -664,7 +665,7 @@ const RECADOS = ["Viu algo errado na cidade? Me conta aqui, sem precisar dar seu
 let nRecado = 0, timerRecado;
 const recadoDesligado = () => { try { return Date.now() < +localStorage.getItem("oc-recado-off"); } catch { return false; } };
 function recado(){
-  if (recadoDesligado() || !menuIsca.hidden || nRecado >= 3 || document.hidden) return;
+  if (recadoDesligado() || !menuIsca.hidden || nRecado >= 3 || document.hidden || vista === "materia") return;
   $("balao-txt").textContent = RECADOS[nRecado++ % RECADOS.length];
   balao.hidden = false; fab.classList.remove("pulo"); void fab.offsetWidth; fab.classList.add("pulo");
   clearTimeout(timerRecado); timerRecado = setTimeout(() => balao.hidden = true, 8000);
