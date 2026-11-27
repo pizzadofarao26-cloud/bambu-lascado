@@ -1,9 +1,111 @@
 {
- "atualizado_em": "2026-11-27T17:59:48+00:00",
+ "atualizado_em": "2026-11-27T23:57:26+00:00",
  "erros": [
   "Emendas federais: 503 Server Error: Service Unavailable for url: https://api.transferegov.gestao.gov.br/transferenciasespeciais/plano_acao_especial?cnpj_beneficiario_plano_acao=eq.13817804000120&order=ano_emenda_parlamentar_plano_acao.desc"
  ],
  "itens": [
+  {
+   "id": "diario-4597-2026_11_274597001491",
+   "fonte": "diario",
+   "data": "2026-11-27",
+   "edicao": "4597",
+   "titulo_original": "-RELATÓRIO RESUMIDO DA EXECUÇÃO ORÇAMENTÁRIA- RREO - 5º BIMESTRE 2026.",
+   "url_pdf_origem": "https://diof.io.org.br/api/diario-oficial/download/2026_11_274597001491",
+   "url_pagina": "https://diario.canavieiras.ba.gov.br/edicoes-anteriores",
+   "arquivo_id": "2026_11_274597001491",
+   "destaque": false,
+   "coletado_em": "2026-11-27T23:56:39+00:00",
+   "paginas": 31,
+   "ia": {
+    "titulo": "Canavieiras aplica 16,3% em educação até outubro; o mínimo anual é 25%",
+    "chamada": "Relatório de setembro e outubro mostra a saúde acima do mínimo, mas a educação e parte do Fundeb longe das metas a dois meses do fim do ano.",
+    "resumo": "A Prefeitura de Canavieiras publicou no Diário Oficial de 27 de novembro de 2026 o relatório das contas do 5º bimestre (setembro e outubro). Até outubro, o município arrecadou R$ 132,5 milhões, 81% dos R$ 163,5 milhões previstos para o ano. No mesmo período, liquidou R$ 125,4 milhões em despesas. Liquidar é reconhecer que o serviço ou produto foi entregue. O resultado é um saldo positivo de R$ 7,1 milhões.\n\nA educação tem a maior fatia: R$ 48,3 milhões liquidados. A saúde vem em seguida, com R$ 30,4 milhões. Na saúde, a prefeitura aplicou 25,92% da receita de impostos, acima do mínimo de 15% indicado no relatório. Os investimentos andam devagar: dos R$ 10,7 milhões autorizados, R$ 3,5 milhões foram liquidados e só R$ 1 milhão foi pago. A dívida consolidada caiu de R$ 79,8 milhões, em dezembro de 2025, para R$ 71,5 milhões.\n\nO relatório mostra pontos que fogem do comum. O gasto com manutenção do ensino chegou a 16,30% dos impostos, contra R$ 17,6 milhões exigidos no ano (25%). Pelas contas do Olho de Caranguejo, faltam cerca de R$ 6,1 milhões para novembro e dezembro. Da complementação federal do Fundeb chamada VAAT, a regra pede 15% em obras e equipamentos, cerca de R$ 2,06 milhões. Foram aplicados R$ 4,2 mil (0,03%). O quadro do Fundeb também mostra 14% da receita do ano ainda não usada, acima do teto de 10%. O excedente de R$ 1,98 milhão é descontado da conta da educação. Outros pontos: o ISS (imposto sobre serviços) arrecadou só 39% do previsto. E números do próprio relatório não batem entre um anexo e outro. Os valores pagos e os resultados primário e nominal diferem em cerca de R$ 34 mil.\n\nPara o morador, isso pesa na escola, na creche e no transporte escolar: os mínimos da educação são anuais e o prazo termina em dezembro. Vale acompanhar o relatório do último bimestre de 2026 para ver se os 25% e os 15% do VAAT serão cumpridos. Vale também acompanhar se as diferenças entre os anexos serão corrigidas.",
+    "pontos": [
+     {
+      "tipo": "contas",
+      "descricao": "Receita realizada até outubro de 2026, contra previsão atualizada de R$ 163.472.224,51 (81,04%)",
+      "valor_reais": 132473815.16,
+      "empresa_ou_pessoa": "Prefeitura Municipal de Canavieiras"
+     },
+     {
+      "tipo": "contas",
+      "descricao": "Despesas liquidadas até outubro (empenhadas: R$ 134.198.280,64; pagas: R$ 119.082.108,05 no Anexo 1)",
+      "valor_reais": 125393351.81,
+      "empresa_ou_pessoa": "Prefeitura Municipal de Canavieiras"
+     },
+     {
+      "tipo": "contas",
+      "descricao": "Superávit orçamentário até o bimestre (receita realizada menos despesa liquidada)",
+      "valor_reais": 7080463.35,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "contas",
+      "descricao": "Aplicação em manutenção e desenvolvimento do ensino: 16,30% da receita de impostos; valor exigido no ano é R$ 17.596.197,60 (25%)",
+      "valor_reais": 11475549.21,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "contas",
+      "descricao": "Complementação da União ao Fundeb (VAAT) aplicada em despesas de capital: 0,03%, contra mínimo de 15% (R$ 2.057.678,02)",
+      "valor_reais": 4214.7,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "contas",
+      "descricao": "Receita do Fundeb não aplicada acima do teto de 10% (14,01% não aplicado no total)",
+      "valor_reais": 1976593.86,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "contas",
+      "descricao": "Fundeb na remuneração dos profissionais da educação básica: 71,09%, acima do mínimo de 70%",
+      "valor_reais": 35405100.3,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "contas",
+      "descricao": "Gasto em saúde com recursos de impostos: 25,92% (liquidado), acima do mínimo de 15% (R$ 9.842.192,79)",
+      "valor_reais": 17006780.09,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "contas",
+      "descricao": "Investimentos liquidados até outubro, de dotação atualizada de R$ 10.723.396,82; pagos R$ 1.039.250,20",
+      "valor_reais": 3468605.59,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "contas",
+      "descricao": "Dívida consolidada até o período (era R$ 79.776.609,73 em 31/12/2025)",
+      "valor_reais": 71465079.96,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "contas",
+      "descricao": "ISS arrecadado até outubro: 39,37% da previsão de R$ 3.866.500,00",
+      "valor_reais": 1522267.22,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "contas",
+      "descricao": "Saldo de restos a pagar (dívidas de anos anteriores) ainda a pagar; inscritos R$ 8.765.173,63 e pagos R$ 6.396.239,00",
+      "valor_reais": 2368934.63,
+      "empresa_ou_pessoa": null
+     },
+     {
+      "tipo": "contas",
+      "descricao": "Receita Corrente Líquida dos últimos 12 meses (nov/2025 a out/2026)",
+      "valor_reais": 161044076.3,
+      "empresa_ou_pessoa": null
+     }
+    ],
+    "merece_atencao": true,
+    "motivo_atencao": "A dois meses do fim do ano, a educação está em 16,30% dos impostos, contra 25% exigidos, e só 0,03% do VAAT foi para despesas de capital, contra 15%. Além disso, o Fundeb tem sobra acima do teto de 10%, e os resultados e os valores pagos divergem entre anexos do mesmo relatório.",
+    "post": "📊 Até outubro, Canavieiras aplicou 16,3% dos impostos na educação. O mínimo do ano é 25%: pelas contas do Olho de Caranguejo, faltam cerca de R$ 6,1 milhões em dois meses. O relatório oficial mostra ainda R$ 132,5 mi arrecadados e saldo positivo de R$ 7,1 mi. A saúde está em 25,9% (mínimo 15%). 🏫 Da verba federal VAAT do Fundeb, só R$ 4,2 mil foram para obras e equipamentos, contra R$ 2,06 mi exigidos. 👀 Vale acompanhar o fechamento de dezembro. #Canavieiras #OlhoDeCaranguejo #ContasPúblicas"
+   },
+   "tem_transcricao": true
+  },
   {
    "id": "diario-4596-2026_11_264596001491",
    "fonte": "diario",
@@ -157,8 +259,8 @@
     "motivo_atencao": "Pela tabela da própria lei, a Educação perde R$ 10,85 milhões no saldo, enquanto cerca de R$ 7,7 milhões reforçam pessoal e encargos em outros órgãos. A lei também autoriza mais 2,29% sem destino definido, e dois valores da tabela não fecham (alimentação escolar e Brasil Carinhoso).",
     "post": "📢 Canavieiras: a Lei 1.380/2026 mudou o destino de R$ 17,1 milhões do orçamento deste ano. Não é dinheiro novo: sai de umas áreas e vai para outras.\n\n📉 Educação: R$ 10,85 milhões a menos no saldo, com cortes em creche, ensino fundamental e EJA.\n📈 Ganham: Saúde (+R$ 3 mi no saldo), Administração (R$ 3 mi), Limpeza (R$ 2,3 mi), Finanças (R$ 1,5 mi), Câmara (R$ 495 mil) e Gabinete (R$ 340 mil).\n\nA lei ainda autoriza mexer em mais 2,29% do orçamento sem dizer para onde. Fique de olho!\n#Canavieiras #OlhoDeCaranguejo #DinheiroPúblico"
    },
-   "tem_transcricao": true,
-   "ia_revisada": "manual-2026-11-27"
+   "ia_revisada": "manual-2026-11-27",
+   "tem_transcricao": true
   },
   {
    "id": "diario-4594-2026_11_254594001491",
