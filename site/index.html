@@ -140,7 +140,7 @@ ul.docs small{display:block;color:var(--muted)}
 .legenda i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:6px;vertical-align:-1px}
 
 .sobre{background:var(--vinho);color:var(--creme)}
-.sobre .wrap{padding-block:44px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.sobre .wrap{padding-block:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px}
 .sobre h2{font-size:21px}
 .sobre p,.sobre ul{margin:0;color:#e6cbbb;font-size:15px}
 .sobre ul{padding-left:18px}
@@ -176,7 +176,7 @@ footer .wrap{padding-bottom:36px}
     <h1>De <em>olho</em> no dinheiro de Canavieiras</h1>
     <p class="lead">Diário Oficial, contratos, contas da Prefeitura e da Câmara e emendas federais. Tudo em linguagem simples, com o documento oficial para conferir.</p>
     <form class="busca-capa" id="form-busca" role="search"><input id="busca-capa" type="search" placeholder="Empresa, obra, decreto…" aria-label="Buscar em tudo"><button>Buscar</button></form>
-    <p class="status"><span id="atualizado">Carregando dados…</span> · <a href="https://t.me/olhodecaranguejo" target="_blank" rel="noopener">Receba avisos no Telegram</a></p>
+    <p class="status"><span id="atualizado">Carregando dados…</span> · <a href="https://t.me/olhodecaranguejo" target="_blank" rel="noopener">Receba avisos no Telegram</a> · <a href="denunciar/">Viu algo errado? Conte aqui</a></p>
   </div>
   <svg class="bicho" viewBox="60 70 1134 920" role="img" aria-label="Caranguejo de olhos levantados, vigiando">
 <g stroke="#540606" stroke-width="16" stroke-linejoin="round" stroke-linecap="round">
@@ -239,6 +239,7 @@ footer .wrap{padding-bottom:36px}
   <div><h2>De onde vem</h2><ul><li>Diário Oficial de Canavieiras</li><li>e-TCM, consulta pública do TCM-BA</li><li>Transferegov, emendas Pix</li></ul></div>
   <div><h2>Quando atualiza</h2><p>O robô lê o Diário e as emendas todo dia, a partir das 14h10 e das 20h10. As contas do TCM são atualizadas à parte.</p></div>
   <div><h2>Alertas no celular</h2><p>Entre no canal do Telegram e receba um aviso quando sair contrato, aditivo, licitação ou outra novidade importante.</p><p style="margin-top:14px"><a class="btn-canal" href="https://t.me/olhodecaranguejo" target="_blank" rel="noopener">Entrar no canal</a></p></div>
+  <div><h2>Viu algo errado?</h2><p>Obra parada, serviço ruim, gasto estranho? Conte para a gente, com foto, sem precisar dar seu nome. A equipe confere antes de publicar.</p><p style="margin-top:14px"><a class="btn-canal" href="denunciar/">Fazer um relato</a></p></div>
 </div></section>
 <footer><div class="wrap">Olho de Caranguejo é um projeto independente de fiscalização cidadã. Os resumos são feitos por inteligência artificial e podem conter erros. Confira sempre o documento original antes de compartilhar.</div></footer>
 <div class="toast" id="toast" role="status" hidden></div>

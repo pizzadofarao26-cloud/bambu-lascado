@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Denunciar · Olho de Caranguejo</title>
+<meta name="description" content="Conte o que você viu em Canavieiras (BA): denúncias, obras, serviços públicos e sugestões. Sem precisar dar seu nome.">
+<meta name="theme-color" content="#540612">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Caranguejo">
+<meta property="og:title" content="Denuncie no Olho de Caranguejo">
+<meta property="og:description" content="Viu algo errado com o dinheiro público de Canavieiras? Conte aqui, sem precisar se identificar.">
+<meta property="og:image" content="https://olhodecaranguejo.com.br/img/compartilhar.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#f5ecd7; --surface:#fffaf0; --ink:#34110f; --muted:#79574e; --line:#e2d0b4; --soft:#eddfc4;
+  --vinho:#540612; --casco:#d23c18; --casco-txt:#a8300f; --creme:#f8efdc; --sobre-casco:#fff8ec;
+  --ok:#376a3a; --bad:#a3231f;
+  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"Public Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1f0b0d; --surface:#2c1215; --ink:#f8efdc; --muted:#cfae9d; --line:#4b2527; --soft:#3a191c;
+  --casco-txt:#f2977c; --ok:#93cf8f; --bad:#ff9c8d; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1f0b0d; --surface:#2c1215; --ink:#f8efdc; --muted:#cfae9d; --line:#4b2527; --soft:#3a191c;
+  --casco-txt:#f2977c; --ok:#93cf8f; --bad:#ff9c8d; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;padding-bottom:env(safe-area-inset-bottom,0px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--vinho)}
+a{color:var(--casco-txt)}
+:focus-visible{outline:3px solid var(--casco);outline-offset:2px}
+.wrap{max-width:680px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2{font-family:var(--f-display);text-wrap:balance;letter-spacing:-.02em}
+
+.topo{background:var(--vinho);color:var(--creme);padding-top:env(safe-area-inset-top,0px)}
+.topo .wrap{padding-block:18px 30px}
+.barra{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+.marca{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:700;font-size:17px;color:inherit;text-decoration:none}
+.marca img{width:38px;height:38px}
+.barra a.volta{color:#ecd6c6;font-size:14px}
+.topo h1{font-size:clamp(32px,8vw,48px);line-height:1;margin:0 0 12px;font-weight:800}
+.topo p{margin:0;color:#ecd6c6;max-width:48ch}
+.selos{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding:0;list-style:none}
+.selos li{background:rgba(248,239,220,.12);border:1px solid rgba(248,239,220,.25);border-radius:999px;padding:4px 12px;font-size:14px}
+
+form{display:grid;gap:22px;padding-block:26px 40px}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend,label.rot{display:block;font-weight:700;margin-bottom:8px}
+.dica{display:block;font-weight:400;color:var(--muted);font-size:14px}
+.tipos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:560px){.tipos{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.tipo{position:relative}
+.tipo input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.tipo span{display:flex;flex-direction:column;gap:2px;height:100%;background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:12px;font-weight:700;line-height:1.25}
+.tipo small{font-weight:400;color:var(--muted);font-size:13px}
+.tipo input:checked+span{border-color:var(--casco);background:color-mix(in srgb,var(--casco) 9%,var(--surface))}
+.tipo input:focus-visible+span{outline:3px solid var(--casco);outline-offset:2px}
+
+input[type=text],input[type=date],textarea{width:100%;font:inherit;color:var(--ink);background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:11px 13px}
+input:focus,textarea:focus{border-color:var(--casco);outline:none}
+textarea{min-height:150px;resize:vertical}
+.conta{font-size:13px;color:var(--muted);text-align:right;margin-top:4px}
+.duas{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+@media (max-width:480px){.duas{grid-template-columns:minmax(0,1fr)}}
+
+.fotos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.foto,.add{aspect-ratio:1;border-radius:12px;overflow:hidden;position:relative;max-width:100%}
+.foto img{width:100%;height:100%;object-fit:cover;display:block}
+.foto button{position:absolute;top:4px;right:4px;width:30px;height:30px;border-radius:50%;border:0;background:rgba(30,1,3,.75);color:#fff;font-size:18px;line-height:1;cursor:pointer}
+.add{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:2px dashed var(--line);background:var(--surface);color:var(--muted);font-size:13px;cursor:pointer;text-align:center}
+.add b{font-size:28px;line-height:1;color:var(--casco-txt)}
+.add input{position:absolute;inset:0;opacity:0;cursor:pointer}
+
+.aviso{background:var(--soft);border-radius:14px;padding:14px 16px;font-size:15px}
+.aviso strong{display:block;margin-bottom:2px}
+.check{display:flex;gap:10px;align-items:flex-start}
+.check input{width:22px;height:22px;flex:none;margin-top:1px;accent-color:var(--casco)}
+.mel{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+.enviar{border:0;background:var(--casco);color:var(--sobre-casco);font:inherit;font-weight:700;font-size:18px;padding:16px;border-radius:14px;cursor:pointer;width:100%}
+.enviar:hover{background:#b33212}
+.enviar:disabled{opacity:.6;cursor:wait}
+.erro{color:var(--bad);font-weight:600;margin:0}
+
+.feito{padding-block:40px;text-align:center}
+.feito img{width:120px;height:120px}
+.feito h2{font-size:32px;margin:12px 0 8px}
+.protocolo{display:inline-block;font-family:ui-monospace,Consolas,monospace;font-size:20px;background:var(--surface);border:2px solid var(--line);border-radius:10px;padding:6px 14px;margin:8px 0 18px;letter-spacing:.08em}
+.btn2{display:inline-block;border:2px solid var(--casco);color:var(--casco-txt);background:transparent;font:inherit;font-weight:700;padding:10px 18px;border-radius:12px;cursor:pointer;text-decoration:none}
+.instalar{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-top:22px;font-size:15px}
+.instalar img{width:44px;height:44px;flex:none}
+.instalar div{flex:1;min-width:0}
+footer{color:var(--muted);font-size:14px;padding-block:0 32px}
+</style>
+</head>
+<body>
+<header class="topo">
+  <div class="wrap">
+    <div class="barra">
+      <a class="marca" href="/"><img src="../img/simbolo.png" alt="" width="38" height="38">Olho de Caranguejo</a>
+      <a class="volta" href="/">Ver o site</a>
+    </div>
+    <h1>Viu algo errado? Conte aqui.</h1>
+    <p>Obra parada, posto sem remédio, contrato estranho, dinheiro mal gasto. Seu relato ajuda a cidade inteira a ficar de olho.</p>
+    <ul class="selos">
+      <li>Não precisa dar seu nome</li>
+      <li>Só a equipe lê</li>
+      <li>Nada sai sem checagem</li>
+    </ul>
+  </div>
+</header>
+
+<main class="wrap">
+<form id="form" novalidate>
+  <fieldset>
+    <legend>Sobre o que é?</legend>
+    <div class="tipos">
+      <label class="tipo"><input type="radio" name="tipo" value="denuncia" required><span>Denúncia<small>uso errado de dinheiro ou cargo</small></span></label>
+      <label class="tipo"><input type="radio" name="tipo" value="obra"><span>Obra<small>parada, malfeita, abandonada</small></span></label>
+      <label class="tipo"><input type="radio" name="tipo" value="servico"><span>Serviço público<small>saúde, escola, lixo, rua</small></span></label>
+      <label class="tipo"><input type="radio" name="tipo" value="sugestao"><span>Sugestão<small>ideia para a cidade ou o site</small></span></label>
+      <label class="tipo"><input type="radio" name="tipo" value="elogio"><span>Elogio<small>algo que funcionou bem</small></span></label>
+      <label class="tipo"><input type="radio" name="tipo" value="outro"><span>Outro<small>não se encaixa acima</small></span></label>
+    </div>
+  </fieldset>
+
+  <div>
+    <label class="rot" for="assunto">Resumo em poucas palavras</label>
+    <input type="text" id="assunto" name="assunto" maxlength="120" required placeholder="Ex.: Quadra do bairro parada há meses">
+  </div>
+
+  <div>
+    <label class="rot" for="descricao">O que aconteceu?<span class="dica">Conte com calma: o que você viu, desde quando, quem pode confirmar. Não precisa escrever bonito.</span></label>
+    <textarea id="descricao" name="descricao" maxlength="5000" required></textarea>
+    <div class="conta" id="conta">0 / 5000</div>
+  </div>
+
+  <div class="duas">
+    <div>
+      <label class="rot" for="local">Onde?<span class="dica">rua, prédio, ponto de referência</span></label>
+      <input type="text" id="local" name="local" maxlength="200">
+    </div>
+    <div>
+      <label class="rot" for="bairro">Bairro ou distrito<span class="dica">ex.: Centro, Atalaia</span></label>
+      <input type="text" id="bairro" name="bairro" maxlength="80">
+    </div>
+  </div>
+
+  <div>
+    <label class="rot" for="quando">Quando você viu?<span class="dica">se não lembrar o dia exato, pode deixar em branco</span></label>
+    <input type="date" id="quando" name="quando">
+  </div>
+
+  <fieldset>
+    <legend>Fotos<span class="dica">até 4. A localização escondida na foto é apagada antes de enviar.</span></legend>
+    <div class="fotos" id="fotos">
+      <label class="add" id="add"><b>+</b>Adicionar foto<input type="file" id="arquivo" accept="image/*" multiple></label>
+    </div>
+  </fieldset>
+
+  <div>
+    <label class="rot" for="contato">Contato (opcional)<span class="dica">WhatsApp ou e-mail, só se você topar que a gente tire dúvidas. Nunca aparece no site.</span></label>
+    <input type="text" id="contato" name="contato" maxlength="120" autocomplete="off">
+  </div>
+
+  <div class="mel" aria-hidden="true"><label>Não preencha<input type="text" id="site" tabindex="-1" autocomplete="off"></label></div>
+
+  <div class="aviso">
+    <strong>Antes de enviar</strong>
+    Conte só o que você viu ou sabe. Não coloque CPF nem dados pessoais de ninguém. Acusar alguém sabendo que é mentira é crime. A equipe confere tudo antes de publicar qualquer coisa.
+  </div>
+
+  <label class="check"><input type="checkbox" id="ok" required><span>Entendi. O que estou contando é verdade, até onde eu sei.</span></label>
+
+  <p class="erro" id="erro" role="alert" hidden></p>
+  <button class="enviar" id="enviar" type="submit">Enviar relato</button>
+</form>
+
+<section class="feito" id="feito" hidden tabindex="-1">
+  <img src="../img/simbolo.png" alt="" width="120" height="120">
+  <h2>Recebido. Obrigado!</h2>
+  <p>Seu relato chegou à equipe do Olho de Caranguejo. Guarde o número abaixo caso queira falar dele depois.</p>
+  <div class="protocolo" id="protocolo"></div>
+  <p><button class="btn2" type="button" id="outro">Enviar outro relato</button></p>
+</section>
+
+<div class="instalar" id="instalar" hidden>
+  <img src="icone-192.png" alt="" width="44" height="44">
+  <div id="instalar-txt"><strong>Tenha o app no celular</strong><br>Um toque e você relata de onde estiver.</div>
+  <button class="btn2" type="button" id="instalar-btn">Instalar</button>
+</div>
+</main>
+<footer class="wrap">
+  <p>Seus dados são tratados conforme a LGPD: usamos o relato só para apurar e informar a cidade. Quer apagar o que enviou? Mande um novo relato do tipo “Outro” com o número do protocolo, pedindo para apagar.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+const SUPA_URL = "https://wuzrxxdvlksqjndkayym.supabase.co";
+const SUPA_CHAVE = "sb_publishable_mqcAQC7bGyIJ8WGT62sX7g_2qRj8Ygt"; // chave pública: só deixa ENVIAR, nunca ler
+const db = supabase.createClient(SUPA_URL, SUPA_CHAVE, {auth: {persistSession: false}});
+const $ = id => document.getElementById(id);
+const form = $("form"), fotos = [];
+const MAX_FOTOS = 4, RASCUNHO = "oc-rascunho";
+
+// rascunho: se a pessoa fechar sem querer, o texto volta
+const campos = ["assunto", "descricao", "local", "bairro", "quando", "contato"];
+try {
+  const r = JSON.parse(localStorage.getItem(RASCUNHO) || "{}");
+  campos.forEach(c => { if (r[c]) $(c).value = r[c]; });
+  if (r.tipo) { const t = form.querySelector(`[name=tipo][value="${r.tipo}"]`); if (t) t.checked = true; }
+} catch {}
+function guardar(){
+  try {
+    const r = {tipo: (form.querySelector("[name=tipo]:checked") || {}).value};
+    campos.forEach(c => r[c] = $(c).value);
+    localStorage.setItem(RASCUNHO, JSON.stringify(r));
+  } catch {}
+}
+form.addEventListener("input", () => { guardar(); conta(); });
+function conta(){ $("conta").textContent = $("descricao").value.length + " / 5000"; }
+conta();
+
+// fotos: reduz para no máximo 1600 px e regrava em JPEG (isso apaga GPS e outros dados escondidos)
+function reduzir(arq){
+  return new Promise((ok, falha) => {
+    const img = new Image(), url = URL.createObjectURL(arq);
+    img.onload = () => {
+      const k = Math.min(1, 1600 / Math.max(img.width, img.height));
+      const c = document.createElement("canvas");
+      c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+      c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url);
+      c.toBlob(b => b ? ok(b) : falha(new Error("foto")), "image/jpeg", .82);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); falha(new Error("Não deu para abrir uma das fotos.")); };
+    img.src = url;
+  });
+}
+$("arquivo").addEventListener("change", async e => {
+  for (const arq of [...e.target.files]) {
+    if (fotos.length >= MAX_FOTOS) break;
+    if (!arq.type.startsWith("image/")) continue;
+    try { fotos.push(await reduzir(arq)); } catch (er) { mostrarErro(er.message); }
+  }
+  e.target.value = ""; desenharFotos();
+});
+function desenharFotos(){
+  const box = $("fotos");
+  box.querySelectorAll(".foto").forEach(f => { URL.revokeObjectURL(f.querySelector("img").src); f.remove(); });
+  fotos.forEach((b, i) => {
+    const d = document.createElement("div"); d.className = "foto";
+    d.innerHTML = `<img alt="Foto ${i + 1}"><button type="button" aria-label="Tirar foto ${i + 1}">×</button>`;
+    d.querySelector("img").src = URL.createObjectURL(b);
+    d.querySelector("button").onclick = () => { fotos.splice(i, 1); desenharFotos(); };
+    box.insertBefore(d, $("add"));
+  });
+  $("add").hidden = fotos.length >= MAX_FOTOS;
+}
+
+function mostrarErro(t){ $("erro").textContent = t; $("erro").hidden = !t; }
+
+form.addEventListener("submit", async e => {
+  e.preventDefault(); mostrarErro("");
+  const tipo = (form.querySelector("[name=tipo]:checked") || {}).value;
+  const assunto = $("assunto").value.trim(), descricao = $("descricao").value.trim();
+  if (!tipo) return mostrarErro("Escolha sobre o que é o relato.");
+  if (assunto.length < 3) return mostrarErro("Escreva um resumo curto do que aconteceu."), $("assunto").focus();
+  if (descricao.length < 10) return mostrarErro("Conte um pouco mais no campo “O que aconteceu?”."), $("descricao").focus();
+  if (!$("ok").checked) return mostrarErro("Marque a caixinha confirmando que entendeu.");
+  if ($("site").value) return; // robô
+  if (!navigator.onLine) return mostrarErro("Sem internet agora. Seu texto fica guardado; tente de novo quando a conexão voltar.");
+
+  const btn = $("enviar"); btn.disabled = true;
+  const id = crypto.randomUUID(), caminhos = [];
+  try {
+    for (let i = 0; i < fotos.length; i++) {
+      btn.textContent = `Enviando foto ${i + 1} de ${fotos.length}…`;
+      const caminho = `novos/${id}/${i + 1}.jpg`;
+      const {error} = await db.storage.from("relatos").upload(caminho, fotos[i], {contentType: "image/jpeg"});
+      if (error) throw error;
+      caminhos.push(caminho);
+    }
+    btn.textContent = "Enviando relato…";
+    const {error} = await db.from("relatos").insert({
+      id, tipo, assunto, descricao,
+      local: $("local").value.trim() || null, bairro: $("bairro").value.trim() || null,
+      quando: $("quando").value || null, contato: $("contato").value.trim() || null, fotos: caminhos
+    });
+    if (error) throw error;
+    try { localStorage.removeItem(RASCUNHO); } catch {}
+    $("protocolo").textContent = id.slice(0, 8).toUpperCase();
+    form.hidden = true; $("feito").hidden = false; $("feito").focus(); scrollTo(0, 0);
+  } catch (er) {
+    console.error(er);
+    mostrarErro("Não conseguimos enviar agora. Seu texto continua aqui; tente de novo em instantes.");
+  } finally { btn.disabled = false; btn.textContent = "Enviar relato"; }
+});
+$("outro").onclick = () => {
+  form.reset(); fotos.length = 0; desenharFotos(); conta();
+  $("feito").hidden = true; form.hidden = false; scrollTo(0, 0);
+};
+
+// instalar como app
+let pedido = null;
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+const instalado = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+addEventListener("beforeinstallprompt", e => { e.preventDefault(); pedido = e; if (!instalado) $("instalar").hidden = false; });
+$("instalar-btn").onclick = async () => {
+  if (pedido) { pedido.prompt(); await pedido.userChoice; pedido = null; $("instalar").hidden = true; }
+};
+if (!instalado && /iphone|ipad|ipod/i.test(navigator.userAgent)) {
+  $("instalar").hidden = false; $("instalar-btn").hidden = true;
+  $("instalar-txt").innerHTML = "<strong>Tenha o app no iPhone</strong><br>No Safari, toque em Compartilhar e depois em “Adicionar à Tela de Início”.";
+}
+</script>
+</body>
+</html>
