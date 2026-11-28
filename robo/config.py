@@ -46,7 +46,13 @@ PALAVRAS_ALERTA = [
 
 # Quanto olhar para trás em cada execução (o estado evita repetir)
 DIAS_RETROATIVOS = int(os.getenv("DIAS_RETROATIVOS", "15"))
-MAX_DOCS_TCM_POR_EXECUCAO = int(os.getenv("MAX_DOCS_TCM", "10"))
+MAX_DOCS_TCM_POR_EXECUCAO = int(os.getenv("MAX_DOCS_TCM", "40"))
+# Documentos do TCM publicados no site (com CPFs tarjados). Uma prestação mensal tem
+# ~500 documentos, a maioria processos de pagamento e folha (dados pessoais, muito espaço):
+# publicamos só os de interesse público, pela classificação do TCM.
+TCM_DOCS_PUBLICOS = r"Contratos e aditivos|Conv[êe]nios|Controle Interno|emendas parlamentares municipais"
+TCM_DOCS_PRIVADOS = r"folha|pagamento|extrato|banc[áa]ri|guia|subs[íi]dio"
+TCM_DOCS_DESDE_ANO = int(os.getenv("TCM_DOCS_DESDE_ANO", "2026"))
 MAX_RESUMOS_POR_EXECUCAO = int(os.getenv("MAX_RESUMOS", "20"))
 # PDFs do Diário são grandes (~2 MB cada) e têm link oficial; por padrão não guardamos.
 # Na hospedagem paga, com espaço, ligue: GUARDAR_PDF_DIARIO=1

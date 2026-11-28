@@ -12,6 +12,7 @@ git pull --rebase --quiet
 
 Write-Host "2/3 Lendo o TCM-BA (pode levar alguns minutos)..." -ForegroundColor Cyan
 & $py -m robo --so-tcm --sem-alerta
+& $py -m robo.tcm_docs --limite 10   # documentos que faltaram, com CPFs tarjados
 
 Write-Host "3/3 Enviando para o site..." -ForegroundColor Cyan
 git add dados site
