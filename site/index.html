@@ -121,6 +121,9 @@ input.campo{flex:1 1 220px}
 .rede.tg{background:#1f7fb8}.rede.x{background:#111}.rede.link{background:var(--soft);color:var(--ink)}
 .compartilhar small{color:var(--muted);font-size:13px}
 .fonte-materia{margin:0;font-size:14px;color:var(--muted);background:var(--soft);border-radius:12px;padding:12px 14px;max-width:none}
+.passos{background:var(--soft);border-radius:12px;padding:14px 16px;display:grid;gap:8px;font-size:15px}
+.passos p{margin:0}.passos ol{margin:0;padding-left:22px;display:grid;gap:4px}
+.passos .btn{justify-self:start}
 .leia-tambem{display:grid;gap:12px}
 .leia-tambem h2{font-size:20px;margin:8px 0 0}
 .plain{margin:0;white-space:pre-line;overflow-wrap:anywhere;max-width:68ch}
@@ -359,6 +362,20 @@ function post(it){
   return `📢 ${onde}\n\n${corpo}\n\n🔎 Veja o documento: ${location.origin}${location.pathname}#${it.id}\n#Canavieiras #Transparência #OlhoDeCaranguejo`;
 }
 
+// o e-TCM não tem link direto para cada prestação (a pesquisa vive na sessão do site), então ensinamos o caminho
+function passosTCM(it){
+  const ano = (it.competencia || "").slice(-4);
+  return `<div class="passos" data-passosbox="${esc(it.id)}" hidden>
+    <p><b>O site do TCM não tem link direto para cada prestação de contas.</b> Para conferir esta, abra a consulta pública e preencha assim:</p>
+    <ol>
+      <li><b>Município:</b> CANAVIEIRAS (escolha este primeiro)</li>
+      <li><b>Unidade Jurisdicionada:</b> ${esc(it.unidade)}</li>
+      <li><b>Ano:</b> ${esc(ano)}</li>
+      <li>Toque em <b>Pesquisar</b> e procure a linha <b>${esc(it.competencia)}</b>, tipo <b>${esc(it.tipo)}</b>, enviada em <b>${esc(it.data_envio)}</b>.</li>
+    </ol>
+    <a class="btn primary" href="${esc(it.url_pagina)}" target="_blank" rel="noopener">Abrir a consulta pública do TCM</a>
+  </div>`;
+}
 function explicaSituacao(it){
   const s = (it.situacao || "").toUpperCase();
   if (s === "CIENTE") return "<b>Situação “Ciente”:</b> a Prefeitura registrou no Transferegov que tomou ciência desta emenda. Essa situação, sozinha, não informa se o valor já foi pago ou gasto.";
@@ -388,9 +405,10 @@ function corpoItem(it){
   if (it.fonte === "diario" && it.tem_transcricao) h += `<details data-txt="${esc(it.id)}"><summary>Ler o texto completo da edição</summary><div class="txt">Carregando…</div></details>`;
   let acoes = "";
   if (it.url_pdf_origem) acoes += `<a class="btn" href="${esc(it.url_pdf_origem)}" target="_blank" rel="noopener">Baixar PDF original</a>`;
+  else if (it.fonte === "tcm") acoes += `<button class="btn" type="button" data-passos="${esc(it.id)}" aria-expanded="false">Como ver no site do TCM</button>`;
   else if (it.url_pagina) acoes += `<a class="btn" href="${esc(it.url_pagina)}" target="_blank" rel="noopener">${it.fonte === "emendas" ? "Ver no Transferegov (site do governo)" : "Ver na fonte oficial"}</a>`;
   acoes += `<button class="btn primary" data-post="${esc(it.id)}">Gerar post</button>`;
-  return h + `<div class="actions">${acoes}</div><div class="post" data-postbox="${esc(it.id)}" hidden></div>`;
+  return h + `<div class="actions">${acoes}</div>${it.fonte === "tcm" ? passosTCM(it) : ""}<div class="post" data-postbox="${esc(it.id)}" hidden></div>`;
 }
 
 function meta(it){
@@ -494,7 +512,8 @@ function fonteMateria(it){
     : it.fonte === "tcm" ? `consulta pública do Tribunal de Contas dos Municípios da Bahia (e-TCM), ${esc(it.unidade || "")}, competência ${esc(it.competencia || "")}`
     : it.fonte === "emendas" ? "Transferegov, sistema oficial do governo federal" : "documento oficial";
   const link = it.url_pdf_origem || it.url_pagina;
-  return `<p class="fonte-materia"><b>Fonte:</b> ${doc}.${link ? ` <a href="${esc(link)}" target="_blank" rel="noopener">Ver o documento original</a>.` : ""}
+  const verOriginal = it.fonte === "tcm" ? " Para conferir, use o botão “Como ver no site do TCM” acima." : link ? ` <a href="${esc(link)}" target="_blank" rel="noopener">Ver o documento original</a>.` : "";
+  return `<p class="fonte-materia"><b>Fonte:</b> ${doc}.${verOriginal}
     Este texto explica, em linguagem simples, o que está publicado nesse documento oficial e só nele; as contas indicadas como tais foram feitas com os números publicados.
     Os resumos são feitos com ajuda de inteligência artificial e podem conter erros: em caso de dúvida, vale o documento original.
     Achou algum erro? <a href="denunciar/">Avise a equipe</a>.</p>`;
@@ -701,6 +720,8 @@ document.querySelector("main").addEventListener("click", e => {
     box.innerHTML = `${esc(textoPost(id))}<div class="actions"><button class="btn" data-copy="${esc(id)}">Copiar texto</button></div>`;
     box.hidden = false; passear(); return;
   }
+  const ps = e.target.closest("[data-passos]");
+  if (ps) { const box = ps.closest(".item").querySelector("[data-passosbox]"); box.hidden = !box.hidden; ps.setAttribute("aria-expanded", !box.hidden); return; }
   const ig = e.target.closest("[data-insta]");
   if (ig) { compartilharInsta(ITENS.find(i => i.id === ig.dataset.insta)).catch(() => toast("Não consegui montar a imagem")); return; }
   const l = e.target.closest("[data-link]");
