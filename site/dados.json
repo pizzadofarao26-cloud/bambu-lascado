@@ -1197,78 +1197,7 @@
    "data": "2026-09-29",
    "titulo_original": "Prestação de contas Gestão 04/2026 - Prefeitura Municipal de CANAVIEIRAS: Entregue fora do prazo (enviada em 29/09/2026)",
    "url_pagina": "https://e.tcm.ba.gov.br/epp/ConsultaPublica/listView.seam",
-   "documentos": [
-    {
-     "classificacao": "PCMGE004 – Comprovante de transferência bancária relativa de recursos próprios municipais às contas do CIDE",
-     "nome": "DECLARAÇÃO DE INEXISTÊNCIA DE MOVIMENTAÇÃO.pdf",
-     "usuario": "Leandro Silva Marinho",
-     "data": "02/09/2026",
-     "arquivo_local": "tcm-prefeituramunicipaldecanavieiras-042026-gestão-prefeituramunicipaldecanavieiras-29092026_DECLARAÇÃO_DE_INEXISTÊNCIA_DE_MOVIMENTAÇÃO.pdf"
-    },
-    {
-     "classificacao": "PCMGE005 – Comprovante de transferência bancária relativa de recursos próprios municipais às contas do FUNDEB",
-     "nome": "DECLARAÇÃO DE INEXISTÊNCIA DE MOVIMENTAÇÃO.pdf",
-     "usuario": "Leandro Silva Marinho",
-     "data": "04/09/2026",
-     "arquivo_local": "tcm-prefeituramunicipaldecanavieiras-042026-gestão-prefeituramunicipaldecanavieiras-29092026_DECLARAÇÃO_DE_INEXISTÊNCIA_DE_MOVIMENTAÇÃO.pdf"
-    },
-    {
-     "classificacao": "PCMGE006 – Comprovante de transferência bancária relativa de recursos próprios municipais às contas dos Royalties",
-     "nome": "DECLARAÇÃO DE INEXISTÊNCIA DE MOVIMENTAÇÃO.pdf",
-     "usuario": "Leandro Silva Marinho",
-     "data": "04/09/2026",
-     "arquivo_local": "tcm-prefeituramunicipaldecanavieiras-042026-gestão-prefeituramunicipaldecanavieiras-29092026_DECLARAÇÃO_DE_INEXISTÊNCIA_DE_MOVIMENTAÇÃO.pdf"
-    },
-    {
-     "classificacao": "PCMGE008 – Comprovantes de transferência de recursos ao Poder Legislativo pelo Executivo",
-     "nome": "DUODÉCIMO MAIO.pdf",
-     "usuario": "Leandro Silva Marinho",
-     "data": "02/09/2026",
-     "arquivo_local": "tcm-prefeituramunicipaldecanavieiras-042026-gestão-prefeituramunicipaldecanavieiras-29092026_DUODÉCIMO_MAIO.pdf"
-    },
-    {
-     "classificacao": "PCMGE009 - Contratos e aditivos",
-     "nome": "CON 079 2026 PA 041 2026 PE 008 2026 - POTENCUIAL ESTRUTURAS E EVENTOS.pdf",
-     "usuario": "SAULU SANTOS MEIRA",
-     "data": "18/09/2026",
-     "arquivo_local": "tcm-prefeituramunicipaldecanavieiras-042026-gestão-prefeituramunicipaldecanavieiras-29092026_CON_079_2026_PA_041_2026_PE_008_2026_-_POTENCUIAL_ESTRUTURAS_E_EVENTOS.pdf"
-    },
-    {
-     "classificacao": "PCMGE009 - Contratos e aditivos",
-     "nome": "CON 082 2026 PA 022 2026 PE 005 2026 - DELTA CONSULTORIA EM TECNOLOGIA.pdf",
-     "usuario": "SAULU SANTOS MEIRA",
-     "data": "18/09/2026",
-     "arquivo_local": "tcm-prefeituramunicipaldecanavieiras-042026-gestão-prefeituramunicipaldecanavieiras-29092026_CON_082_2026_PA_022_2026_PE_005_2026_-_DELTA_CONSULTORIA_EM_TECNOLOGIA.pdf"
-    },
-    {
-     "classificacao": "PCMGE009 - Contratos e aditivos",
-     "nome": "CON 084 2026 PA 026 2026 PE 006 2026 - ARQTEC ARQUIVOS DIGITAIS.pdf",
-     "usuario": "SAULU SANTOS MEIRA",
-     "data": "18/09/2026",
-     "arquivo_local": "tcm-prefeituramunicipaldecanavieiras-042026-gestão-prefeituramunicipaldecanavieiras-29092026_CON_084_2026_PA_026_2026_PE_006_2026_-_ARQTEC_ARQUIVOS_DIGITAIS.pdf"
-    },
-    {
-     "classificacao": "PCMGE009 - Contratos e aditivos",
-     "nome": "CON 085 2026 PA 026 2026 PE 006 2026 - TORRE FORTE DISTRIBUIDORA.pdf",
-     "usuario": "SAULU SANTOS MEIRA",
-     "data": "18/09/2026",
-     "arquivo_local": "tcm-prefeituramunicipaldecanavieiras-042026-gestão-prefeituramunicipaldecanavieiras-29092026_CON_085_2026_PA_026_2026_PE_006_2026_-_TORRE_FORTE_DISTRIBUIDORA.pdf"
-    },
-    {
-     "classificacao": "PCMGE009 - Contratos e aditivos",
-     "nome": "CON 077 2026 DIS 033 2026 PA 057 2026 - R. S. ALVES.pdf",
-     "usuario": "SAULU SANTOS MEIRA",
-     "data": "23/09/2026",
-     "arquivo_local": "tcm-prefeituramunicipaldecanavieiras-042026-gestão-prefeituramunicipaldecanavieiras-29092026_CON_077_2026_DIS_033_2026_PA_057_2026_-_R._S._ALVES.pdf"
-    },
-    {
-     "classificacao": "PCMGE009 - Contratos e aditivos",
-     "nome": "CON 078 2026 PA 060 2026 DIS 034 2026 - RODRIGUES TELECOM.pdf",
-     "usuario": "SAULU SANTOS MEIRA",
-     "data": "23/09/2026",
-     "arquivo_local": "tcm-prefeituramunicipaldecanavieiras-042026-gestão-prefeituramunicipaldecanavieiras-29092026_CON_078_2026_PA_060_2026_DIS_034_2026_-_RODRIGUES_TELECOM.pdf"
-    }
-   ],
+   "documentos": [],
    "destaque": true,
    "coletado_em": "2026-11-22T00:03:57+00:00",
    "paginas": 1,
